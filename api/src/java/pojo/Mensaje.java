@@ -24,6 +24,7 @@ public class Mensaje {
         this.contenido = contenido;
     }
 
+
     public Boolean getError() {
         return error;
     }

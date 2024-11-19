@@ -2,6 +2,85 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cliente">
-    
+<mapper namespace="Cliente">
+
+    <!-- Insertar un cliente -->
+    <insert id="registro" parameterType="pojo.Cliente">
+        INSERT INTO cliente (
+            nombre,
+            apellidoPaterno,
+            apellidoMaterno,
+            direccion,
+            telefono,
+            correo
+        ) VALUES (
+            #{nombre},
+            #{apellidoPaterno},
+            #{apellidoMaterno},
+            #{direccion},
+            #{telefono},
+            #{correo}
+        );
+    </insert>
+<update id="actualizarCliente" parameterType="pojo.Cliente">
+    UPDATE cliente
+    SET 
+        nombre = #{nombre},
+        apellidoPaterno = #{apellidoPaterno},
+        apellidoMaterno = #{apellidoMaterno},
+        direccion = #{direccion},
+        telefono = #{telefono},
+        correo = #{correo}
+    WHERE idCliente = #{idCliente};
+</update>
+
+    <!-- Obtener todos los clientes -->
+    <select id="obtenerClientes" resultType="pojo.Cliente">
+        SELECT 
+            idCliente,
+            nombre,
+            apellidoPaterno,
+            apellidoMaterno,
+            direccion,
+            telefono,
+            correo
+        FROM cliente;
+    </select>
+
+  <select id="obtenerClientePorId" parameterType="Integer" resultType="pojo.Cliente">
+    SELECT 
+        idCliente,
+        nombre,
+        apellidoPaterno,
+        apellidoMaterno,
+        direccion,
+        telefono,
+        correo
+    FROM cliente
+    WHERE idCliente = #{idCliente};
+</select>
+
+
+    <!-- Obtener un cliente por correo -->
+    <select id="obtenerClientePorCorreo" parameterType="String" resultType="pojo.Cliente">
+        SELECT 
+            idCliente,
+            nombre,
+            apellidoPaterno,
+            apellidoMaterno,
+            direccion,
+            telefono,
+            correo
+        FROM cliente
+        WHERE correo = #{correo};
+    </select>
+
+ 
+    <!-- Eliminar un cliente por ID -->
+    <delete id="eliminarCliente" parameterType="int">
+        DELETE FROM cliente
+        WHERE idCliente = #{idCliente};
+    </delete>
+
+
 </mapper>

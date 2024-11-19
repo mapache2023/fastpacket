@@ -39,5 +39,15 @@ public class MyBatisUtil {
         }
         return conexion;
     }
-
+  public static SqlSession obtenerConexion() {
+      SqlSession conexion = null;
+        try {
+            Reader reader = Resources.getResourceAsReader(RUTA);
+            SqlSessionFactory sqlMapper = new SqlSessionFactoryBuilder().build(reader, AMBIENTE);
+            conexion = sqlMapper.openSession();
+        }catch (IOException ex) {
+           ex.printStackTrace();
+        }
+        return conexion;
+  }
 }
