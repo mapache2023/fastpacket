@@ -3,5 +3,98 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="colaborador">
+        <select id="obtenerColaboradores" resultType="pojo.Colaborador">
+       select `idColaborador`,
+colaborador.nombre,
+`apellidoPaterno`,
+`apellidoMaterno`,
+`curp`,
+`correo`,
+`numeroPersonal`,
+            `contrasena`,
+`numeroLicencia`,
+rol.idRol,rol.nombre as rol,
+unidad.idUnidad, concat(unidad.marca,' ', unidad.modelo) as unidad from colaborador 
+inner join rol on rol.idRol = colaborador.idColaborador
+left join unidad on unidad.idUnidad = colaborador.idUnidad;
+    </select>
     
+    <insert id="registrar" parameterType="pojo.Colaborador">
+   INSERT INTO `fastpacket`.`colaborador`
+(
+`nombre`,
+`apellidoPaterno`,
+`apellidoMaterno`,
+`curp`,
+`correo`,
+`numeroPersonal`,
+`contrasena`,
+`numeroLicencia`,
+`idRol`)
+VALUES
+(#{nombre},
+#{apellidoPaterno},
+#{apellidoMaterno},
+#{curp},
+#{correo},
+#{numeroPersonal},
+#{contrasena},
+#{numeroLicencia},
+#{idRol})
+    </insert>
+    
+    <update id="editar" parameterType="pojo.Colaborador">
+     UPDATE `fastpacket`.`colaborador`
+SET
+`nombre` = #{nombre},
+`apellidoPaterno` = #{apellidoPaterno},
+`apellidoMaterno` = #{apellidoMaterno},
+`curp` = #{curp},
+`correo` = #{correo},
+`contrasena` = #{contrasena},
+`numeroLicencia` = #{numeroLicencia}
+WHERE `idColaborador` = #{idColaborador};
+    </update>
+    
+    <update id="guardarFoto" parameterType="map">
+        UPDATE colaborador 
+        SET fotografia = #{foto} 
+        WHERE idColaborador = #{idColaborador}
+    </update>
+    <delete id="eliminar" parameterType="string">
+        DELETE FROM `fastpacket`.`colaborador`
+WHERE idColaborador = #{idColaborador};
+    </delete>
+    <select id="obtenerFoto" parameterType="int" resultType="pojo.Colaborador" >
+        SELECT idColaborador, nombre, apellidoPaterno, apellidoMaterno, TO_BASE64(fotografia) as 'fotografiaBase64'
+        FROM colaborador 
+        WHERE idColaborador = #{idColaborador}
+    </select>
+    
+    <update id="asignar" parameterType="map">
+UPDATE fastpacket.colaborador
+SET idUnidad = #{idUnidad}
+WHERE idColaborador = #{idColaborador}
+AND idUnidad IS NULL;
+    </update>
+    <update id="cambiar" parameterType="map" >
+        UPDATE fastpacket.colaborador
+SET idUnidad = #{idUnidad}
+WHERE idColaborador =#{idColaborador};
+    </update>
+    <update id="desasignar" parameterType="int" >
+        UPDATE fastpacket.colaborador
+SET idUnidad = NULL
+WHERE idColaborador = #{idColaborador}; 
+    </update>
+    <select id="buscarColaboradorUnidad" resultType="int">
+SELECT idColaborador
+FROM fastpacket.colaborador
+WHERE idUnidad = #{idUnidad}; 
+    </select>
+    <select id="buscarColaboradorCurp" resultType="int">
+SELECT idColaborador
+FROM fastpacket.colaborador
+WHERE curp = #{curp};
+    </select>
 </mapper>

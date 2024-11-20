@@ -13,15 +13,14 @@ public class Mensaje {
     
     private Boolean error;
     private String mensaje;
-    private Object contenido;
 
     public Mensaje() {
     }
 
-    public Mensaje(Boolean error, String mensaje, Object contenido) {
+    public Mensaje(Boolean error, String mensaje) {
         this.error = error;
         this.mensaje = mensaje;
-        this.contenido = contenido;
+       
     }
 
 
@@ -41,13 +40,7 @@ public class Mensaje {
         this.mensaje = mensaje;
     }
 
-    public Object getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(Object contenido) {
-        this.contenido = contenido;
-    }
+   
     
 }
 

@@ -24,21 +24,20 @@ public class ImpCliente {
                 msj = new Mensaje(false, 
                     "El cliente " + cliente.getNombre() + " " +
                     cliente.getApellidoPaterno() + " " +
-                    cliente.getApellidoMaterno() + " fue registrado con éxito.",
-                    cliente);
+                    cliente.getApellidoMaterno() + " fue registrado con éxito.");
             } else {
                 // No se pudo registrar el cliente
-                msj = new Mensaje(true, "El cliente no pudo ser registrado.", null);
+                msj = new Mensaje(true, "El cliente no pudo ser registrado.");
             }
         } catch (Exception e) {
             // Manejo de errores durante la operación
-            msj = new Mensaje(true, e.getMessage(), null);
+            msj = new Mensaje(true, e.getMessage());
         } finally {
             conexionBD.close(); // Asegura cerrar la conexión
         }
     } else {
         // Error al obtener la conexión
-        msj = new Mensaje(true, "Por el momento el servicio no está disponible.", null);
+        msj = new Mensaje(true, "Por el momento el servicio no está disponible.");
     }
 
     return msj;
@@ -103,18 +102,18 @@ public static Cliente buscarCliente(Integer idCliente) {
             conexionBD.commit();  // Asegúrate de hacer commit después de la eliminación
 
             if (filasAfectadas > 0) {
-                return new Mensaje(false, "Cliente eliminado correctamente.", null);
+                return new Mensaje(false, "Cliente eliminado correctamente.");
             } else {
-                return new Mensaje(true, "Cliente no encontrado.", null);
+                return new Mensaje(true, "Cliente no encontrado.");
             }
         } catch (Exception e) {
             e.printStackTrace();  // Imprime el error para diagnóstico
-            return new Mensaje(true, "Error al eliminar el cliente: " + e.getMessage(), null);
+            return new Mensaje(true, "Error al eliminar el cliente: " + e.getMessage());
         } finally {
             conexionBD.close();
         }
     }
-    return new Mensaje(true, "Error al conectar con la base de datos.", null);
+    return new Mensaje(true, "Error al conectar con la base de datos.");
 }
 
 }  
