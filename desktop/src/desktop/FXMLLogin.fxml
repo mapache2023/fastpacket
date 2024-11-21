@@ -6,9 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="214.0" prefWidth="160.0" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLLoginController">
+<AnchorPane id="AnchorPane" prefHeight="214.0" prefWidth="160.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLLoginController">
+    <stylesheets>
+        <URL value="@recursos/estilos.css"/>
+    </stylesheets>
    <children>
-       
        <VBox alignment="CENTER" layoutX="3.0" layoutY="3.0" spacing="15">
           <children>
              
