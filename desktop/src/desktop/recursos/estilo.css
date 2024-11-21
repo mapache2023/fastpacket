@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30/10/2024, 05:09:39 PM
+    Author     : mapache
+*/
+
+
+
+.mainFxmlClass{
+   -fx-background-color: white;
+   
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI", Arial, sans-serif; /* Modern system font */
+}
+
+.titulo-login{
+      -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C5F2D; /* Verde oscuro */
+}
+.texto-normal{
+  -fx-font-size: 16px;
+  -fx-text-fill: black;
+}
+.login-boton{
+  -fx-background-color: #2C5F2D; /* Verde oscuro */
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-padding: 10px;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-cursor: hand;
+}
+.encabezado{
+  -fx-background-color: #2e5412; /* Verde oscuro */
+  -fx-padding: 10;
+}
+.encabezado-titulo{
+  -fx-font-size: 14px;
+  -fx-text-fill: #FFFFFF;
+}
+.encabezado-texto-usuario{
+  -fx-font-size: 14px;
+  -fx-text-fill: #FFFFFF;
+}
+.titulo-secsion-formulario {
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #000000;
+}
+
+.text-field, .combo-box {
+  -fx-border-color: #D3D3D3;
+  -fx-background-radius: 5;
+  -fx-border-radius: 5;
+  -fx-prompt-text-fill: #888888;
+}
+.pie{
+  -fx-background-color: #2e5412; /* Verde oscuro */
+  -fx-text-fill: #FFFFFF;
+}
+.pie-texto{
+  -fx-font-size: 14px;
+  -fx-text-fill: #FFFFFF;
+}

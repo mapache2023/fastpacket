@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="738.0" styleClass="mainFxmlClass" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="738.0" spacing="10.0" styleClass="encabezado" BorderPane.alignment="CENTER">
+         <children>
+         <ImageView fitHeight="55.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                      <Image url="@recursos/logo_horizontal.PNG" />
+            </image>
+               </ImageView>
+               <Label prefHeight="24.0" prefWidth="124.0" styleClass="encabezado-titulo" text="Colaborador" />
+               <Region HBox.hgrow="ALWAYS" />
+               <Label styleClass="encabezado-texto-usuario" text="JUAN GUTIERREZ SANCHEZ" />
+               <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@recursos/imagen_perfil.jpg" />
+                  </image>
+               </ImageView>
+         </children>
+      </HBox>
+   </top>
+      <center>
+     
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="627.0" styleClass="pie" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" styleClass="pie-texto" text="Fast-Packet" />
+         </children>
+         </HBox>
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+
+</BorderPane>
