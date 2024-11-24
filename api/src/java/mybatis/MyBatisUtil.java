@@ -29,7 +29,16 @@ public class MyBatisUtil {
      * @return Una instancia de SqlSession que permite realizar operaciones de 
      * acceso a datos. Puede devolver null si no se pudo establecer la conexión.
      */
-
+    public static SqlSession getSession() {
+        try {
+            Reader reader = Resources.getResourceAsReader(RUTA);
+            SqlSessionFactory sqlMapper = new SqlSessionFactoryBuilder().build(reader, AMBIENTE); 
+            conexion = sqlMapper.openSession();
+        } catch (IOException ex) {
+            // Manejo de excepciones (silencioso)
+        }
+        return conexion;
+    }
   public static SqlSession obtenerConexion() {
       SqlSession conexion = null;
         try {

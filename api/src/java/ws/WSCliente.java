@@ -47,12 +47,12 @@ public Mensaje registrarCliente(String jsonCliente) {
 
         } else {
             // Devuelve un mensaje de error por campos faltantes o incorrectos
-            return new Mensaje(true, "Nombre, apellido paterno y/o correo faltantes o incorrectos");
+            return new Mensaje(true, "Nombre, apellido paterno y/o correo faltantes o incorrectos", null);
         }
     } catch (Exception e) {
         e.printStackTrace();
         // Retorna un mensaje genérico en caso de error
-        return new Mensaje(true, "Ocurrió un error al procesar la solicitud.");
+        return new Mensaje(true, "Ocurrió un error al procesar la solicitud.", null);
     }
 }
 @Path("editar")
@@ -66,7 +66,7 @@ public Mensaje editarCliente(String jsonCliente) {
         Cliente datosActualizados = gson.fromJson(jsonCliente, Cliente.class);
 
         if (datosActualizados.getIdCliente() == null) {
-            return new Mensaje(true, "ID de cliente faltante o incorrecto");
+            return new Mensaje(true, "ID de cliente faltante o incorrecto", null);
         }
 
         // Convertir el ID de cliente a Integer
@@ -76,7 +76,7 @@ public Mensaje editarCliente(String jsonCliente) {
         Cliente clienteExistente = ImpCliente.buscarCliente(idCliente);
 
         if (clienteExistente == null) {
-            return new Mensaje(true, "Cliente no encontrado");
+            return new Mensaje(true, "Cliente no encontrado", null);
         }
 
         // Actualiza solo los datos relevantes
@@ -91,14 +91,14 @@ public Mensaje editarCliente(String jsonCliente) {
         boolean actualizado = ImpCliente.guardarCambios(clienteExistente);
 
         if (actualizado) {
-            return new Mensaje(false, "Cliente actualizado correctamente");
+            return new Mensaje(false, "Cliente actualizado correctamente", clienteExistente);
         } else {
-            return new Mensaje(true, "Error al guardar los cambios del cliente");
+            return new Mensaje(true, "Error al guardar los cambios del cliente", null);
         }
 
     } catch (Exception e) {
         e.printStackTrace();
-        return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage());
+        return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage(), null);
     }
 }
 @DELETE
@@ -115,11 +115,11 @@ public Mensaje eliminarCliente(@PathParam("idCliente") Integer idCliente) {
         }
         
         // Si la eliminación es exitosa, se retorna el mensaje con éxito
-        return new Mensaje(false, "Cliente eliminado exitosamente.");
+        return new Mensaje(false, "Cliente eliminado exitosamente.", null);
     } catch (Exception e) {
         e.printStackTrace();
         // En caso de error, retornamos un mensaje de error
-        return new Mensaje(true, "Error al eliminar el cliente: " + e.getMessage());
+        return new Mensaje(true, "Error al eliminar el cliente: " + e.getMessage(), null);
     }
 }
 
@@ -130,22 +130,22 @@ public Mensaje buscarCliente(@PathParam("idCliente") Integer idCliente) {
     try {
         // Verificar que el ID del cliente es válido
         if (idCliente == null) {
-            return new Mensaje(true, "ID de cliente faltante o incorrecto");
+            return new Mensaje(true, "ID de cliente faltante o incorrecto", null);
         }
 
         // Llama al método buscarCliente que ya tienes en ImpCliente
         Cliente clienteEncontrado = ImpCliente.buscarCliente(idCliente);
 
         if (clienteEncontrado == null) {
-            return new Mensaje(true, "Cliente no encontrado");
+            return new Mensaje(true, "Cliente no encontrado", null);
         }
 
         // Retorna el cliente encontrado
-        return new Mensaje(false, "Cliente encontrado correctamente");
+        return new Mensaje(false, "Cliente encontrado correctamente", clienteEncontrado);
 
     } catch (Exception e) {
         e.printStackTrace();
-        return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage());
+        return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage(), null);
     }
 }
 

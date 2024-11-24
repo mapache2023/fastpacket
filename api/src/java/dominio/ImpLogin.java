@@ -21,7 +21,7 @@ public class ImpLogin {
      public static LoginColaborador login(String numeroPersonal, String contrasena) {
         LoginColaborador respuesta = new LoginColaborador();
         respuesta.setError(true);
-        SqlSession sqlSession = MyBatisUtil.obtenerConexion();
+        SqlSession sqlSession = MyBatisUtil.getSession();
         
         if (sqlSession == null) {
             respuesta.setMensaje("error no conexion a bd");
