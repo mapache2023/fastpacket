@@ -3,8 +3,6 @@ package ws;
 
 import com.google.gson.Gson;
 import dominio.ImpCliente;
-import java.util.ArrayList;
-import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,7 +11,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
@@ -94,9 +91,7 @@ public Mensaje editarCliente(String jsonCliente) {
         boolean actualizado = ImpCliente.guardarCambios(clienteExistente);
 
         if (actualizado) {
-            // Convertir el cliente actualizado a JSON para el contenido
-            String clienteJson = gson.toJson(clienteExistente);
-            return new Mensaje(false, "Cliente actualizado correctamente", clienteJson);
+            return new Mensaje(false, "Cliente actualizado correctamente", clienteExistente);
         } else {
             return new Mensaje(true, "Error al guardar los cambios del cliente", null);
         }
@@ -106,7 +101,6 @@ public Mensaje editarCliente(String jsonCliente) {
         return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage(), null);
     }
 }
-
 @DELETE
 @Path("eliminar/{idCliente}")  // Incluir el parámetro {idCliente} en la ruta
 @Produces(MediaType.APPLICATION_JSON)
@@ -128,28 +122,30 @@ public Mensaje eliminarCliente(@PathParam("idCliente") Integer idCliente) {
         return new Mensaje(true, "Error al eliminar el cliente: " + e.getMessage(), null);
     }
 }
-@GET
-@Path("buscar")  // Ruta para buscar clientes
-@Produces(MediaType.APPLICATION_JSON)
-public List<Cliente> buscarCliente(
-    @QueryParam("nombre") String nombre,
-    @QueryParam("telefono") String telefono,
-    @QueryParam("correo") String correo) {
-    try {
-        // Llama a la clase de implementación para buscar clientes
-        List<Cliente> clientes = ImpCliente.buscarCliente(nombre, telefono, correo);
 
-        // Si no se encuentran clientes, retorna una lista vacía
-        if (clientes == null || clientes.isEmpty()) {
-            return new ArrayList<>();
+@Path("buscar/{idCliente}")
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+public Mensaje buscarCliente(@PathParam("idCliente") Integer idCliente) {
+    try {
+        // Verificar que el ID del cliente es válido
+        if (idCliente == null) {
+            return new Mensaje(true, "ID de cliente faltante o incorrecto", null);
         }
 
-        // Retorna la lista de clientes encontrados
-        return clientes;
+        // Llama al método buscarCliente que ya tienes en ImpCliente
+        Cliente clienteEncontrado = ImpCliente.buscarCliente(idCliente);
+
+        if (clienteEncontrado == null) {
+            return new Mensaje(true, "Cliente no encontrado", null);
+        }
+
+        // Retorna el cliente encontrado
+        return new Mensaje(false, "Cliente encontrado correctamente", clienteEncontrado);
+
     } catch (Exception e) {
         e.printStackTrace();
-        // En caso de error, retornamos una lista vacía
-        return new ArrayList<>();
+        return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage(), null);
     }
 }
 

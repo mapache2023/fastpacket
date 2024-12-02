@@ -1,21 +1,23 @@
 
 package pojo;
 
+
 public class Mensaje {
+    
     private Boolean error;
     private String mensaje;
-    private String contenido;  
+    private Object contenido;
 
     public Mensaje() {
     }
 
-    public Mensaje(Boolean error, String mensaje, String contenido) {
+    public Mensaje(Boolean error, String mensaje, Object contenido) {
         this.error = error;
         this.mensaje = mensaje;
         this.contenido = contenido;
     }
 
-    // Getter y setters
+
     public Boolean getError() {
         return error;
     }
@@ -32,13 +34,13 @@ public class Mensaje {
         this.mensaje = mensaje;
     }
 
-    public String getContenido() {
+    public Object getContenido() {
         return contenido;
     }
 
-    public void setContenido(String contenido) {
+    public void setContenido(Object contenido) {
         this.contenido = contenido;
     }
+    
 }
-
 

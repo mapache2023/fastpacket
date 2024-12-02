@@ -74,8 +74,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM cliente
         WHERE correo = #{correo};
     </select>
+<select id="buscarCliente" parameterType="map" resultType="pojo.Cliente">
+    SELECT 
+        idCliente,
+        nombre,
+        apellidoPaterno,
+        apellidoMaterno,
+        direccion,
+        telefono,
+        correo
+    FROM cliente
+    WHERE 
+        (#{nombre} IS NULL OR nombre LIKE CONCAT('%', #{nombre}, '%'))
+        AND (#{telefono} IS NULL OR telefono LIKE CONCAT('%', #{telefono}, '%'))
+        AND (#{correo} IS NULL OR correo LIKE CONCAT('%', #{correo}, '%'));
+</select>
 
- 
+
     <!-- Eliminar un cliente por ID -->
     <delete id="eliminarCliente" parameterType="int">
         DELETE FROM cliente

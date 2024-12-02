@@ -30,8 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(ws.WSCliente.class);
-        resources.add(ws.WSPaquete.class);
-        resources.add(ws.WsEnviosEspeciales.class);
+        resources.add(ws.WSPaquetes.class);
         resources.add(ws.WsLogin.class);
     }
     
