@@ -15,6 +15,10 @@ public class Mensaje {
         this.contenido = contenido;
     }
 
+    public Mensaje(boolean b, String error) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     // Getter y setters
     public Boolean getError() {
         return error;

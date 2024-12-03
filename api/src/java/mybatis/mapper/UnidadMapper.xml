@@ -3,5 +3,19 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="unidad">
+    <insert id="registroUnidad" parameterType="pojo.Unidad">
+        insert into unidad (marca, modelo, ano, vin, idTipo, numeroIdentificacion) values (#{marca}, #{modelo}, #{ano}, #{vin}, #{idTipo}, #{numeroIdentificacion}) 
+    </insert>
     
+     <update id="editarUnidad" parameterType="pojo.Unidad">
+        update unidad set marca = #{marca}, modelo = #{modelo}, ano = #{ano}, numeroIdentificacion = #{numeroIdentificacion}, motivo = #{motivo}, activo = #{activo} where idUnidad = #{idUnidad}
+    </update>
+
+    <select id="buscarUnidad" resultType="pojo.Unidad">
+        select marca, modelo, ano, numeroIdentificacion, motivo, activo from Unidad where vin = #{vin} or marca = #{marca} or numeroIdentificacion = #{numeroIdentificacion}
+    </select>
+    
+    <delete id="bajaUnidad" parameterType="pojo.Unidad">
+        delete marca, modelo, ano, vin, numeroIdentificacion, idTipo from Unidad where motivo = #{motivo}
+    </delete>   
 </mapper>
