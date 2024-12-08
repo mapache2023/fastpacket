@@ -28,6 +28,11 @@ private Integer idEnvio;
         this.idEnvio = idEnvio;
     }
 
+    public Paquete(Integer idPaquete, Object object, Object object0, Object object1, Object object2, Object object3, Integer idEnvio, Object object4, Object object5) {
+      this.idPaquete = idPaquete;
+      this.idEnvio = idEnvio;
+    }
+
 
 
     public Integer getIdPaquete() {

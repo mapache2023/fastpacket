@@ -16,37 +16,32 @@ public class Colaborador {
     private String correo;
     private String curp;
     private String numeroLicencia;
-    private String numeroPesonal;
+    private String numeroPersonal;
+    private String contrasena;
     private Integer idColaborador;
     private Integer idUnidad;
     private String unidad;
-    private Integer idEnvio;
+    
     private Integer idRol;
     private String rol;
     private byte [] fotografia;
+    private String fotografiaBase64;
     
        public Colaborador(){}
 
-    public Colaborador(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String curp, String numeroLicencia, String numeroPesonal, Integer idColaborador, Integer idUnidad, String unidad, Integer idEnvio, Integer idRol, String rol, byte[] fotografia) {
+    public Colaborador(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String curp, String numeroLicencia, String numeroPersonal, String contrasena, Integer idColaborador, Integer idRol, String rol) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.correo = correo;
         this.curp = curp;
         this.numeroLicencia = numeroLicencia;
-        this.numeroPesonal = numeroPesonal;
+        this.numeroPersonal = numeroPersonal;
+        this.contrasena = contrasena;
         this.idColaborador = idColaborador;
-        this.idUnidad = idUnidad;
-        this.unidad = unidad;
-        this.idEnvio = idEnvio;
+     
         this.idRol = idRol;
         this.rol = rol;
-        this.fotografia = fotografia;
-    }
-
-    @Override
-    public String toString() {
-        return nombre;
     }
 
     public String getNombre() {
@@ -97,12 +92,20 @@ public class Colaborador {
         this.numeroLicencia = numeroLicencia;
     }
 
-    public String getNumeroPesonal() {
-        return numeroPesonal;
+    public String getNumeroPersonal() {
+        return numeroPersonal;
     }
 
-    public void setNumeroPesonal(String numeroPesonal) {
-        this.numeroPesonal = numeroPesonal;
+    public void setNumeroPersonal(String numeroPersonal) {
+        this.numeroPersonal = numeroPersonal;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public Integer getIdColaborador() {
@@ -129,13 +132,6 @@ public class Colaborador {
         this.unidad = unidad;
     }
 
-    public Integer getIdEnvio() {
-        return idEnvio;
-    }
-
-    public void setIdEnvio(Integer idEnvio) {
-        this.idEnvio = idEnvio;
-    }
 
     public Integer getIdRol() {
         return idRol;
@@ -160,7 +156,16 @@ public class Colaborador {
     public void setFotografia(byte[] fotografia) {
         this.fotografia = fotografia;
     }
-       
+
+    public String getFotografiaBase64() {
+        return fotografiaBase64;
+    }
+
+    public void setFotografiaBase64(String fotografiaBase64) {
+        this.fotografiaBase64 = fotografiaBase64;
+    }
+
+    
    
     
 }

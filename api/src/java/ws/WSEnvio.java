@@ -35,9 +35,21 @@ public class WSEnvio {
             Gson gson = new Gson();
             Envio envio = gson.fromJson(gsonEnvio, Envio.class);
             System.out.println(envio);
-            if(envio.getOrigenDireccion() != null && !envio.getOrigenDireccion().isEmpty() && envio.getDestinoDireccion() != null && !envio.getDestinoDireccion().isEmpty()
-                    && envio.getNumeroGuia() != null && !envio.getNumeroGuia().isEmpty() && envio.getCosto() != null
-                    && !envio.getCosto().isEmpty()){
+           if (envio.getNumeroGuia() != null && !envio.getNumeroGuia().isEmpty() &&
+            envio.getCosto() != null && !envio.getCosto().isEmpty() &&
+            envio.getIdCliente() != null &&
+            envio.getCalleOrigen() != null && !envio.getCalleOrigen().isEmpty() &&
+            envio.getNumeroOrigen() != null && !envio.getNumeroOrigen().isEmpty() &&
+            envio.getCodigoPostalOrigen()!= null && !envio.getCodigoPostalOrigen().isEmpty() &&
+            envio.getEstadoOrigen() != null && !envio.getEstadoOrigen().isEmpty() &&
+            envio.getColoniaOrigen() != null && !envio.getColoniaOrigen().isEmpty() &&
+            envio.getCiudadOrigen()!= null && !envio.getCiudadOrigen().isEmpty() &&
+            envio.getCalleDestino() != null && !envio.getCalleDestino().isEmpty() &&
+            envio.getNumeroDestino() != null && !envio.getNumeroDestino().isEmpty() &&
+            envio.getCodigoPostalDestino()!= null && !envio.getCodigoPostalDestino().isEmpty() &&
+            envio.getEstadoDestino() != null && !envio.getEstadoDestino().isEmpty() &&
+            envio.getColoniaDestino() != null && !envio.getColoniaDestino().isEmpty() &&
+            envio.getCiudadDestino()!= null && !envio.getCiudadDestino().isEmpty()){
                 return ImpEnvio.registrarEnvio(envio);
             }else{
                 return new Mensaje(true, "error");
@@ -66,7 +78,7 @@ public class WSEnvio {
         }
     }
     
-    @Path("consultar-envio")
+  /* @Path("consultar-envio")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public List<Envio> consultarEnvio(@FormParam("numeroGuia") String numeroGuia){
@@ -99,7 +111,7 @@ public class WSEnvio {
         try {
             Gson gson = new Gson();
             Envio envio = gson.fromJson(gsonEstado, Envio.class);
-            if(envio.getIdEnvio() != null && envio.getIdEstado()!= null){
+            if(envio.getIdEnvio() != null && envio.getIdEstatus()!= null){
                 return ImpEnvio.actualizarEstado(envio);
             }else{
                 return new Mensaje(true, "no se pudo actualziar el estado del envio");
@@ -109,7 +121,7 @@ public class WSEnvio {
             e.printStackTrace();
             throw  new BadRequestException();
         }
-    }
+    } */
 
 
 }

@@ -13,6 +13,8 @@ import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import pojo.Colaborador;
 import pojo.Mensaje;
+import pojo.Rol;
+import pojo.Unidad;
 
 /**
  *
@@ -313,5 +315,51 @@ public class ImpColaborador {
             }
         }
         return colaboradores;
+    }
+    
+  public static List<Colaborador> conductores() {
+        List<Colaborador> colaboradors = new ArrayList<>();
+        SqlSession conexionBD = MyBatisUtil.obtenerConexion();
+        if (conexionBD != null) {
+            try {
+
+                colaboradors = conexionBD.selectList("colaborador.conductores");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                conexionBD.close();
+            }
+        }
+        return colaboradors;}
+  
+    public static List<Unidad> unidadesActivas() {
+        List<Unidad> unidades = new ArrayList<>();
+        SqlSession conexionBD = MyBatisUtil.obtenerConexion();
+        if (conexionBD != null) {
+            try {
+
+                unidades = conexionBD.selectList("colaborador.unidadesActivas");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                conexionBD.close();
+            }
+        }
+        return unidades;
+    }
+    public static List<Rol> roles() {
+        List<Rol> roles = new ArrayList<>();
+        SqlSession conexionBD = MyBatisUtil.obtenerConexion();
+        if (conexionBD != null) {
+            try {
+
+                roles = conexionBD.selectList("colaborador.roles");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                conexionBD.close();
+            }
+        }
+        return roles;
     }
 }

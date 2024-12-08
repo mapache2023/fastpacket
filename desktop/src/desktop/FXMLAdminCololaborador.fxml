@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="1133.0" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLAdminCololaboradorController">
+ <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="738.0" spacing="10.0" styleClass="encabezado" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/desktop/recursos/logo_horizontal.PNG" />
+               </image>
+            </ImageView>
+               <Label prefHeight="24.0" prefWidth="124.0" styleClass="encabezado-titulo" text="Colaboradores" />
+               <Region HBox.hgrow="ALWAYS" />
+               <Label fx:id="lColaborador" styleClass="encabezado-texto-usuario" text="JUAN GUTIERREZ SANCHEZ" />
+         </children>
+      </HBox>
+   </top>
+
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="840.0" styleClass="pie" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" styleClass="pie-texto" text="Fast-Packet" />
+         </children>
+         </HBox>
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="528.0" prefWidth="850.0" BorderPane.alignment="CENTER">
+         <children>
+            <ComboBox fx:id="cbBusqueda" layoutX="205.0" layoutY="51.0" prefWidth="150.0" />
+            <TextField fx:id="tfBusquda" layoutX="27.0" layoutY="51.0" prefHeight="27.0" prefWidth="171.0" promptText="Busqueda" />
+            <Button layoutX="366.0" layoutY="52.0" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
+            <TableView fx:id="tvColaborador" layoutX="24.0" layoutY="86.0" prefHeight="343.0" prefWidth="1100.0">
+              <columns>
+                <TableColumn fx:id="tcNombre" prefWidth="75.0" text="Nombre" />
+                <TableColumn fx:id="tcApellidoP" prefWidth="110.0" text="Apellido Paterno" />
+                <TableColumn fx:id="tcApellidoM" prefWidth="115.0" text="Apellido Mapterno" />
+                <TableColumn fx:id="tcCorreo" minWidth="0.0" prefWidth="168.0" text="Correo" />
+                <TableColumn fx:id="tcCurp" prefWidth="170.0" text="Curp" />
+                <TableColumn fx:id="tcNulic" minWidth="0.0" prefWidth="125.0" text="Numero de licencia" />
+                <TableColumn fx:id="tcNumeroPersonal" prefWidth="106.0" text="Nuero Personal" />
+                <TableColumn fx:id="tcRol" prefWidth="102.0" text="rol" />
+                <TableColumn fx:id="tcUnidad" prefWidth="113.0" text="Unidad" />
+
+
+              </columns>
+            </TableView>
+            <Label layoutX="492.0" layoutY="14.0" styleClass="titulo-login" text="Colaboradores" />
+            <Button layoutX="444.0" layoutY="433.0" mnemonicParsing="false" onAction="#agregar" prefHeight="27.0" prefWidth="76.0" styleClass="boton-guardar" text="agregar" />
+            <Button layoutX="549.0" layoutY="434.0" mnemonicParsing="false" onAction="#editar" styleClass="boton-editar" text="editar" />
+            <Button layoutX="620.0" layoutY="435.0" mnemonicParsing="false" onAction="#eliminar" styleClass="boton-elminar" text="eliminar" />
+            <Button  layoutX="882.0" layoutY="52.0" mnemonicParsing="false" onAction="#cambiarUnidad" styleClass="boton-especial" text="asignar unidad" />
+            <Button layoutX="993.0" layoutY="52.0" mnemonicParsing="false" onAction="#desasignarUnidad" styleClass="boton-especial" text="desaisgnar unidada" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

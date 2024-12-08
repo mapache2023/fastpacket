@@ -25,6 +25,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import pojo.Colaborador;
 import pojo.Mensaje;
+import pojo.Rol;
+import pojo.Unidad;
 
 /**
  * REST Web Service
@@ -103,7 +105,45 @@ public class WsColaborador {
         return colaborador;
     }
 
+  // Asignar unidad a un colaborador
+    @Path("asignarUnidad")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Mensaje asignarUnidad(String json) {
+        Mensaje msj = new Mensaje();
+        if (json == null || json.isEmpty()) {
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        }
 
+        Gson gson = new Gson();
+        Colaborador colaborador = gson.fromJson(json, Colaborador.class);
+
+        // Asignar la unidad al colaborador
+        msj = ImpColaborador.asignarUnidad(colaborador.getIdUnidad(), colaborador.getIdColaborador());
+
+        return msj;
+    }
+
+    // Cambiar unidad de un colaborador
+    @Path("cambiarUnidad")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Mensaje cambiarUnidad(String json) {
+        Mensaje msj = new Mensaje();
+        if (json == null || json.isEmpty()) {
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        }
+
+        Gson gson = new Gson();
+        Colaborador colaborador = gson.fromJson(json, Colaborador.class);
+
+        // Cambiar la unidad asignada al colaborador
+        msj = ImpColaborador.cambiarUnidad(colaborador.getIdUnidad(), colaborador.getIdColaborador());
+
+        return msj;
+    }
     // Desasignar unidad de un colaborador
     @Path("desasignarUnidad")
     @PUT
@@ -169,5 +209,37 @@ public class WsColaborador {
             throw new WebApplicationException(Response.Status.BAD_REQUEST);
         }
         return ImpColaborador.buscarPorRol(rol);
+    }
+    
+    @GET
+    @Path("conductores")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Colaborador> obtenerConductores() {
+        List<Colaborador> colaborador = new ArrayList<>();
+
+        colaborador = ImpColaborador.conductores();
+
+        return colaborador;
+    }
+    
+    @GET
+    @Path("unidadesActivas")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Unidad> unidadesActiva() {
+        List<Unidad> unidades = new ArrayList<>();
+
+        unidades = ImpColaborador.unidadesActivas();
+
+        return unidades;
+    }
+       @GET
+    @Path("roles")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Rol> obtenerRoles() {
+        List<Rol> roles = new ArrayList<>();
+
+        roles = ImpColaborador.roles();
+
+        return roles;
     }
 }

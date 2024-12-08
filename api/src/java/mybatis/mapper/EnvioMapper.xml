@@ -4,23 +4,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="envio">
      <insert id="registrar" parameterType="pojo.Envio">
-        insert into envio(origenDireccion, destinoDireccion, numeroGuia, costo) values (#{origenDireccion}, #{destinoDireccion}, #{numeroGuia}, #{costo});
+        insert into envio(calleOrigen, numeroOrigen, coloniaOrigen, codigoPostalOrigen, estadoOrigen, ciudadOrigen, calleDestino, numeroDestino, coloniaDestino, codigoPostalDestino, estadoDestino, ciudadDestino, numeroGuia, costo, idCliente) values (#{calleOrigen},#{numeroOrigen}, #{coloniaOrigen}, #{codigoPostalOrigen}, #{estadoOrigen}, #{ciudadOrigen}, #{calleDestino}, #{numeroDestino},#{coloniaDestino}, #{codigoPostalDestino}, #{estadoDestino}, #{ciudadDestino}, #{numeroGuia}, #{costo},#{idCliente});
     </insert>
+<update id="actualizar" parameterType="pojo.Envio">
+      update envio set  calleOrigen = #{calleOrigen},numeroOrigen = #{numeroOrigen}, coloniaOrigen = #{coloniaOrigen}, codigoPostalOrigen = #{codigoPostalOrigen},estadoOrigen = #{estadoOrigen}, ciudadOrigen = #{ciudadOrigen}, calleDestino = #{calleDestino}, numeroDestino = #{numeroDestino}, coloniaDestino = #{coloniaDestino}, codigoPostalDestino = #{codigoPostalDestino}, estadoDestino = #{estadoDestino}, ciudadDestino = #{ciudadDestino}, costo = #{costo}, idEstatus = #{idEstatus}, idColaborador = #{idColaborador}, idCliente = #{idCliente} where numeroGuia = #{numeroGuia};
+</update>
+
     
-    <update id="actualizar" parameterType="pojo.Envio">
-        update envio set origenDireccion = #{origenDireccion}, destinoDireccion = #{destinoDireccion}, costo = #{costo}, fechaActualizacion = #{fechaActualizacion}, idEstado = #{idEstado}, idColaborador = #{idColaborador}, idCliente = #{idCliente} where numeroGuia = #{numeroGuia};
-    </update>
-    
-    <select id="consultar" resultType="pojo.Envio">
-        select origenDireccion, destinoDireccion, rol.nombre from Envio inner join Colaborador on envio.idColaborador = colaborador.idColaborador
+    <!--select id="consultar" resultType="pojo.Envio">
+         select calleOrigen, numeroOrigen, coloniaOrigen, codigoPostalOrigen, estadoOrigen, ciudadOrigen, calleDestino, numeroDestino, coloniaDestino, codigoPostalDestino, estadoDestino, ciudadDestino, rol.nombre from Envio inner join Colaborador on envio.idColaborador = colaborador.idColaborador
         inner join Rol on Rol.idRol = Colaborador.idRol where numeroGuia = #{numeroGuia};
-    </select> 
+    </select--> 
     
-    <insert id="asignar-conductor" resultType="pojo.Envio">
+    <!--insert id="asignar-conductor" resultType="pojo.Envio">
         insert into envio (idColaborador
-    </insert>
+    </insert-->
     
-    <update id="actualizar-estatus" parameterType="pojo.Envio">
-        update envio set idEstado = #{idEstado} where idEnvio = #{idEnvio};
-    </update>
+    <!--update id="actualizar-estatus" parameterType="pojo.Envio">
+        update envio set idEstatus = #{idEstatus} where idEnvio = #{idEnvio};
+    </update-->
 </mapper>

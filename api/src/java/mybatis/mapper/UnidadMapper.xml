@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select marca, modelo, ano, numeroIdentificacion, motivo, activo from Unidad where vin = #{vin} or marca = #{marca} or numeroIdentificacion = #{numeroIdentificacion}
     </select>
     
-    <delete id="bajaUnidad" parameterType="pojo.Unidad">
+    <!--delete id="bajaUnidad" parameterType="pojo.Unidad">
         delete marca, modelo, ano, vin, numeroIdentificacion, idTipo from Unidad where motivo = #{motivo}
-    </delete>   
+    </delete-->   
 </mapper>

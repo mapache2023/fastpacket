@@ -11,30 +11,31 @@ package desktop.modelo.pojo;
  */
 public class Cliente {
 private Integer idCliente; 
-private String nombre ;
-private String apellidoPaterno; 
-private String apellidoMaterno ;
-private String direccion ;
-private String telefono;
-private String correo ;
+ private String nombre;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private String calle;
+    private String numero;
+    private String codigoPostal;
+    private String colonia;
+    private String telefono;
+    private String correo;
     public Cliente(){}
-    public Cliente(Integer idCliente, String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String telefono, String correo) {
+
+    public Cliente(Integer idCliente, String nombre, String apellidoPaterno, String apellidoMaterno, String calle, String numero, String codigoPostal, String colonia, String telefono, String correo) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
-        this.direccion = direccion;
+        this.calle = calle;
+        this.numero = numero;
+        this.codigoPostal = codigoPostal;
+        this.colonia = colonia;
         this.telefono = telefono;
         this.correo = correo;
     }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+    
+  
 
     public Integer getIdCliente() {
         return idCliente;
@@ -68,12 +69,36 @@ private String correo ;
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getCalle() {
+        return calle;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getCodigoPostal() {
+        return codigoPostal;
+    }
+
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
+    }
+
+    public String getColonia() {
+        return colonia;
+    }
+
+    public void setColonia(String colonia) {
+        this.colonia = colonia;
     }
 
     public String getTelefono() {
@@ -84,9 +109,12 @@ private String correo ;
         this.telefono = telefono;
     }
 
-    @Override
-    public String toString() {
-        return nombre;
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
     
 }

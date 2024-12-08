@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         `numeroLicencia`,
         rol.idRol,rol.nombre as rol,
         unidad.idUnidad, concat(unidad.marca,' ', unidad.modelo) as unidad from colaborador 
-        inner join rol on rol.idRol = colaborador.idColaborador
+        inner join rol on colaborador.idRol = rol.idRol
         left join unidad on unidad.idUnidad = colaborador.idUnidad;
     </select>
     
@@ -100,66 +100,82 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <!-- Consultar colaborador por nombre -->
     <select id="buscarPorNombre" parameterType="string" resultType="pojo.Colaborador">
-        SELECT 
-        colaborador.idColaborador,
+        select `idColaborador`,
         colaborador.nombre,
         `apellidoPaterno`,
         `apellidoMaterno`,
+        CONCAT(colaborador.nombre, ' ', colaborador.apellidoPaterno, ' ', colaborador.apellidoMaterno) AS nombreCompleto,
         `curp`,
         `correo`,
         `numeroPersonal`,
+        `contrasena`,
         `numeroLicencia`,
-        rol.idRol,
-        rol.nombre AS rol
-        FROM 
-        colaborador
-        LEFT JOIN 
-        rol ON rol.idRol = colaborador.idRol
-        WHERE 
-        colaborador.nombre = #{nombre}
-        OR colaborador.apellidoPaterno = #{nombre}
-        OR colaborador.apellidoMaterno = #{nombre};
+        rol.idRol,rol.nombre as rol,
+        unidad.idUnidad, concat(unidad.marca,' ', unidad.modelo) as unidad from colaborador 
+        inner join rol on colaborador.idRol = rol.idRol
+        left join unidad on unidad.idUnidad = colaborador.idUnidad
+WHERE 
+    CONCAT(colaborador.nombre, ' ', colaborador.apellidoPaterno, ' ', colaborador.apellidoMaterno) 
+    LIKE CONCAT('%', #{nombre}, '%') 
+    OR colaborador.nombre LIKE CONCAT('%', #{nombre}, '%') 
+    OR colaborador.apellidoPaterno LIKE CONCAT('%', #{nombre}, '%') 
+    OR colaborador.apellidoMaterno LIKE CONCAT('%', #{nombre}, '%');
+
     </select>
 
     <!-- Consultar colaborador por número de personal -->
     <select id="buscarPorNumeroPersonal" parameterType="string" resultType="pojo.Colaborador">
-        SELECT 
-        `idColaborador`,
+      select `idColaborador`,
         colaborador.nombre,
         `apellidoPaterno`,
         `apellidoMaterno`,
         `curp`,
         `correo`,
         `numeroPersonal`,
+        `contrasena`,
         `numeroLicencia`,
-        rol.idRol,
-        rol.nombre AS rol
-        FROM 
-        colaborador
-        LEFT JOIN 
-        rol ON rol.idRol = colaborador.idRol
+        rol.idRol,rol.nombre as rol,
+        unidad.idUnidad, concat(unidad.marca,' ', unidad.modelo) as unidad from colaborador 
+        inner join rol on colaborador.idRol = rol.idRol
+        left join unidad on unidad.idUnidad = colaborador.idUnidad
         WHERE 
         colaborador.numeroPersonal = #{numeroPersonal};
     </select>
 
     <!-- Consultar colaborador por rol -->
     <select id="buscarPorRol" parameterType="string" resultType="pojo.Colaborador">
-        SELECT 
-        `idColaborador`,
+        select `idColaborador`,
         colaborador.nombre,
         `apellidoPaterno`,
         `apellidoMaterno`,
         `curp`,
         `correo`,
         `numeroPersonal`,
+        `contrasena`,
         `numeroLicencia`,
-        rol.idRol,
-        rol.nombre AS rol
-        FROM 
-        colaborador
-        LEFT JOIN 
-        rol ON rol.idRol = colaborador.idRol
+        rol.idRol,rol.nombre as rol,
+        unidad.idUnidad, concat(unidad.marca,' ', unidad.modelo) as unidad from colaborador 
+        inner join rol on colaborador.idRol = rol.idRol
+        left join unidad on unidad.idUnidad = colaborador.idUnidad
         WHERE 
         rol.nombre LIKE CONCAT('%', #{rol}, '%');
+    </select>
+    
+    <select id="conductores" resultType="pojo.Colaborador">
+   select `idColaborador`,
+        colaborador.nombre,
+        `apellidoPaterno`,
+        `apellidoMaterno`,
+        `curp`,
+        `correo`,
+        `numeroPersonal` from colaborador where idRol = 3; 
+    </select>
+    
+    <select id= "unidadesActivas" resultType="pojo.Unidad">
+        select * from unidad where activo =true;
+    </select>
+    
+    <select id="roles" resultType="pojo.Rol">
+        select* from rol
     </select>
 </mapper>

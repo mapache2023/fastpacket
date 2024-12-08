@@ -24,6 +24,12 @@ public class Mensaje {
         this.contenido = contenido;
     }
 
+    public Mensaje(boolean error, String mensaje) {
+            this.error = error;
+        this.mensaje = mensaje;
+    }
+
+
     public Boolean getError() {
         return error;
     }

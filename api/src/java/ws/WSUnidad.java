@@ -74,7 +74,7 @@ public class WSUnidad {
         throw new BadRequestException();
     }
     
-    @Path("baja")
+  /*  @Path("baja")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     public Unidad bajaUnidad(@FormParam("motivo") String motivo){
@@ -82,6 +82,6 @@ public class WSUnidad {
             return ImpUnidad.darDeBaja(motivo);
         }
         throw new BadRequestException();
-    }
+    } */
 
 }

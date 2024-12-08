@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+
+<?import java.net.*?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="775.0" styleClass="mainFxmlClass" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLInicioController">
+  <stylesheets>
+        <URL value="@/desktop/recursos/estilo.css" />
+    </stylesheets>
+ <top>
+       <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="738.0" spacing="10.0" styleClass="encabezado" BorderPane.alignment="CENTER">
+         <children>
+         <ImageView fitHeight="55.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                      <Image url="@recursos/logo_horizontal.PNG" />
+            </image>
+               </ImageView>
+               <Label prefHeight="24.0" prefWidth="124.0" styleClass="encabezado-titulo" text="Colaborador" />
+               <Region HBox.hgrow="ALWAYS" />
+               <Label fx:id="etiquetaColaborador" styleClass="encabezado-texto-usuario" text="JUAN GUTIERREZ SANCHEZ" />
+         </children>
+      </HBox>
+   </top>
+
+<bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="775.0" styleClass="pie" BorderPane.alignment="CENTER">
+         <children>
+               <Button fx:id="botonCerrarSesion" onAction="#cerrarSesion" style="-fx-background-color: red; -fx-text-fill: white;" text="Cerrar Sesión" />
+        
+         </children>
+         </HBox>
+   </bottom>
+   <center>
+      
+   </center>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+             <Button layoutX="313.0" layoutY="74.0" onAction="#irAcolab" styleClass="botones-navegacion" text="Colaboradores" />
+         </children>
+      </AnchorPane>
+   </center>
+
+  
+</BorderPane>

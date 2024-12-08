@@ -1,51 +1,53 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pojo;
 
-import java.util.Date;
-
-/**
- *
- * @author mapache
- */
 public class Envio {
-   private Integer idEnvio; 
-private String origenDireccion; 
-private String destinoDireccion; 
-private String numeroGuia;
-private String costo; 
-private Date fechaActualizacion; 
-private Integer idEstado;
-private String estado;
-private Integer idColaborador;
-private String colaborador;
-private Integer idCliente;
-private String cliente;
+    private Integer idEnvio;
+    private String numeroGuia;
+    private String costo; 
+    private Integer idColaborador;
+    private Integer idCliente;
+    private Integer idEstatus;
+    private String calleOrigen;
+    private String numeroOrigen;
+    private String coloniaOrigen;
+    private String codigoPostalOrigen;
+    private String estadoOrigen;
+    private String ciudadOrigen;
+    private String calleDestino;
+    private String numeroDestino;
+    private String coloniaDestino;
+    private String codigoPostalDestino;
+    private String estadoDestino;
+    private String ciudadDestino;
 
-    public Envio(){}
+    // Constructor por defecto
+    public Envio() {}
 
-    public Envio(Integer idEnvio, String origenDireccion, String destinoDireccion, String numeroGuia, String costo, Date fechaActualizacion, Integer idEstado, String estado, Integer idColaborador, String colaborador, Integer idCliente, String cliente) {
+    // Constructor con todos los campos
+    public Envio(Integer idEnvio, String numeroGuia, String costo, Integer idColaborador, Integer idCliente, Integer idEstatus,
+                 String calleOrigen, String numeroOrigen, String coloniaOrigen, String codigoPostalOrigen, String estadoOrigen, String ciudadOrigen,
+                 String calleDestino, String numeroDestino, String coloniaDestino, String codigoPostalDestino, String estadoDestino, String ciudadDestino) {
         this.idEnvio = idEnvio;
-        this.origenDireccion = origenDireccion;
-        this.destinoDireccion = destinoDireccion;
         this.numeroGuia = numeroGuia;
         this.costo = costo;
-        this.fechaActualizacion = fechaActualizacion;
-        this.idEstado = idEstado;
-        this.estado = estado;
         this.idColaborador = idColaborador;
-        this.colaborador = colaborador;
         this.idCliente = idCliente;
-        this.cliente = cliente;
+        this.idEstatus = idEstatus;
+        this.calleOrigen = calleOrigen;
+        this.numeroOrigen = numeroOrigen;
+        this.coloniaOrigen = coloniaOrigen;
+        this.codigoPostalOrigen = codigoPostalOrigen;
+        this.estadoOrigen = estadoOrigen;
+        this.ciudadOrigen = ciudadOrigen;
+        this.calleDestino = calleDestino;
+        this.numeroDestino = numeroDestino;
+        this.coloniaDestino = coloniaDestino;
+        this.codigoPostalDestino = codigoPostalDestino;
+        this.estadoDestino = estadoDestino;
+        this.ciudadDestino = ciudadDestino;
     }
-    
-    @Override
-    public String toString() {
-        return numeroGuia;
-    }
+
+    // Métodos getter y setter para cada atributo
 
     public Integer getIdEnvio() {
         return idEnvio;
@@ -53,22 +55,6 @@ private String cliente;
 
     public void setIdEnvio(Integer idEnvio) {
         this.idEnvio = idEnvio;
-    }
-
-    public String getOrigenDireccion() {
-        return origenDireccion;
-    }
-
-    public void setOrigenDireccion(String origenDireccion) {
-        this.origenDireccion = origenDireccion;
-    }
-
-    public String getDestinoDireccion() {
-        return destinoDireccion;
-    }
-
-    public void setDestinoDireccion(String destinoDireccion) {
-        this.destinoDireccion = destinoDireccion;
     }
 
     public String getNumeroGuia() {
@@ -87,44 +73,12 @@ private String cliente;
         this.costo = costo;
     }
 
-    public Date getFechaActualizacion() {
-        return fechaActualizacion;
-    }
-
-    public void setFechaActualizacion(Date fechaActualizacion) {
-        this.fechaActualizacion = fechaActualizacion;
-    }
-
-    public Integer getIdEstado() {
-        return idEstado;
-    }
-
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public Integer getIdColaborador() {
         return idColaborador;
     }
 
     public void setIdColaborador(Integer idColaborador) {
         this.idColaborador = idColaborador;
-    }
-
-    public String getColaborador() {
-        return colaborador;
-    }
-
-    public void setColaborador(String colaborador) {
-        this.colaborador = colaborador;
     }
 
     public Integer getIdCliente() {
@@ -135,12 +89,113 @@ private String cliente;
         this.idCliente = idCliente;
     }
 
-    public String getCliente() {
-        return cliente;
+    public Integer getIdEstatus() {
+        return idEstatus;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setIdEstatus(Integer idEstatus) {
+        this.idEstatus = idEstatus;
     }
-    
+
+    public String getCalleOrigen() {
+        return calleOrigen;
+    }
+
+    public void setCalleOrigen(String calleOrigen) {
+        this.calleOrigen = calleOrigen;
+    }
+
+    public String getNumeroOrigen() {
+        return numeroOrigen;
+    }
+
+    public void setNumeroOrigen(String numeroOrigen) {
+        this.numeroOrigen = numeroOrigen;
+    }
+
+    public String getColoniaOrigen() {
+        return coloniaOrigen;
+    }
+
+    public void setColoniaOrigen(String coloniaOrigen) {
+        this.coloniaOrigen = coloniaOrigen;
+    }
+
+    public String getCodigoPostalOrigen() {
+        return codigoPostalOrigen;
+    }
+
+    public void setCodigoPostalOrigen(String codigoPostalOrigen) {
+        this.codigoPostalOrigen = codigoPostalOrigen;
+    }
+
+    public String getEstadoOrigen() {
+        return estadoOrigen;
+    }
+
+    public void setEstadoOrigen(String estadoOrigen) {
+        this.estadoOrigen = estadoOrigen;
+    }
+
+    public String getCiudadOrigen() {
+        return ciudadOrigen;
+    }
+
+    public void setCiudadOrigen(String ciudadOrigen) {
+        this.ciudadOrigen = ciudadOrigen;
+    }
+
+    public String getCalleDestino() {
+        return calleDestino;
+    }
+
+    public void setCalleDestino(String calleDestino) {
+        this.calleDestino = calleDestino;
+    }
+
+    public String getNumeroDestino() {
+        return numeroDestino;
+    }
+
+    public void setNumeroDestino(String numeroDestino) {
+        this.numeroDestino = numeroDestino;
+    }
+
+    public String getColoniaDestino() {
+        return coloniaDestino;
+    }
+
+    public void setColoniaDestino(String coloniaDestino) {
+        this.coloniaDestino = coloniaDestino;
+    }
+
+    public String getCodigoPostalDestino() {
+        return codigoPostalDestino;
+    }
+
+    public void setCodigoPostalDestino(String codigoPostalDestino) {
+        this.codigoPostalDestino = codigoPostalDestino;
+    }
+
+    public String getEstadoDestino() {
+        return estadoDestino;
+    }
+
+    public void setEstadoDestino(String estadoDestino) {
+        this.estadoDestino = estadoDestino;
+    }
+
+    public String getCiudadDestino() {
+        return ciudadDestino;
+    }
+
+    public void setCiudadDestino(String ciudadDestino) {
+        this.ciudadDestino = ciudadDestino;
+    }
+
+    // Método toString (opcional)
+    @Override
+    public String toString() {
+        return numeroGuia;
+    }
 }

@@ -60,7 +60,7 @@ public class ImpEnvio {
         return msj;
     }
     
-    public static List<Envio> buscarEnvio(String numeroGuia){
+  /*public static List<Envio> buscarEnvio(String numeroGuia){
         List<Envio> envio = null; 
         SqlSession conexion = MyBatisUtil.obtenerConexion();
         
@@ -117,6 +117,6 @@ public class ImpEnvio {
             }
         }
         return msj;
-    }
+    } */
 
 }

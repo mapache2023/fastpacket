@@ -1,25 +1,35 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package pojo;
 
+/**
+ *
+ * @author mapache
+ */
 public class Mensaje {
+    
     private Boolean error;
     private String mensaje;
-    private String contenido;  
+    private Object contenido;
 
     public Mensaje() {
     }
 
-    public Mensaje(Boolean error, String mensaje, String contenido) {
+    public Mensaje(Boolean error, String mensaje, Object contenido) {
         this.error = error;
         this.mensaje = mensaje;
         this.contenido = contenido;
     }
 
-    public Mensaje(boolean b, String error) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Mensaje(boolean error, String mensaje) {
+            this.error = error;
+        this.mensaje = mensaje;
     }
 
-    // Getter y setters
+
     public Boolean getError() {
         return error;
     }
@@ -36,13 +46,13 @@ public class Mensaje {
         this.mensaje = mensaje;
     }
 
-    public String getContenido() {
+    public Object getContenido() {
         return contenido;
     }
 
-    public void setContenido(String contenido) {
+    public void setContenido(Object contenido) {
         this.contenido = contenido;
     }
+    
 }
-
 

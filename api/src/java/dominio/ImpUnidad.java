@@ -81,7 +81,7 @@ public class ImpUnidad {
         return respuesta;
     }
     
-      public static Unidad darDeBaja(String motivo){
+    /*  public static Unidad darDeBaja(String motivo){
         Unidad respuesta = null;
         SqlSession conexion = MyBatisUtil.obtenerConexion();
         
@@ -95,6 +95,6 @@ public class ImpUnidad {
             }
         }
         return respuesta;
-    }
+    } */
 
 }
