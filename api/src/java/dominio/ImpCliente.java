@@ -1,7 +1,5 @@
-
 package dominio;
 
-import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,44 +9,45 @@ import org.apache.ibatis.session.SqlSession;
 import pojo.Cliente;
 import pojo.Mensaje;
 
-
 public class ImpCliente {
+    
+    public static Mensaje registrarCliente(Cliente cliente) {
+        Mensaje msj;
+        SqlSession conexionBD = MyBatisUtil.obtenerConexion();
 
-    // Método para registrar un cliente
-   public static Mensaje registrarCliente(Cliente cliente) {
-    Mensaje msj;
-    SqlSession conexionBD = MyBatisUtil.obtenerConexion();
-    Gson gson = new Gson();
+        if (conexionBD != null) {
+            try {
+                // Inserta el cliente en la base de datos utilizando el mapper correspondiente
+                int filasAfectadas = conexionBD.insert("Cliente.registro", cliente);
+                
+                // Si commit es necesario en tu configuración
+                conexionBD.commit(); 
 
-    if (conexionBD != null) {
-        try {
-            int filasAfectadas = conexionBD.insert("Cliente.registro", cliente);
-            conexionBD.commit();
-
-            if (filasAfectadas > 0) {
-                // Convertir el cliente registrado a JSON
-                String clienteJson = gson.toJson(cliente);
-                msj = new Mensaje(
-                    false,
-                    "El cliente " + cliente.getNombre() + " " + cliente.getApellidoPaterno() +
-                    " fue registrado con éxito.",
-                    clienteJson
-                );
-            } else {
-                msj = new Mensaje(true, "El cliente no pudo ser registrado.", null);
+                if (filasAfectadas > 0) {
+                    // Registro exitoso
+                    msj = new Mensaje(false, 
+                        "El cliente " + cliente.getNombre() + " " +
+                        cliente.getApellidoPaterno() + " " +
+                        cliente.getApellidoMaterno() + " fue registrado con éxito.",
+                        cliente);
+                } else {
+                    // No se pudo registrar el cliente
+                    msj = new Mensaje(true, "El cliente no pudo ser registrado.", null);
+                }
+            } catch (Exception e) {
+                // Manejo de errores durante la operación
+                msj = new Mensaje(true, e.getMessage(), null);
+            } finally {
+                conexionBD.close(); // Asegura cerrar la conexión
             }
-        } catch (Exception e) {
-            msj = new Mensaje(true, e.getMessage(), null);
-        } finally {
-            conexionBD.close();
+        } else {
+            // Error al obtener la conexión
+            msj = new Mensaje(true, "Por el momento el servicio no está disponible.", null);
         }
-    } else {
-        msj = new Mensaje(true, "Por el momento el servicio no está disponible.", null);
+
+        return msj;
     }
 
-    return msj;
-}
-    // Método para buscar cliente por ID
     public static Cliente buscarCliente(Integer idCliente) {
         SqlSession conexionBD = MyBatisUtil.obtenerConexion();
 
@@ -61,7 +60,7 @@ public class ImpCliente {
                 conexionBD.close();
             }
         }
-        return null;
+        return null; // Devuelve null si no se encuentra el cliente
     }
 
     // Método para editar un cliente
@@ -71,7 +70,7 @@ public class ImpCliente {
         if (conexionBD != null) {
             try {
                 int filasAfectadas = conexionBD.update("Cliente.actualizarCliente", cliente);
-                conexionBD.commit();
+                conexionBD.commit();  // Si commit es necesario
                 return filasAfectadas > 0;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -79,7 +78,7 @@ public class ImpCliente {
                 conexionBD.close();
             }
         }
-        return false;
+        return false; // Devuelve false si no se pudo guardar
     }
 
     // Método para obtener todos los clientes
@@ -95,20 +94,16 @@ public class ImpCliente {
                 conexionBD.close();
             }
         }
-        return null;
+        return null; // Devuelve null si ocurre un error
     }
 
-  
-
-
-    // Método para eliminar un cliente
     public static Mensaje eliminarCliente(Integer idCliente) {
         SqlSession conexionBD = MyBatisUtil.obtenerConexion();
 
         if (conexionBD != null) {
             try {
                 int filasAfectadas = conexionBD.delete("Cliente.eliminarCliente", idCliente);
-                conexionBD.commit();
+                conexionBD.commit();  // Asegúrate de hacer commit después de la eliminación
 
                 if (filasAfectadas > 0) {
                     return new Mensaje(false, "Cliente eliminado correctamente.", null);
@@ -116,6 +111,7 @@ public class ImpCliente {
                     return new Mensaje(true, "Cliente no encontrado.", null);
                 }
             } catch (Exception e) {
+                e.printStackTrace();  // Imprime el error para diagnóstico
                 return new Mensaje(true, "Error al eliminar el cliente: " + e.getMessage(), null);
             } finally {
                 conexionBD.close();
@@ -123,10 +119,7 @@ public class ImpCliente {
         }
         return new Mensaje(true, "Error al conectar con la base de datos.", null);
     }
-
-
-
-    // Método para buscar clientes por nombre, teléfono o correo
+      // Método para buscar clientes por nombre, teléfono o correo
     public static List<Cliente> buscarCliente(String nombre, String telefono, String correo) {
         SqlSession conexionBD = MyBatisUtil.obtenerConexion();
         List<Cliente> clientes = new ArrayList<>();
@@ -150,7 +143,3 @@ public class ImpCliente {
         return clientes;  // Devuelve la lista de clientes encontrados
     }
 }
-
-
-
-
