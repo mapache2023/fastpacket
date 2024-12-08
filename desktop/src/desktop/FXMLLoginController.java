@@ -64,7 +64,7 @@ public class FXMLLoginController {
 
         if(!respuesta.getError()){
             // Si no hay error, comprobar si el colaborador es un administrador
-            if(respuesta.getColaborador().getIdColaborador() == 1){
+            if(respuesta.getColaborador().getIdRol()== 1){
                 Utilidades.mostrarAlertaSimple("Credenciales correctas",
                         respuesta.getMensaje(), Alert.AlertType.INFORMATION);
                 irPantallaPrincipal(respuesta.getColaborador());
