@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Carla/Documents/Proyecto/fastpacket/api/src/java/ws/WSCliente.java</file>
-            <file>file:/C:/Users/Carla/Documents/Proyecto/fastpacket/api/src/java/ws/ApplicationConfig.java</file>
-            <file>file:/C:/Users/Carla/Documents/Proyecto/fastpacket/api/src/java/dominio/ImpCliente.java</file>
-            <file>file:/C:/Users/Carla/Documents/Proyecto/fastpacket/api/src/java/mybatis/mapper/ClienteMapper.xml</file>
-            <file>file:/C:/Users/Carla/Documents/Proyecto/fastpacket/api/src/java/pojo/Mensaje.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
