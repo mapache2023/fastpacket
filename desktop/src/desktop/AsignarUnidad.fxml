@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="desktop.AsignarUnidad"
-            prefHeight="400.0" prefWidth="600.0">
-    <!-- Título -->
-    <Label text="Asignar o Cambiar Unidad" layoutX="50" layoutY="20" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
-
-    <!-- Campo para mostrar nombre del colaborador -->
-    <Label text="Colaborador:" layoutX="50" layoutY="60" />
-    <Label fx:id="lColaborador" layoutX="150" layoutY="60" style="-fx-font-weight: bold;"/>
-
-    <!-- ComboBox para seleccionar la unidad -->
-    <Label text="Seleccionar Unidad:" layoutX="50" layoutY="100" />
-    <ComboBox fx:id="cbUnidad" layoutX="150" layoutY="100" prefWidth="200" />
-
-    <!-- Botones -->
-    <Button fx:id="btnAsignar" text="Asignar Unidad" layoutX="50" layoutY="150" onAction="#asignarUnidad" />
-    <Button fx:id="btnCancelar" text="Cancelar" layoutX="200" layoutY="150" onAction="#cancelar" />
-
-    <!-- Mensajes de error -->
-    <Label fx:id="lMensajeError" layoutX="50" layoutY="200" style="-fx-text-fill: red;" />
+<AnchorPane prefHeight="217.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.AsignarUnidad">
+   <children>
+       <!-- Título -->
+       <Label layoutX="50" layoutY="20" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Asignar o Cambiar Unidad" />
+   
+       <!-- Campo para mostrar nombre del colaborador -->
+       <Label layoutX="50" layoutY="60" text="Colaborador:" />
+       <Label fx:id="lColaborador" layoutX="150" layoutY="60" style="-fx-font-weight: bold;" />
+   
+       <!-- ComboBox para seleccionar la unidad -->
+       <Label layoutX="33.0" layoutY="104.0" text="Seleccionar Unidad:" />
+       <ComboBox fx:id="cbUnidad" layoutX="150" layoutY="100" prefHeight="25.0" prefWidth="142.0" />
+   
+       <!-- Botones -->
+       <Button fx:id="btnAsignar" layoutX="50" layoutY="150" onAction="#asignarUnidad" text="Asignar Unidad" />
+       <Button fx:id="btnCancelar" layoutX="200" layoutY="150" onAction="#cancelar" text="Cancelar" />
+   
+       <!-- Mensajes de error -->
+       <Label fx:id="lMensajeError" layoutX="50" layoutY="200" style="-fx-text-fill: red;" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@recursos/imagen_perfil.jpg" />
+         </image>
+      </ImageView>
+   </children>
 
 </AnchorPane>

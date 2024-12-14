@@ -12,6 +12,7 @@
         e.costo,
         es.nombre AS "estadoActual",
         e.idCliente,
+        e.idColaborador,
         p.idPaquete,
         p.descripcion,
         p.peso,
@@ -53,6 +54,7 @@
         e.costo,
         es.nombre AS "estadoActual",
         e.idCliente,
+        e.idColaborador,
         p.idPaquete,
         p.descripcion,
         p.peso,
@@ -95,6 +97,7 @@
         <result property="conductor" column="conductor"/>
         <result property="estado" column="estadoActual"/>
         <result property="idCliente" column="idCliente"/>
+        <result property="idColaborador" column="idColaborador"/>
 
    
         
