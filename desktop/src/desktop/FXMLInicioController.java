@@ -147,7 +147,45 @@ void irAPaquete(ActionEvent evento) {
         e.printStackTrace();
     }
 }
+@FXML
+    private void irEnvios(ActionEvent event) {
+        try {
+            FXMLLoader cargadorVista = new FXMLLoader(getClass().getResource("FXMLAdminEnvio.fxml"));
+            Parent vista = cargadorVista.load();
+            // Obtener el controlador de la vista cargada y pasarle el colaborador
+            FXMLAdminEnvioController controladorVista = cargadorVista.getController();
+            controladorVista.inicializarInformacion(this.colaborador);
+            // Crear la escena y la ventana para la administración de colaboradores
+            Scene escenaAdmin = new Scene(vista);
+            Stage ventanaAdmin = new Stage();
+            ventanaAdmin.setScene(escenaAdmin);
+            ventanaAdmin.setTitle("Envios");
+            ventanaAdmin.initModality(Modality.APPLICATION_MODAL);  // Abrir la ventana de manera modal
+            ventanaAdmin.showAndWait();  // Mostrar la ventana y esperar a que se cierre
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    @FXML
+    private void irUnidades(ActionEvent event) {
+        try {
+            FXMLLoader cargadorVista = new FXMLLoader(getClass().getResource("FXMLAdminUnidad.fxml"));
+            Parent vista = cargadorVista.load();
+            // Obtener el controlador de la vista cargada y pasarle el colaborador
+            //     FXMLAdminUnidadController controladorVista = cargadorVista.getController();
+            //     controladorVista.inicializarInformacion(this.unidad);
+            // Crear la escena y la ventana para la administración de colaboradores
+            Scene escenaAdmin = new Scene(vista);
+            Stage ventanaAdmin = new Stage();
+            ventanaAdmin.setScene(escenaAdmin);
+            ventanaAdmin.setTitle("Unidad");
+            ventanaAdmin.initModality(Modality.APPLICATION_MODAL);  // Abrir la ventana de manera modal
+            ventanaAdmin.showAndWait();  // Mostrar la ventana y esperar a que se cierre
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
 

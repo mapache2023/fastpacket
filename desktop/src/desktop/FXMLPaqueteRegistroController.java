@@ -5,13 +5,13 @@
  */
 package desktop;
 
-import desktop.modelo.dao.EnvioDAO;
-import static desktop.modelo.dao.EnvioDAO.obtenerEnvios;
+import desktop.modelo.dao.EnviosDAO;
+import static desktop.modelo.dao.EnviosDAO.obtenerEnvios;
+import desktop.modelo.dao.PaqueteDAO;
 import desktop.modelo.pojo.Colaborador;
 import desktop.modelo.pojo.Envio;
 import desktop.modelo.pojo.Mensaje;
 import desktop.modelo.pojo.Paquete;
-import desktop.modelo.pojo.PaqueteDAO;
 import desktop.utilidades.Utilidades;
 import java.net.URL;
 import java.util.List;
@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -41,24 +42,26 @@ public class FXMLPaqueteRegistroController implements Initializable {
     private Text etiquetaColaborador;
 
     private Colaborador colaborador;
+   
+    private boolean modoEdicion = false; 
+    private Paquete paqueteEdicion; 
+  
     @FXML
-    private Button btn_guardar;
+    private TextField tfDescripcion;
     @FXML
-    private TextField tf_descripcion;
-
-    private boolean modoEdicion = false; // Agregar esta línea
-    private Paquete paqueteEdicion; // Agregar esta línea
+    private TextField tfPeso;
     @FXML
-    private TextField tf_peso;
+    private TextField tfAltura;
     @FXML
-    private TextField tf_altura;
+    private TextField tfAncho;
     @FXML
-    private TextField tf_ancho;
+    private TextField tfProfundidad;
+  
+     @FXML  
+    private Button btnGuardar;
     @FXML
-    private TextField tf_profundidad;
-    @FXML
-    private ComboBox<Envio> cb_Envios;
-
+    private ComboBox<Envio> cbEnvios;
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarCombo();
@@ -79,10 +82,10 @@ public class FXMLPaqueteRegistroController implements Initializable {
         ObservableList<Envio> envioOptions = FXCollections.observableArrayList(envios);
 
         // Asignar la lista observable al ComboBox
-        cb_Envios.setItems(envioOptions);
+        cbEnvios.setItems(envioOptions);
 
         // Establecer un convertidor para mostrar solo el ID del envío en el ComboBox
-        cb_Envios.setCellFactory(param -> new ListCell<Envio>() {
+        cbEnvios.setCellFactory(param -> new ListCell<Envio>() {
             @Override
             protected void updateItem(Envio envio, boolean empty) {
                 super.updateItem(envio, empty);
@@ -96,7 +99,7 @@ public class FXMLPaqueteRegistroController implements Initializable {
         });
 
         // Establecer cómo se debe mostrar el valor seleccionado
-        cb_Envios.setButtonCell(new ListCell<Envio>() {
+        cbEnvios.setButtonCell(new ListCell<Envio>() {
             @Override
             protected void updateItem(Envio envio, boolean empty) {
                 super.updateItem(envio, empty);
@@ -110,8 +113,8 @@ public class FXMLPaqueteRegistroController implements Initializable {
         });
 
         // Establecer el comportamiento cuando se selecciona un elemento
-        cb_Envios.setOnAction(event -> {
-            Envio selectedEnvio = cb_Envios.getSelectionModel().getSelectedItem();
+        cbEnvios.setOnAction(event -> {
+            Envio selectedEnvio = cbEnvios.getSelectionModel().getSelectedItem();
             if (selectedEnvio != null) {
                 // Obtener el idEnvio del elemento seleccionado
                 int idEnvio = selectedEnvio.getIdEnvio();
@@ -178,7 +181,7 @@ public class FXMLPaqueteRegistroController implements Initializable {
 
     private void cerrarVentana() {
         // Obtener la ventana (stage) actual y cerrarla
-        Stage stage = (Stage) btn_guardar.getScene().getWindow();
+        Stage stage = (Stage) btnGuardar.getScene().getWindow();
         stage.close();
     }
   private int idEnvio;  // Variable interna para almacenar el ID de Envio
@@ -188,22 +191,22 @@ public class FXMLPaqueteRegistroController implements Initializable {
     this.modoEdicion = true;
 
     // Pre-llenar los campos con los datos del paquete a editar
-    tf_descripcion.setText(paquete.getDescripcion());
-    tf_altura.setText(paquete.getAlto());
-    tf_ancho.setText(paquete.getAncho());
-    tf_peso.setText(paquete.getPeso());
-    tf_profundidad.setText(paquete.getProfundidad());
+    tfDescripcion.setText(paquete.getDescripcion());
+    tfAltura.setText(paquete.getAlto());
+    tfAncho.setText(paquete.getAncho());
+    tfPeso.setText(paquete.getPeso());
+    tfProfundidad.setText(paquete.getProfundidad());
 
     // Asignar el idEnvio al Paquete
     this.idEnvio = paquete.getIdEnvio();
 
     // Deshabilitar el ComboBox para evitar cambios en el Envio
-    cb_Envios.setDisable(true);
+    cbEnvios.setDisable(true);
 
     // Si ya existe un Envio en el paquete, preseleccionar el combo con ese Envio
-    for (Envio envio : cb_Envios.getItems()) {
+    for (Envio envio : cbEnvios.getItems()) {
         if (envio.getIdEnvio() == this.idEnvio) {
-            cb_Envios.getSelectionModel().select(envio);
+            cbEnvios.getSelectionModel().select(envio);
             break;
         }
     }
@@ -214,18 +217,18 @@ private void clickGuardarPaquete(ActionEvent event) {
     System.out.println("Iniciando método clickGuardarPaquete");
 
     // Obtener los valores de los campos
-    String descripcion = tf_descripcion.getText();
-    String altura = tf_altura.getText();
-    String ancho = tf_ancho.getText();
-    String peso = tf_peso.getText();
-    String profundidad = tf_profundidad.getText();
+    String descripcion = tfDescripcion.getText();
+    String altura = tfAltura.getText();
+    String ancho = tfAncho.getText();
+    String peso = tfPeso.getText();
+    String profundidad = tfProfundidad.getText();
 
     // Validar el idEnvio en modo agregar
-    if (cb_Envios.getSelectionModel().getSelectedItem() == null) {
+    if (cbEnvios.getSelectionModel().getSelectedItem() == null) {
         Utilidades.mostrarAlertaSimple("Error de selección", "Debe seleccionar un Envio válido.", Alert.AlertType.ERROR);
         return; // Detener el proceso si no se selecciona un Envio
     }
-    int idEnvio = cb_Envios.getSelectionModel().getSelectedItem().getIdEnvio();
+    int idEnvio = cbEnvios.getSelectionModel().getSelectedItem().getIdEnvio();
 
     // Crear el objeto Paquete con los valores obtenidos
     Paquete paquete = new Paquete();

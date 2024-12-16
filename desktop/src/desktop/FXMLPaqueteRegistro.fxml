@@ -25,13 +25,13 @@
                             <children>
                                 <ImageView fitHeight="39.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@recursos/logo.png" />
+                                        <Image url="@recursos/logo_horizontal.PNG" />
                                     </image>
                                     <HBox.margin>
                                         <Insets right="15.0" />
                                     </HBox.margin>
                                 </ImageView>
-                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fast-Packet - Paquetes">
+                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- Paquetes">
                                     <font>
                                         <Font name="Arial Bold" size="17.0" />
                                     </font>
@@ -96,7 +96,7 @@
                                              <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font></Label>
-                                          <TextField fx:id="tf_descripcion" />
+                                          <TextField fx:id="tfDescripcion" />
                                                     </children>
                                                     <padding>
                                                         <Insets left="10.0" right="10.0" />
@@ -108,7 +108,7 @@
                                              <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font></Label>
-                                          <TextField fx:id="tf_peso" />
+                                          <TextField fx:id="tfPeso" />
                                                     </children>
                                                     <HBox.margin>
                                                         <Insets left="10.0" right="10.0" />
@@ -162,7 +162,7 @@
                                  <children>
                                     <VBox alignment="CENTER_LEFT" prefHeight="200.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <TextField fx:id="tf_altura" />
+                                          <TextField fx:id="tfAltura" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" right="10.0" />
@@ -175,7 +175,7 @@
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tf_ancho" />
+                                          <TextField fx:id="tfAncho" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" right="10.0" />
@@ -195,7 +195,7 @@
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tf_profundidad" prefHeight="31.0" prefWidth="454.0" />
+                                          <TextField fx:id="tfProfundidad" prefHeight="31.0" prefWidth="454.0" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" right="10.0" />
@@ -207,7 +207,7 @@
                                        </padding>
                                        <children>
                                           <Label fx:id="lbl_Envio" text="Selecciona No. de Guía" />
-                                          <ComboBox fx:id="cb_Envios" prefHeight="31.0" prefWidth="466.0" />
+                                          <ComboBox fx:id="cbEnvios" prefHeight="31.0" prefWidth="466.0" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -221,7 +221,7 @@
                         </VBox>
                         <HBox alignment="CENTER" prefHeight="60.0">
                             <children>
-                                <Button fx:id="btn_guardar" mnemonicParsing="false" onAction="#clickGuardarPaquete" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #28AD56; -fx-background-radius: 20;" text="Guardar" textFill="WHITE">
+                                <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#clickGuardarPaquete" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #28AD56; -fx-background-radius: 20;" text="Guardar" textFill="WHITE">
                                     <font>
                                         <Font name="Arial Bold" size="14.0" />
                                     </font>

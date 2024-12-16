@@ -16,6 +16,7 @@ import desktop.modelo.pojo.Unidad;
 import desktop.utilidades.Constantes;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -136,4 +137,18 @@ public class EnviosDAO {
 
         return mensaje;
     }
+     public static List<Envio> obtenerEnvios() {
+        List<Envio> envios = new ArrayList<>();
+        String url = Constantes.URI_WS + "envio/obtener-envios";
+        RespuestaHTTP respuesta = ConexionWs.peticionGET(url);
+
+        if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
+            Type tipoListaEnvios = new TypeToken<List<Envio>>(){}.getType();
+            Gson gson = new Gson();
+            envios = gson.fromJson(respuesta.getContenido(), tipoListaEnvios);
+        }
+
+        return envios;
+    }
+
 }

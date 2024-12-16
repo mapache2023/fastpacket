@@ -1,10 +1,12 @@
 
-package desktop.modelo.pojo;
+package desktop.modelo.dao;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import desktop.modelo.ConexionWs;
 import desktop.modelo.RespuestaHTTP;
+import desktop.modelo.pojo.Mensaje;
+import desktop.modelo.pojo.Paquete;
 import desktop.utilidades.Constantes;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;

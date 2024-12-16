@@ -2,9 +2,8 @@ package desktop;
 
 import desktop.modelo.pojo.Colaborador;
 import desktop.modelo.pojo.Paquete;
-import desktop.modelo.pojo.PaqueteDAO;
+import desktop.modelo.dao.PaqueteDAO;
 import desktop.modelo.pojo.Mensaje;
-import static desktop.modelo.pojo.PaqueteDAO.consultarPaquetePorDescripcion;
 import static desktop.utilidades.Utilidades.mostrarAlertaSimple;
 import java.io.IOException;
 import javafx.collections.FXCollections;
