@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="485.0" prefWidth="776.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLAdminUnidadController">
+    <stylesheets>
+        <URL value="@/desktop/recursos/estilo.css" />
+    </stylesheets>
+   <children>
+      <Pane prefHeight="64.0" prefWidth="776.0" styleClass="encabezado">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="125.0" layoutX="52.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@recursos/logo_horizontal.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="455.0" prefHeight="30.0" prefWidth="776.0" styleClass="pie">
+         <children>
+            <Label layoutX="322.0" layoutY="5.0" styleClass="pie-texto" text="Fast-Packet" />
+         </children>
+      </Pane>
+      <Label layoutX="294.0" layoutY="86.0" styleClass="texto-normal" text="Unidades" />
+      <Label layoutX="48.0" layoutY="122.0" styleClass="texto-normal" text="Buscar" />
+      <TextField fx:id="tfBuscar" layoutX="107.0" layoutY="116.0" />
+      <TableView fx:id="tvUnidad" layoutX="36.0" layoutY="176.0" prefHeight="216.0" prefWidth="734.0">
+        <columns>
+          <TableColumn fx:id="tcMarca" prefWidth="75.0" text="Marca" />
+          <TableColumn fx:id="tcModelo" prefWidth="75.0" text="Modelo" />
+            <TableColumn fx:id="tcAño" prefWidth="75.0" text="Año" />
+            <TableColumn fx:id="tcTipo" prefWidth="127.0" text="Tipo de unidad" />
+            <TableColumn fx:id="tcIdentificacion" prefWidth="199.0" text="Numero de identificacion" />
+            <TableColumn fx:id="tcVin" prefWidth="180.0" text="Vin" />
+        </columns>
+      </TableView>
+      <Button layoutX="301.0" layoutY="405.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="73.0" styleClass="boton-editar" text="Editar" />
+      <Button layoutX="402.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnIrBaja" styleClass="boton-especial" text="Dar de baja" />
+      <Button layoutX="183.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnIrFormulario" styleClass="boton-guardar" text="Registrar" />
+      <Button layoutX="329.0" layoutY="116.0" mnemonicParsing="false" onAction="#btnBuscar" text="Buscar" />
+      <ComboBox fx:id="cbUnidad" layoutX="402.0" layoutY="115.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

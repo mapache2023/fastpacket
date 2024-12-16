@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="501.0" prefWidth="1226.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLAdminEnvioController">
+    <stylesheets>
+        <URL value="@/desktop/recursos/estilo.css" />
+    </stylesheets>
+   <children>
+      <Pane prefHeight="64.0" prefWidth="1189.0" styleClass="encabezado">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="125.0" layoutX="52.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@recursos/logo_horizontal.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="471.0" prefHeight="30.0" prefWidth="1195.0" styleClass="pie">
+         <children>
+            <Label layoutX="912.0" layoutY="5.0" styleClass="pie-texto" text="Fast-Packet" />
+         </children>
+      </Pane>
+      <Label layoutX="679.0" layoutY="78.0" styleClass="texto-normal" text="Envio">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="75.0" layoutY="132.0" styleClass="texto-normal" text="Buscar" />
+      <TextField fx:id="tfBuscar" layoutX="138.0" layoutY="126.0" prefHeight="31.0" prefWidth="255.0" />
+      <TableView fx:id="tvEnvio" layoutX="54.0" layoutY="182.0" prefHeight="234.0" prefWidth="1167.0">
+         <columns>
+            <TableColumn fx:id="tcNombre" prefWidth="137.0" text="Nombre cliente" />
+            <TableColumn minWidth="0.0" prefWidth="0.0" text="Año" />
+            <TableColumn fx:id="tcGuia" prefWidth="71.0" text="Guia" />
+            <TableColumn fx:id="tcCosto" prefWidth="72.0" text="Costo" />
+            <TableColumn fx:id="tcColaborador" prefWidth="128.0" text="Conductor" />
+            <TableColumn fx:id="tcEstatus" prefWidth="75.0" text="Estatus" />
+            <TableColumn fx:id="tcDireccionOrigen" prefWidth="373.0" text="Direcion de origen" />
+            <TableColumn fx:id="tcDirreccionDestino" minWidth="0.0" prefWidth="365.0" text="Direccion de Destino" />
+         </columns>
+      </TableView>
+      <Button layoutX="534.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnIrFormularioEditar" prefHeight="29.0" prefWidth="106.0" styleClass="boton-editar" text="Actualizar" />
+      <Button layoutX="794.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnIrFormulario" prefHeight="29.0" prefWidth="85.0" styleClass="boton-guardar" text="Registrar" />
+      <Button layoutX="1026.0" layoutY="137.0" mnemonicParsing="false" onAction="#btnIrAsignarConductor" styleClass="boton-editar" text="Asignar conductor a envio" />
+      <Button layoutX="425.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnBuscar" prefHeight="29.0" prefWidth="71.0" text="Buscar" />
+      <ComboBox fx:id="cbEnvio" layoutX="517.0" layoutY="125.0" prefHeight="31.0" prefWidth="140.0" />
+   </children>
+</AnchorPane>
