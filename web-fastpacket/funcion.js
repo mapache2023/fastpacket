@@ -3,7 +3,7 @@ const tablaPaquetes =document.getElementById("infoPaquete")
 const tablaCambios =document.getElementById("historialCambios")
 
 async function obtenerEnvios(numeroGuia) {
-    const infoEnvio = document.getElementById("informacion-personal");
+    const infoEnvio = document.getElementById("infoEnvio");
 	
 	
     const infoPaquete = document.getElementById("tbodyPaquetes");

@@ -6,37 +6,6 @@ h3{
     horizontal-align: top
 }
 
-.contenedor{
-    margin-left:30%;
-}
-
-.paquetes-titulo{
-    margin-top:5%;
-    margin-left: 40%;
-}
-
-.historial-titulo{
-    margin-top: 5%;
-    margin-left: 40%;
-}
-
-.contenedor{
-    max-width: 600px;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    text-align: center;
-}
-
-.informacion{
-    margin-top: 10px;
-    max-height: 400px;
-    overflow-y: auto;
-    border-top: 1px solid #dddddd;
-    padding-top: 10px;
-}
-
 .foo{
     display: flex;
     background-color: #2E5412;

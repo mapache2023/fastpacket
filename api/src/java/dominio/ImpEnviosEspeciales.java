@@ -5,17 +5,18 @@
  */
 package dominio;
 
-
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import pojo.Cliente;
+import pojo.Envio;
 import pojo.EnviosApp;
 import pojo.Historial;
 import pojo.Mensaje;
-
+import pojo.Paquete;
 
 /**
  *

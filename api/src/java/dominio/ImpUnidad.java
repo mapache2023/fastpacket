@@ -6,13 +6,10 @@
 package dominio;
 
 import java.util.HashMap;
-import java.util.List;
 import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
-import pojo.Colaborador;
 import pojo.Mensaje;
 import pojo.Unidad;
-import pojo.Tipo;
 
 public class ImpUnidad {
      public static Mensaje registrarUnidad(Unidad unidad){
@@ -66,7 +63,7 @@ public class ImpUnidad {
        return mensaje;
     }
      
-   /* public static Unidad buscarUnidad(String vin, String marca, String numeroIdentificacion){
+    public static Unidad buscarUnidad(String vin, String marca, String numeroIdentificacion){
         Unidad respuesta = null;
         SqlSession conexion = MyBatisUtil.obtenerConexion();
 
@@ -82,120 +79,22 @@ public class ImpUnidad {
             }
         }
         return respuesta;
-    }*/
-     
-    
-     public static Unidad buscarUnidad(String vin){
-        Unidad respuesta = null;
-        SqlSession conexion = MyBatisUtil.obtenerConexion();
-
-        if(conexion != null){
-            try {
-                HashMap<String, String> parametros = new HashMap<>();
-                parametros.put("vin", vin);
-                respuesta = conexion.selectOne("unidad.buscarUnidadVin", parametros);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return respuesta;
-    }
-     
-      public static Unidad buscarUnidadMarca(String marca){
-        Unidad respuesta = null;
-        SqlSession conexion = MyBatisUtil.obtenerConexion();
-
-        if(conexion != null){
-            try {
-                HashMap<String, String> parametros = new HashMap<>();
-                parametros.put("marca", marca);
-                respuesta = conexion.selectOne("unidad.buscarUnidadMarca", parametros);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return respuesta;
-    }
-      
-      public static Unidad buscarUnidadNumero(String numeroIdentificacion){
-        Unidad respuesta = null;
-        SqlSession conexion = MyBatisUtil.obtenerConexion();
-
-        if(conexion != null){
-            try {
-                HashMap<String, String> parametros = new HashMap<>();
-                parametros.put("numeroIdentificacion", numeroIdentificacion);
-                respuesta = conexion.selectOne("unidad.buscarUnidadNumero", parametros);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return respuesta;
     }
     
-    
-      public static Unidad darDeBaja(String idUnidad, String motivo){
-        Unidad mensaje = null;
+    /*  public static Unidad darDeBaja(String motivo){
+        Unidad respuesta = null;
         SqlSession conexion = MyBatisUtil.obtenerConexion();
         
         if(conexion != null){
             try {
-                HashMap<String, Object> parametros = new HashMap<>();
-                parametros.put("idUnidad", idUnidad);
+                HashMap<String, String> parametros = new HashMap<>();
                 parametros.put("motivo", motivo);
-               
-                mensaje = conexion.selectOne("unidad.bajaUnidad",parametros);
+                respuesta = conexion.selectOne("unidad.bajaUnidad",parametros);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return mensaje;
-    } 
-      
-    public static List<Unidad> obtenerUnidades(){
-        List<Unidad> unidades = null;
-        
-        SqlSession conexion = MyBatisUtil.obtenerConexion();
-        
-        if(conexion != null){
-            try{
-                unidades = conexion.selectList("unidad.obtenerUnidad");
-            }catch(Exception e){
-                e.getMessage();
-            }
-        }
-        
-        return unidades;
-    }
-    
-    public static List<Tipo> obtenerTipoUnidades(){
-        List<Tipo> unidadesTipo = null;
-        
-        SqlSession conexion = MyBatisUtil.obtenerConexion();
-        
-        if(conexion != null){
-            try{
-                unidadesTipo = conexion.selectList("unidad.tipoUnidad");
-            }catch(Exception e){
-                e.getMessage();
-            }
-        }
-        
-        return unidadesTipo;
-    }
-    
-    public static List<Colaborador> obtenerCoductor(){
-        List<Colaborador> conductores = null;
-        
-        SqlSession conexion = MyBatisUtil.obtenerConexion();
-        
-        if(conexion != null){
-            try{
-                conductores = conexion.selectList("unidad.obtenerCoductor");
-            }catch(Exception e){
-                e.getMessage();
-            }
-        }
-        return conductores;
-    }
+        return respuesta;
+    } */
+
 }
