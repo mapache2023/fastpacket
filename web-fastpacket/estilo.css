@@ -1,0 +1,26 @@
+
+h3{
+    margin-left: 26%;
+    margin-top: 10%;
+    display: inline-block;
+    horizontal-align: top
+}
+
+.foo{
+    display: flex;
+    background-color: #2E5412;
+    place-items: center;
+    margin-top: 23.2%;
+}
+
+footer{
+    display:flex;
+    justify-content: center;   
+    color:#fff;  
+    margin-left: 48%;
+}
+
+img{
+    display: inline-block;
+    width: 15%;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="estados">
+        <item>En transito</item>
+        <item>Detenido</item>
+        <item>Entregado</item>
+        <item>Cancelado</item>
+        <item>Pendiente</item>
+
+    </string-array>
+    
+</resources>

@@ -4,69 +4,28 @@
   
     <!-- Consulta para obtener datos del envío con paquetes e historial -->
     <select id="EnvioNumeroGuia" parameterType="String" resultMap="EnvioResultMap">
-  SELECT 
-    e.idEnvio,
-    e.numeroGuia,
-    CONCAT(e.calleOrigen, ' ', e.numeroOrigen, ', ', e.coloniaOrigen, ', ', e.codigoPostalOrigen, ', ', e.estadoOrigen, ', ', e.ciudadOrigen) AS origenDireccion,
-    CONCAT(e.calleDestino, ' ', e.numeroDestino, ', ', e.coloniaDestino, ', ', e.codigoPostalDestino, ', ', e.estadoDestino, ', ', e.ciudadDestino) AS destinoDireccion,
-    e.costo,
-    es.nombre AS "estadoActual",
-    e.idCliente,
-    p.idPaquete,
-    p.descripcion,
-    p.peso,
-    p.alto,
-    p.ancho,
-    p.profundidad,
-    h.fechaCambio,
-    h.comentario,
-    est.nombre AS Estado,
-    CONCAT(c.nombre, ' ', c.apellidoPaterno, ' ', c.apellidoMaterno) AS colaborador,
-    
-    -- Información del conductor asignado
-    CONCAT(c1.nombre, ' ', c1.apellidoPaterno, ' ', c1.apellidoMaterno) AS conductor
-    
-FROM 
-    envio e
-LEFT JOIN 
-    paquete p ON e.idEnvio = p.idEnvio
-LEFT JOIN 
-    historial h ON e.idEnvio = h.idEnvio
-LEFT JOIN 
-    estatus es ON e.idEstatus = es.idEstatus
-LEFT JOIN 
-    estatus est ON h.idEstatus = est.idEstatus
-LEFT JOIN 
-    colaborador c ON h.idColaborador = c.idColaborador
-LEFT JOIN 
-    colaborador c1 ON c1.idColaborador = e.idColaborador 
-
-WHERE 
-    e.numeroGuia = #{numeroGuia}
-    </select>
-    <select id="EnvioColaborador" parameterType="String" resultMap="EnvioResultMap">
         SELECT 
-        e.idEnvio ,
+        e.idEnvio,
         e.numeroGuia,
-        e.origenDireccion,
-        e.destinoDireccion,
+        CONCAT(e.calleOrigen, ' ', e.numeroOrigen, ', ', e.coloniaOrigen, ', ', e.codigoPostalOrigen, ', ', e.estadoOrigen, ', ', e.ciudadOrigen) AS origenDireccion,
+        CONCAT(e.calleDestino, ' ', e.numeroDestino, ', ', e.coloniaDestino, ', ', e.codigoPostalDestino, ', ', e.estadoDestino, ', ', e.ciudadDestino) AS destinoDireccion,
         e.costo,
-        
         es.nombre AS "estadoActual",
         e.idCliente,
-
+        e.idColaborador,
         p.idPaquete,
         p.descripcion,
         p.peso,
         p.alto,
         p.ancho,
         p.profundidad,
-    
-  
         h.fechaCambio,
         h.comentario,
         est.nombre AS Estado,
-        CONCAT(c.nombre, ' ', c.apellidoPaterno, ' ', c.apellidoMaterno) as colaborador
+        CONCAT(c.nombre, ' ', c.apellidoPaterno, ' ', c.apellidoMaterno) AS colaborador,
+    
+        -- Información del conductor asignado
+        CONCAT(c1.nombre, ' ', c1.apellidoPaterno, ' ', c1.apellidoMaterno) AS conductor
     
         FROM 
         envio e
@@ -75,13 +34,58 @@ WHERE
         LEFT JOIN 
         historial h ON e.idEnvio = h.idEnvio
         LEFT JOIN 
-        estado es ON e.idEstado = es.idEstado
+        estatus es ON e.idEstatus = es.idEstatus
         LEFT JOIN 
-        estado est ON h.idEstado = est.idEstado
+        estatus est ON h.idEstatus = est.idEstatus
         LEFT JOIN 
         colaborador c ON h.idColaborador = c.idColaborador
+        LEFT JOIN 
+        colaborador c1 ON c1.idColaborador = e.idColaborador 
 
-        WHERE  e.idColaborador = #{idColaborador}
+        WHERE 
+        e.numeroGuia = #{numeroGuia}
+    </select>
+    <select id="EnvioColaborador" parameterType="String" resultMap="EnvioResultMap">
+        SELECT 
+        e.idEnvio,
+        e.numeroGuia,
+        CONCAT(e.calleOrigen, ' ', e.numeroOrigen, ', ', e.coloniaOrigen, ', ', e.codigoPostalOrigen, ', ', e.estadoOrigen, ', ', e.ciudadOrigen) AS origenDireccion,
+        CONCAT(e.calleDestino, ' ', e.numeroDestino, ', ', e.coloniaDestino, ', ', e.codigoPostalDestino, ', ', e.estadoDestino, ', ', e.ciudadDestino) AS destinoDireccion,
+        e.costo,
+        es.nombre AS "estadoActual",
+        e.idCliente,
+        e.idColaborador,
+        p.idPaquete,
+        p.descripcion,
+        p.peso,
+        p.alto,
+        p.ancho,
+        p.profundidad,
+        h.fechaCambio,
+        h.comentario,
+        est.nombre AS Estado,
+        CONCAT(c.nombre, ' ', c.apellidoPaterno, ' ', c.apellidoMaterno) AS colaborador,
+    
+        -- Información del conductor asignado
+        CONCAT(c1.nombre, ' ', c1.apellidoPaterno, ' ', c1.apellidoMaterno) AS conductor
+    
+        FROM 
+        envio e
+        LEFT JOIN 
+        paquete p ON e.idEnvio = p.idEnvio
+        LEFT JOIN 
+        historial h ON e.idEnvio = h.idEnvio
+        LEFT JOIN 
+        estatus es ON e.idEstatus = es.idEstatus
+        LEFT JOIN 
+        estatus est ON h.idEstatus = est.idEstatus
+        LEFT JOIN 
+        colaborador c ON h.idColaborador = c.idColaborador
+        LEFT JOIN 
+        colaborador c1 ON c1.idColaborador = e.idColaborador 
+
+        WHERE 
+        e.idColaborador = #{idColaborador}
     </select>
     <!-- ResultMap to map the results to Java objects -->
     <resultMap id="EnvioResultMap" type="pojo.EnviosApp">
@@ -90,9 +94,10 @@ WHERE
         <result property="destinoDireccion" column="destinoDireccion"/>
         <result property="numeroGuia" column="numeroGuia"/>
         <result property="costo" column="costo"/>
-         <result property="conductor" column="conductor"/>
+        <result property="conductor" column="conductor"/>
         <result property="estado" column="estadoActual"/>
-       <result property="idCliente" column="idCliente"/>
+        <result property="idCliente" column="idCliente"/>
+        <result property="idColaborador" column="idColaborador"/>
 
    
         

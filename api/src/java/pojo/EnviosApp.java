@@ -12,11 +12,12 @@ import java.util.List;
  * @author hp
  */
 public class EnviosApp {
-    private String idEnvio;
+    private Integer idEnvio;
     private String numeroGuia;
      private String origenDireccion;
      private String costo;
      private String conductor;
+     private Integer idColaborador;
      private Integer idEstatus;
      private String estado;
      private String destinoDireccion;
@@ -25,12 +26,13 @@ public class EnviosApp {
      private List<Historial> cambios;
 public EnviosApp(){}
 
-    public EnviosApp(String idEnvio, String numeroGuia, String origenDireccion, String costo, String conductor, Integer idEstatus, String estado, String destinoDireccion, Integer idCliente, List<Paquete> paquetes, List<Historial> cambios) {
+    public EnviosApp(Integer idEnvio, String numeroGuia, String origenDireccion, String costo, String conductor, Integer idColaborador, Integer idEstatus, String estado, String destinoDireccion, Integer idCliente, List<Paquete> paquetes, List<Historial> cambios) {
         this.idEnvio = idEnvio;
         this.numeroGuia = numeroGuia;
         this.origenDireccion = origenDireccion;
         this.costo = costo;
         this.conductor = conductor;
+        this.idColaborador = idColaborador;
         this.idEstatus = idEstatus;
         this.estado = estado;
         this.destinoDireccion = destinoDireccion;
@@ -39,12 +41,21 @@ public EnviosApp(){}
         this.cambios = cambios;
     }
 
+    public Integer getIdColaborador() {
+        return idColaborador;
+    }
+
+    public void setIdColaborador(Integer idColaborador) {
+        this.idColaborador = idColaborador;
+    }
+
+    
    
-    public String getIdEnvio() {
+    public Integer getIdEnvio() {
         return idEnvio;
     }
 
-    public void setIdEnvio(String idEnvio) {
+    public void setIdEnvio(Integer idEnvio) {
         this.idEnvio = idEnvio;
     }
 

@@ -300,7 +300,7 @@ public class ColaboradorDAO {
         // Si el rol contiene espacios, lo formateamos correctamente
         if (nombre.contains(" ")) {
             String nombreFormateado = nombre.replace(" ", "%20");
-            url = Constantes.URI_WS + "colaborador/buscarPorRol/" + nombreFormateado;
+            url = Constantes.URI_WS + "colaborador/buscarPorNombre/" + nombreFormateado;
         } else {
             url = Constantes.URI_WS + "colaborador/buscarPorNombre/" + nombre;
         }
