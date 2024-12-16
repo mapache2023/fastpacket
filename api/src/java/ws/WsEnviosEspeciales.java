@@ -7,16 +7,13 @@ package ws;
 
 import com.google.gson.Gson;
 import dominio.ImpEnviosEspeciales;
-import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import pojo.Envio;
 import java.util.List;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
@@ -26,7 +23,6 @@ import pojo.Cliente;
 import pojo.EnviosApp;
 import pojo.Historial;
 import pojo.Mensaje;
-import pojo.Paquete;
 
 /**
  * REST Web Service
@@ -63,7 +59,7 @@ public EnviosApp enviosNumeroGuia(@PathParam("numeroGuia") String numeroGuia){
 @Path("app/conductor/{idColaborador}")
 @Produces(MediaType.APPLICATION_JSON)
 public List<EnviosApp> enviosColaboradors(@PathParam("idColaborador") String idColaborador){
-        List<EnviosApp> envios = new ArrayList<>();
+        List<EnviosApp> envios;
         if(idColaborador != null && !idColaborador.isEmpty()){
             envios = ImpEnviosEspeciales.obtenerEnvioColaborador(idColaborador);
         }else{
@@ -76,7 +72,7 @@ public List<EnviosApp> enviosColaboradors(@PathParam("idColaborador") String idC
 @Path("app/cliente/{idCliente}")
 @Produces(MediaType.APPLICATION_JSON)
 public Cliente enviosCliente(@PathParam("idCliente") String idCliente){
-        Cliente cliente = new Cliente();
+        Cliente cliente;
         if(idCliente != null && !idCliente.isEmpty()){
            cliente =    ImpEnviosEspeciales.obtenerCliente(idCliente);
         }else{
@@ -88,7 +84,7 @@ public Cliente enviosCliente(@PathParam("idCliente") String idCliente){
 @Path("app/cambios")
 @Consumes(MediaType.APPLICATION_JSON)
 public Mensaje cambios(String json){
-    Mensaje msj = new Mensaje();
+    Mensaje msj;
     
         if(json == null || json.isEmpty()){
             throw new WebApplicationException(Response.Status.BAD_REQUEST);

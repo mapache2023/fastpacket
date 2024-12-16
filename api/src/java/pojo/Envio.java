@@ -7,6 +7,8 @@ public class Envio {
     private Integer idColaborador;
     private Integer idCliente;
     private Integer idEstatus;
+    private String estadoActual;
+    private String colaborador;
     private String calleOrigen;
     private String numeroOrigen;
     private String coloniaOrigen;
@@ -19,20 +21,22 @@ public class Envio {
     private String codigoPostalDestino;
     private String estadoDestino;
     private String ciudadDestino;
+    private String cliente;
+    private String direccionOrigen;
+    private String direccionDestino;
 
-    // Constructor por defecto
-    public Envio() {}
+    public Envio() {
+    }
 
-    // Constructor con todos los campos
-    public Envio(Integer idEnvio, String numeroGuia, String costo, Integer idColaborador, Integer idCliente, Integer idEstatus,
-                 String calleOrigen, String numeroOrigen, String coloniaOrigen, String codigoPostalOrigen, String estadoOrigen, String ciudadOrigen,
-                 String calleDestino, String numeroDestino, String coloniaDestino, String codigoPostalDestino, String estadoDestino, String ciudadDestino) {
+    public Envio(Integer idEnvio, String numeroGuia, String costo, Integer idColaborador, Integer idCliente, Integer idEstatus, String estadoActual, String colaborador, String calleOrigen, String numeroOrigen, String coloniaOrigen, String codigoPostalOrigen, String estadoOrigen, String ciudadOrigen, String calleDestino, String numeroDestino, String coloniaDestino, String codigoPostalDestino, String estadoDestino, String ciudadDestino, String cliente, String direccionOrigen, String direccionDestino) {
         this.idEnvio = idEnvio;
         this.numeroGuia = numeroGuia;
         this.costo = costo;
         this.idColaborador = idColaborador;
         this.idCliente = idCliente;
         this.idEstatus = idEstatus;
+        this.estadoActual = estadoActual;
+        this.colaborador = colaborador;
         this.calleOrigen = calleOrigen;
         this.numeroOrigen = numeroOrigen;
         this.coloniaOrigen = coloniaOrigen;
@@ -45,9 +49,10 @@ public class Envio {
         this.codigoPostalDestino = codigoPostalDestino;
         this.estadoDestino = estadoDestino;
         this.ciudadDestino = ciudadDestino;
+        this.cliente = cliente;
+        this.direccionOrigen = direccionOrigen;
+        this.direccionDestino = direccionDestino;
     }
-
-    // Métodos getter y setter para cada atributo
 
     public Integer getIdEnvio() {
         return idEnvio;
@@ -95,6 +100,22 @@ public class Envio {
 
     public void setIdEstatus(Integer idEstatus) {
         this.idEstatus = idEstatus;
+    }
+
+    public String getEstadoActual() {
+        return estadoActual;
+    }
+
+    public void setEstadoActual(String estadoActual) {
+        this.estadoActual = estadoActual;
+    }
+
+    public String getColaborador() {
+        return colaborador;
+    }
+
+    public void setColaborador(String colaborador) {
+        this.colaborador = colaborador;
     }
 
     public String getCalleOrigen() {
@@ -193,9 +214,28 @@ public class Envio {
         this.ciudadDestino = ciudadDestino;
     }
 
-    // Método toString (opcional)
-    @Override
-    public String toString() {
-        return numeroGuia;
+    public String getCliente() {
+        return cliente;
     }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getDireccionOrigen() {
+        return direccionOrigen;
+    }
+
+    public void setDireccionOrigen(String direccionOrigen) {
+        this.direccionOrigen = direccionOrigen;
+    }
+
+    public String getDireccionDestino() {
+        return direccionDestino;
+    }
+
+    public void setDireccionDestino(String direccionDestino) {
+        this.direccionDestino = direccionDestino;
+    }
+    
 }

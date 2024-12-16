@@ -6,15 +6,22 @@
 package ws;
 
 import com.google.gson.Gson;
+import dominio.ImpColaborador;
 import dominio.ImpUnidad;
+import java.util.List;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import pojo.Colaborador;
 import pojo.Mensaje;
+import pojo.Tipo;
 import pojo.Unidad;
 
 
@@ -34,7 +41,7 @@ public class WSUnidad {
             Unidad unidad = gson.fromJson(jsonUnidad, Unidad.class);
             if(unidad.getMarca() != null && !unidad.getMarca().isEmpty() && unidad.getModelo() != null && !unidad.getModelo().isEmpty()
                     && unidad.getAno() != null && unidad.getVin() != null && !unidad.getVin().isEmpty() && unidad.getIdTipo()!= null
-                    && unidad.getNumeroIdentificacion() != null && !unidad.getNumeroIdentificacion().isEmpty() && unidad.getMotivo() != null && !unidad.getMotivo().isEmpty()
+                    && unidad.getNumeroIdentificacion() != null && !unidad.getNumeroIdentificacion().isEmpty() 
                     ){
                 return ImpUnidad.registrarUnidad(unidad);
             }else{
@@ -64,24 +71,66 @@ public class WSUnidad {
         }
     }
     
-    @Path("buscar")
-    @POST
+    @Path("buscar-vin/{vin}")
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Unidad buscarUnidad(@FormParam("vin") String vin, @FormParam("marca") String marca, @FormParam("numeroIdentificacion") String numeroIdentificacion){
-        if(vin != null && marca != null && !marca.isEmpty() && numeroIdentificacion != null && !numeroIdentificacion.isEmpty()){
-            return ImpUnidad.buscarUnidad(vin, marca, numeroIdentificacion);
+    public Unidad buscarUnidad(@PathParam("vin") String vin){
+        if(vin != null){
+            return ImpUnidad.buscarUnidad(vin);
         }
         throw new BadRequestException();
     }
     
-  /*  @Path("baja")
-    @PUT
+    @Path("buscar-marca/{marca}")
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Unidad bajaUnidad(@FormParam("motivo") String motivo){
-        if(motivo != null && !motivo.isEmpty()){
-            return ImpUnidad.darDeBaja(motivo);
+    public Unidad buscarUnidadMarca(@PathParam("marca") String marca){
+        if(marca != null){
+            return ImpUnidad.buscarUnidadMarca(marca);
         }
         throw new BadRequestException();
-    } */
-
+    }
+    
+    @Path("buscar-numero/{numeroIdentificacion}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Unidad buscarUnidadNumero(@PathParam("numeroIdentificacion") String numeroIdentificacion){
+        if(numeroIdentificacion != null){
+            return ImpUnidad.buscarUnidadNumero(numeroIdentificacion);
+        }
+        throw new BadRequestException();
+    }
+    
+    @Path("baja")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public Unidad bajaUnidad(@FormParam("idUnidad") String idUnidad, @FormParam("motivo") String motivo){
+        if(idUnidad != null && !idUnidad.isEmpty()){
+            ImpColaborador.desasignarUnidad(Integer.parseInt(idUnidad));
+            return ImpUnidad.darDeBaja(idUnidad, motivo);
+        }
+        throw new BadRequestException();
+    } 
+    
+    @Path("obtener-unidades")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Unidad> obtenerUnidad(){
+        return ImpUnidad.obtenerUnidades();
+    }
+    
+    @Path("obtener-tipos")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Tipo> obtenerTipoUnidad(){
+        return ImpUnidad.obtenerTipoUnidades();
+    }
+    
+      
+    @Path("obtenerConductores")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Colaborador> obtenerConductores(){
+        return ImpUnidad.obtenerCoductor();
+    }
 }
