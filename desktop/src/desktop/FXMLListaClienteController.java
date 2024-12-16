@@ -101,17 +101,6 @@ public class FXMLListaClienteController implements Initializable {
     void agregar(ActionEvent evento) {
         abrirFormulario(null);  // Crear un nuevo cliente
     }
-
-    // Método para editar un cliente seleccionado
-    void editar(ActionEvent evento) {
-        Cliente clienteSeleccionado = tvCliente.getSelectionModel().getSelectedItem();
-        if (clienteSeleccionado != null) {
-            abrirFormulario(clienteSeleccionado);  // Editar el cliente seleccionado
-        } else {
-            mostrarAlertaSimple("Advertencia", "Por favor selecciona un cliente para editar.", Alert.AlertType.WARNING);
-        }
-    }
-
     // Método para eliminar un cliente seleccionado
 @FXML
 private void eliminarCliente(ActionEvent evento) {

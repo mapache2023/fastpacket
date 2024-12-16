@@ -102,19 +102,6 @@ public class FXMLListaPaqueteController {
         }
     }
 
-    void buscar(ActionEvent evento) {
-        String textoBusqueda = tfBusqueda.getText();
-
-        listaPaquetes.clear();
-
-        if (textoBusqueda.isEmpty()) {
-            cargarPaquetes();  // Mostrar todos los clientes si no hay texto
-        } else {
-            consultarPaquetePorDescripcion(textoBusqueda);  // Realizar la búsqueda por nombre (por ejemplo)
-        }
-
-        tvPaquete.setItems(listaPaquetes);  // Actualizar la tabla
-    }
 private void inicializarBusqueda(){
         if(listaPaquetes != null){
             FilteredList<Paquete> filtroPaquetes = new FilteredList<>(listaPaquetes, p -> true); //Filtro, se le manda un observable list y un predicado, el cual determina qué se hará dependiedo si este es true o false

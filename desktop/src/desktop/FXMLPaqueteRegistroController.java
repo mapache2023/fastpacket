@@ -182,7 +182,8 @@ public class FXMLPaqueteRegistroController implements Initializable {
         stage.close();
     }
   private int idEnvio;  // Variable interna para almacenar el ID de Envio
-    void PaqueteEdicion(Paquete paquete) {
+    
+  void PaqueteEdicion(Paquete paquete) {
     this.paqueteEdicion = paquete;
     this.modoEdicion = true;
 
@@ -207,7 +208,6 @@ public class FXMLPaqueteRegistroController implements Initializable {
         }
     }
 }
-
 
 @FXML
 private void clickGuardarPaquete(ActionEvent event) {
