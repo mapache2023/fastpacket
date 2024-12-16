@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="775.0" styleClass="mainFxmlClass" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLInicioController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="642.0" styleClass="mainFxmlClass" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLInicioController">
   <stylesheets>
         <URL value="@/desktop/recursos/estilo.css" />
     </stylesheets>
@@ -36,7 +36,7 @@
       
    </center>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="334.0" prefWidth="633.0" BorderPane.alignment="CENTER">
          <children>
              <Button layoutX="6.0" layoutY="94.0" onAction="#irAcolab" prefHeight="18.0" prefWidth="201.0" styleClass="botones-navegacion" text="Colaboradores" />
             <ImageView fitHeight="71.0" fitWidth="92.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
@@ -44,8 +44,10 @@
                   <Image url="@recursos/logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="237.0" layoutY="94.0" mnemonicParsing="false" onAction="#irACliente" prefHeight="59.0" prefWidth="173.0" styleClass="botones-navegacion" text="Cliente" />
-            <Button layoutX="468.0" layoutY="94.0" mnemonicParsing="false" onAction="#irAPaquete" prefHeight="59.0" prefWidth="130.0" styleClass="botones-navegacion" text="Paquete" />
+            <Button layoutX="237.0" layoutY="94.0" mnemonicParsing="false" onAction="#irACliente" prefHeight="59.0" prefWidth="173.0" styleClass="botones-navegacion" text="Clientes" />
+            <Button layoutX="468.0" layoutY="94.0" mnemonicParsing="false" onAction="#irAPaquete" prefHeight="59.0" prefWidth="130.0" styleClass="botones-navegacion" text="Paquetes" />
+             <Button layoutX="134.0" layoutY="183.0" onAction="#irEnvios" prefHeight="59.0" prefWidth="146.0" styleClass="botones-navegacion" text="Envios" />
+             <Button layoutX="371.0" layoutY="183.0" onAction="#irUnidades" prefHeight="59.0" prefWidth="146.0" styleClass="botones-navegacion" text="Unidades" />
          </children>
       </AnchorPane>
    </center>

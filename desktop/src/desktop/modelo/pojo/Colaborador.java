@@ -165,7 +165,8 @@ public class Colaborador {
         this.fotografiaBase64 = fotografiaBase64;
     }
 
-    
-   
-    
+    @Override
+    public String toString() {
+        return nombre + " " + apellidoPaterno + " " + apellidoMaterno;
+    }   
 }

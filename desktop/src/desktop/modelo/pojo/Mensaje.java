@@ -5,6 +5,10 @@
  */
 package desktop.modelo.pojo;
 
+/**
+ *
+ * @author mapache
+ */
 public class Mensaje {
     
     private Boolean error;

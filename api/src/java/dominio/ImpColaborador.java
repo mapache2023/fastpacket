@@ -8,7 +8,6 @@ package dominio;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import javax.ws.rs.DELETE;
 import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import pojo.Colaborador;
@@ -23,19 +22,19 @@ import pojo.Unidad;
 public class ImpColaborador {
 
     public static List<Colaborador> obtenerColaboradores() {
-        List<Colaborador> colaboradors = new ArrayList<>();
+        List<Colaborador> colaboradores = new ArrayList<>();
         SqlSession conexionBD = MyBatisUtil.obtenerConexion();
         if (conexionBD != null) {
             try {
 
-                colaboradors = conexionBD.selectList("colaborador.obtenerColaboradores");
+                colaboradores = conexionBD.selectList("colaborador.obtenerColaboradores");
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 conexionBD.close();
             }
         }
-        return colaboradors;
+        return colaboradores;
     }
 
     public static Mensaje registrarColaborador(Colaborador colaborador) {
