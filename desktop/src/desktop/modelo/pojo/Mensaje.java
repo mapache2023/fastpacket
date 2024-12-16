@@ -5,10 +5,6 @@
  */
 package desktop.modelo.pojo;
 
-/**
- *
- * @author mapache
- */
 public class Mensaje {
     
     private Boolean error;
@@ -23,6 +19,12 @@ public class Mensaje {
         this.mensaje = mensaje;
         this.contenido = contenido;
     }
+
+    public Mensaje(boolean error, String mensaje) {
+            this.error = error;
+        this.mensaje = mensaje;
+    }
+
 
     public Boolean getError() {
         return error;

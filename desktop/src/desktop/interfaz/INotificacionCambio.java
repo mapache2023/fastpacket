@@ -10,5 +10,5 @@ package desktop.interfaz;
  * @author mapache
  */
 public interface INotificacionCambio {
-    public void notifidor();
+    void notificar();
 }

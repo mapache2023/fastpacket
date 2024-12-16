@@ -1,0 +1,8 @@
+/api/build/
+/api/nbproject/private/
+/api/dist/
+/desktop/build/
+/desktop/nbproject/private/
+/desktop/dist/
+*.class
+Thumbs.db

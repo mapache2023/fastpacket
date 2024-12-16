@@ -5,10 +5,6 @@
  */
 package desktop.modelo.pojo;
 
-/**
- *
- * @author mapache
- */
 public class Paquete {
   private Integer  idPaquete; 
 private String descripcion;
@@ -17,8 +13,10 @@ private String alto;
 private String ancho;
 private String profundidad ;
 private Integer idEnvio;
+
     public Paquete(){}
-    public Paquete(Integer idPaquete, String descripcion, String peso, String alto, String ancho, String profundidad, Integer idEnvio) {
+
+    public Paquete(Integer idPaquete, String descripcion, String peso, String alto, String ancho, String profundidad, Integer idEnvio, String calle, String colonia, String numero) {
         this.idPaquete = idPaquete;
         this.descripcion = descripcion;
         this.peso = peso;
@@ -26,9 +24,8 @@ private Integer idEnvio;
         this.ancho = ancho;
         this.profundidad = profundidad;
         this.idEnvio = idEnvio;
+        
     }
-
-
 
     public Integer getIdPaquete() {
         return idPaquete;
@@ -85,5 +82,9 @@ private Integer idEnvio;
     public void setIdEnvio(Integer idEnvio) {
         this.idEnvio = idEnvio;
     }
+
+
+  
+
 
 }

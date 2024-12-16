@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="775.0" styleClass="mainFxmlClass" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLInicioController">
+  <stylesheets>
+        <URL value="@/desktop/recursos/estilo.css" />
+    </stylesheets>
+ <top>
+       <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="738.0" spacing="10.0" styleClass="encabezado" BorderPane.alignment="CENTER">
+         <children>
+         <ImageView fitHeight="55.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                      <Image url="@recursos/logo_horizontal.PNG" />
+            </image>
+               </ImageView>
+               <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="etiquetaColaborador" styleClass="encabezado-texto-usuario" text="Usuario" />
+         </children>
+      </HBox>
+   </top>
+
+<bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="775.0" styleClass="pie" BorderPane.alignment="CENTER">
+         <children>
+               <Button fx:id="botonCerrarSesion" onAction="#cerrarSesion" style="-fx-background-color: red; -fx-text-fill: white;" text="Cerrar Sesión" />
+        
+         </children>
+         </HBox>
+   </bottom>
+   <center>
+      
+   </center>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+             <Button layoutX="6.0" layoutY="94.0" onAction="#irAcolab" prefHeight="18.0" prefWidth="201.0" styleClass="botones-navegacion" text="Colaboradores" />
+            <ImageView fitHeight="71.0" fitWidth="92.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@recursos/logo.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="237.0" layoutY="94.0" mnemonicParsing="false" onAction="#irACliente" prefHeight="59.0" prefWidth="173.0" styleClass="botones-navegacion" text="Cliente" />
+            <Button layoutX="468.0" layoutY="94.0" mnemonicParsing="false" onAction="#irAPaquete" prefHeight="59.0" prefWidth="130.0" styleClass="botones-navegacion" text="Paquete" />
+         </children>
+      </AnchorPane>
+   </center>
+
+  
+</BorderPane>

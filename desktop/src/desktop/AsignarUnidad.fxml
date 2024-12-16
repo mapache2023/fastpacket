@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="desktop.AsignarUnidad"
+            prefHeight="400.0" prefWidth="600.0">
+    <!-- Título -->
+    <Label text="Asignar o Cambiar Unidad" layoutX="50" layoutY="20" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Campo para mostrar nombre del colaborador -->
+    <Label text="Colaborador:" layoutX="50" layoutY="60" />
+    <Label fx:id="lColaborador" layoutX="150" layoutY="60" style="-fx-font-weight: bold;"/>
+
+    <!-- ComboBox para seleccionar la unidad -->
+    <Label text="Seleccionar Unidad:" layoutX="50" layoutY="100" />
+    <ComboBox fx:id="cbUnidad" layoutX="150" layoutY="100" prefWidth="200" />
+
+    <!-- Botones -->
+    <Button fx:id="btnAsignar" text="Asignar Unidad" layoutX="50" layoutY="150" onAction="#asignarUnidad" />
+    <Button fx:id="btnCancelar" text="Cancelar" layoutX="200" layoutY="150" onAction="#cancelar" />
+
+    <!-- Mensajes de error -->
+    <Label fx:id="lMensajeError" layoutX="50" layoutY="200" style="-fx-text-fill: red;" />
+
+</AnchorPane>

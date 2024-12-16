@@ -6,7 +6,9 @@
 package ws;
 
 import com.google.gson.Gson;
+import dominio.ImpCliente;
 import dominio.ImpPaquete;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -20,6 +22,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import pojo.Cliente;
 import pojo.Mensaje;
 import pojo.Paquete;
 
@@ -32,6 +35,17 @@ public class WSPaquete {
     public WSPaquete(){
         
     }
+@GET
+@Path("obtenerPaquetes")
+@Produces(MediaType.APPLICATION_JSON)
+public List<Paquete> obtenerPaquetes() {
+    List<Paquete> paquetes = new ArrayList<>();
+
+    paquetes = ImpPaquete.obtenerPaquetes();
+
+    return paquetes;
+}
+
 @Path("registroPaquete")
 @POST
 @Produces(MediaType.APPLICATION_JSON)

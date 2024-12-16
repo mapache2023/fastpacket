@@ -23,9 +23,9 @@
                     <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                             <children>
-                                <ImageView fitHeight="39.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@recursos/logo.png" />
+                                        <Image url="@recursos/logo_horizontal.PNG" />
                                     </image>
                                     <HBox.margin>
                                         <Insets right="15.0" />
@@ -40,19 +40,11 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                             <children>
-                                <Text fx:id="lb_nombre_usuario" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del Usuario">
+                                <Text fx:id="etiquetaColaborador" fill="WHITE" nodeOrientation="RIGHT_TO_LEFT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="encabezado-texto-usuario" text="Usuario" wrappingWidth="174.1240234375">
                                     <font>
-                                        <Font name="Arial Bold" size="17.0" />
+                                        <Font name="Arial Italic" size="15.0" />
                                     </font>
                                 </Text>
-                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@recursos/perfil_icon.png" />
-                                    </image>
-                                    <HBox.margin>
-                                        <Insets left="15.0" />
-                                    </HBox.margin>
-                                </ImageView>
                             </children>
                         </HBox>
                     </children>
@@ -65,16 +57,9 @@
                 <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #2e5412;" BorderPane.alignment="CENTER">
                     <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                            <children>
-                                <ImageView fitHeight="30.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@recursos/logo.png" />
-                                    </image>
-                                    <HBox.margin>
-                                        <Insets right="15.0" />
-                                    </HBox.margin>
-                                </ImageView>
-                            </children>
+                     <children>
+                        <Label prefHeight="19.0" prefWidth="76.0" styleClass="pie-texto" text="Fast-Packet" />
+                     </children>
                         </HBox>
                     </children>
                     <padding>
@@ -111,7 +96,7 @@
                                              <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font></Label>
-                                          <TextField fx:id="tf_nombre" />
+                                          <TextField fx:id="tfNombre" />
                                                     </children>
                                                     <padding>
                                                         <Insets left="10.0" right="10.0" />
@@ -123,7 +108,7 @@
                                              <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font></Label>
-                                          <TextField />
+                                          <TextField fx:id="tfApellidoPaterno" />
                                                     </children>
                                                     <HBox.margin>
                                                         <Insets left="10.0" right="10.0" />
@@ -138,7 +123,7 @@
                                              <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font></Label>
-                                          <TextField fx:id="tf_apellido_materno" />
+                                          <TextField fx:id="tfApellidoMaterno" />
                                                     </children>
                                                     <padding>
                                                         <Insets left="10.0" right="10.0" />
@@ -154,7 +139,7 @@
                                              <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font></Label>
-                                          <TextField fx:id="tf_telefono" />
+                                          <TextField fx:id="tfTelefono" />
                                                     </children>
                                                     <padding>
                                                         <Insets left="10.0" right="10.0" />
@@ -166,7 +151,7 @@
                                              <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font></Label>
-                                          <TextField fx:id="tf_email" />
+                                          <TextField fx:id="tfEmail" />
                                                     </children>
                                                     <HBox.margin>
                                                         <Insets left="10.0" right="10.0" />
@@ -198,7 +183,7 @@
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tf_calle" />
+                                          <TextField fx:id="tfCalle" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" right="10.0" />
@@ -211,7 +196,7 @@
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tf_numero" />
+                                          <TextField fx:id="tfNumero" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" right="10.0" />
@@ -231,7 +216,7 @@
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tf_colonia" />
+                                          <TextField fx:id="tfColonia" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" right="10.0" />
@@ -244,7 +229,7 @@
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tf_cp" />
+                                          <TextField fx:id="tfCp" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" right="10.0" />
@@ -261,18 +246,13 @@
                         </VBox>
                         <HBox alignment="CENTER" prefHeight="60.0">
                             <children>
-                                <Button fx:id="btn_guardar" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #28AD56; -fx-background-radius: 20;" text="Guardar" textFill="WHITE">
+                                <Button fx:id="btn_guardar" mnemonicParsing="false" onAction="#clickGuardarCliente" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #28AD56; -fx-background-radius: 20;" text="Guardar" textFill="WHITE">
                                     <font>
                                         <Font name="Arial Bold" size="14.0" />
                                     </font>
                                     <HBox.margin>
                                         <Insets right="20.0" />
                                     </HBox.margin>
-                                </Button>
-                                <Button fx:id="btn_editar" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-background-color: #FAD60E;" text="Editar" textFill="WHITE">
-                                    <font>
-                                        <Font name="Arial Bold" size="14.0" />
-                                    </font>
                                 </Button>
                             </children>
                         </HBox>

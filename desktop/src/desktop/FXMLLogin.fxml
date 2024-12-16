@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import java.net.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="214.0" prefWidth="160.0" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLLoginController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLLoginController">
+     <stylesheets>
+        <URL value="@/desktop/recursos/estilo.css" />
+    </stylesheets>
+    <children>
        
-       <VBox alignment="CENTER" layoutX="3.0" layoutY="3.0" spacing="15">
+       <VBox alignment="CENTER" layoutX="445.0" layoutY="146.0" spacing="15">
           <children>
-             
-              <Label text="Bienvenido al sistema" />
-            <TextField fx:id="tfNumeroPersonal" promptText="Nuemero de persona" />
+            <Text fill="#2c5f2d" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo-login" text="Fast-Packet" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="texto-normal" text="inicio de sesion" />
+            <TextField fx:id="tfNumeroPersonal" prefHeight="55.0" prefWidth="351.0" promptText="Nuemero de persona" />
                <Label fx:id="lbErrorPersonal" />
-            <PasswordField fx:id="tfContrasena" promptText="Contraseña" />
+            <PasswordField fx:id="tfContrasena" prefHeight="51.0" prefWidth="373.0" promptText="Contraseña" />
                  <Label fx:id="lbErrorPassword" />
-              <Button onAction="#btnLogin" text="Login" />
+              <Button onAction="#btnLogin" prefHeight="50.0" prefWidth="117.0" styleClass="login-boton" text="Iniciar sesion" />
           </children>
        </VBox>
+      <ImageView fitHeight="242.0" fitWidth="296.0" layoutX="95.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/desktop/recursos/logo.png" />
+         </image>
+      </ImageView>
    </children>
   </AnchorPane>

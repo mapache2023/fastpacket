@@ -30,6 +30,16 @@ public class WSCliente {
     public WSCliente(){
         
     }
+    @GET
+@Path("obtenerClientes")
+@Produces(MediaType.APPLICATION_JSON)
+public List<Cliente> obtenerClientes() {
+    List<Cliente> clientes = new ArrayList<>();
+
+    clientes = ImpCliente.obtenerClientes();
+
+    return clientes;
+}
 @Path("registro")
 @POST
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,25 +49,22 @@ public Mensaje registrarCliente(String jsonCliente) {
         Gson gson = new Gson();
         Cliente cliente = gson.fromJson(jsonCliente, Cliente.class);
 
-        // Validación de los campos requeridos
         if (cliente.getNombre() != null && !cliente.getNombre().isEmpty() &&
             cliente.getApellidoPaterno() != null && !cliente.getApellidoPaterno().isEmpty() &&
             cliente.getCorreo() != null && !cliente.getCorreo().isEmpty()) {
 
-            // Llamada al método para registrar el cliente
-            Mensaje mensaje = ImpCliente.registrarCliente(cliente); // Utiliza tu implementación directa
-            return mensaje;
-
+            Mensaje mensaje = ImpCliente.registrarCliente(cliente); 
+            // Respuesta más clara: devuelve el nombre del cliente o un mensaje de éxito
+            return new Mensaje(false, "El cliente " + cliente.getNombre() + " " + cliente.getApellidoPaterno() + " fue registrado con éxito.", null);
         } else {
-            // Devuelve un mensaje de error por campos faltantes o incorrectos
             return new Mensaje(true, "Nombre, apellido paterno y/o correo faltantes o incorrectos", null);
         }
     } catch (Exception e) {
         e.printStackTrace();
-        // Retorna un mensaje genérico en caso de error
         return new Mensaje(true, "Ocurrió un error al procesar la solicitud.", null);
     }
 }
+
 @Path("editar")
 @PUT
 @Produces(MediaType.APPLICATION_JSON)
@@ -86,7 +93,10 @@ public Mensaje editarCliente(String jsonCliente) {
         clienteExistente.setNombre(datosActualizados.getNombre());
         clienteExistente.setApellidoPaterno(datosActualizados.getApellidoPaterno());
         clienteExistente.setApellidoMaterno(datosActualizados.getApellidoMaterno());
-        clienteExistente.setDireccion(datosActualizados.getDireccion());
+        clienteExistente.setCalle(datosActualizados.getCalle());
+        clienteExistente.setNumero(datosActualizados.getNumero());
+        clienteExistente.setCodigoPostal(datosActualizados.getCodigoPostal());
+        clienteExistente.setColonia(datosActualizados.getColonia());
         clienteExistente.setTelefono(datosActualizados.getTelefono());
         clienteExistente.setCorreo(datosActualizados.getCorreo());
 
@@ -94,9 +104,7 @@ public Mensaje editarCliente(String jsonCliente) {
         boolean actualizado = ImpCliente.guardarCambios(clienteExistente);
 
         if (actualizado) {
-            // Convertir el cliente actualizado a JSON para el contenido
-            String clienteJson = gson.toJson(clienteExistente);
-            return new Mensaje(false, "Cliente actualizado correctamente", clienteJson);
+            return new Mensaje(false, "Cliente actualizado correctamente", clienteExistente);
         } else {
             return new Mensaje(true, "Error al guardar los cambios del cliente", null);
         }
@@ -106,7 +114,6 @@ public Mensaje editarCliente(String jsonCliente) {
         return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage(), null);
     }
 }
-
 @DELETE
 @Path("eliminar/{idCliente}")  // Incluir el parámetro {idCliente} en la ruta
 @Produces(MediaType.APPLICATION_JSON)
@@ -128,6 +135,33 @@ public Mensaje eliminarCliente(@PathParam("idCliente") Integer idCliente) {
         return new Mensaje(true, "Error al eliminar el cliente: " + e.getMessage(), null);
     }
 }
+
+@Path("buscar/{idCliente}")
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+public Mensaje buscarCliente(@PathParam("idCliente") Integer idCliente) {
+    try {
+        // Verificar que el ID del cliente es válido
+        if (idCliente == null) {
+            return new Mensaje(true, "ID de cliente faltante o incorrecto", null);
+        }
+
+        // Llama al método buscarCliente que ya tienes en ImpCliente
+        Cliente clienteEncontrado = ImpCliente.buscarCliente(idCliente);
+
+        if (clienteEncontrado == null) {
+            return new Mensaje(true, "Cliente no encontrado", null);
+        }
+
+        // Retorna el cliente encontrado
+        return new Mensaje(false, "Cliente encontrado correctamente", clienteEncontrado);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage(), null);
+    }
+}
+
 @GET
 @Path("buscar")  // Ruta para buscar clientes
 @Produces(MediaType.APPLICATION_JSON)
@@ -152,7 +186,6 @@ public List<Cliente> buscarCliente(
         return new ArrayList<>();
     }
 }
-
 
  }
 

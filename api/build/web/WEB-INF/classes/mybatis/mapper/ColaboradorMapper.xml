@@ -3,5 +3,179 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="colaborador">
+    <select id="obtenerColaboradores" resultType="pojo.Colaborador">
+        select `idColaborador`,
+        colaborador.nombre,
+        `apellidoPaterno`,
+        `apellidoMaterno`,
+        `curp`,
+        `correo`,
+        `numeroPersonal`,
+        `contrasena`,
+        `numeroLicencia`,
+        rol.idRol,rol.nombre as rol,
+        unidad.idUnidad, concat(unidad.marca,' ', unidad.modelo) as unidad from colaborador 
+        inner join rol on colaborador.idRol = rol.idRol
+        left join unidad on unidad.idUnidad = colaborador.idUnidad;
+    </select>
     
+    <insert id="registrar" parameterType="pojo.Colaborador">
+        INSERT INTO `fastpacket`.`colaborador`
+        (
+        `nombre`,
+        `apellidoPaterno`,
+        `apellidoMaterno`,
+        `curp`,
+        `correo`,
+        `numeroPersonal`,
+        `contrasena`,
+        `numeroLicencia`,
+        `idRol`)
+        VALUES
+        (#{nombre},
+        #{apellidoPaterno},
+        #{apellidoMaterno},
+        #{curp},
+        #{correo},
+        #{numeroPersonal},
+        #{contrasena},
+        #{numeroLicencia},
+        #{idRol})
+    </insert>
+    
+    <update id="editar" parameterType="pojo.Colaborador">
+        UPDATE `fastpacket`.`colaborador`
+        SET
+        `nombre` = #{nombre},
+        `apellidoPaterno` = #{apellidoPaterno},
+        `apellidoMaterno` = #{apellidoMaterno},
+        `curp` = #{curp},
+        `correo` = #{correo},
+        `contrasena` = #{contrasena},
+        `numeroLicencia` = #{numeroLicencia}
+        WHERE `idColaborador` = #{idColaborador};
+    </update>
+    
+    <update id="guardarFoto" parameterType="map">
+        UPDATE colaborador 
+        SET fotografia = #{foto} 
+        WHERE idColaborador = #{idColaborador}
+    </update>
+    <delete id="eliminar" parameterType="string">
+        DELETE FROM `fastpacket`.`colaborador`
+        WHERE idColaborador = #{idColaborador};
+    </delete>
+    <select id="obtenerFoto" parameterType="int" resultType="pojo.Colaborador" >
+        SELECT idColaborador, nombre, apellidoPaterno, apellidoMaterno, TO_BASE64(fotografia) as 'fotografiaBase64'
+        FROM colaborador 
+        WHERE idColaborador = #{idColaborador}
+    </select>
+    
+    <update id="asignar" parameterType="map">
+        UPDATE fastpacket.colaborador
+        SET idUnidad = #{idUnidad}
+        WHERE idColaborador = #{idColaborador}
+        AND idUnidad IS NULL;
+    </update>
+    <update id="cambiar" parameterType="map" >
+        UPDATE fastpacket.colaborador
+        SET idUnidad = #{idUnidad}
+        WHERE idColaborador =#{idColaborador};
+    </update>
+    <update id="desasignar" parameterType="int" >
+        UPDATE fastpacket.colaborador
+        SET idUnidad = NULL
+        WHERE idColaborador = #{idColaborador}; 
+    </update>
+    <select id="buscarColaboradorUnidad" resultType="int">
+        SELECT idColaborador
+        FROM fastpacket.colaborador
+        WHERE idUnidad = #{idUnidad}; 
+    </select>
+    <select id="buscarColaboradorCurp" resultType="int">
+        SELECT idColaborador
+        FROM fastpacket.colaborador
+        WHERE curp = #{curp};
+    </select>
+    
+    <!-- Consultar colaborador por nombre -->
+    <select id="buscarPorNombre" parameterType="string" resultType="pojo.Colaborador">
+        select `idColaborador`,
+        colaborador.nombre,
+        `apellidoPaterno`,
+        `apellidoMaterno`,
+        CONCAT(colaborador.nombre, ' ', colaborador.apellidoPaterno, ' ', colaborador.apellidoMaterno) AS nombreCompleto,
+        `curp`,
+        `correo`,
+        `numeroPersonal`,
+        `contrasena`,
+        `numeroLicencia`,
+        rol.idRol,rol.nombre as rol,
+        unidad.idUnidad, concat(unidad.marca,' ', unidad.modelo) as unidad from colaborador 
+        inner join rol on colaborador.idRol = rol.idRol
+        left join unidad on unidad.idUnidad = colaborador.idUnidad
+WHERE 
+    CONCAT(colaborador.nombre, ' ', colaborador.apellidoPaterno, ' ', colaborador.apellidoMaterno) 
+    LIKE CONCAT('%', #{nombre}, '%') 
+    OR colaborador.nombre LIKE CONCAT('%', #{nombre}, '%') 
+    OR colaborador.apellidoPaterno LIKE CONCAT('%', #{nombre}, '%') 
+    OR colaborador.apellidoMaterno LIKE CONCAT('%', #{nombre}, '%');
+
+    </select>
+
+    <!-- Consultar colaborador por número de personal -->
+    <select id="buscarPorNumeroPersonal" parameterType="string" resultType="pojo.Colaborador">
+      select `idColaborador`,
+        colaborador.nombre,
+        `apellidoPaterno`,
+        `apellidoMaterno`,
+        `curp`,
+        `correo`,
+        `numeroPersonal`,
+        `contrasena`,
+        `numeroLicencia`,
+        rol.idRol,rol.nombre as rol,
+        unidad.idUnidad, concat(unidad.marca,' ', unidad.modelo) as unidad from colaborador 
+        inner join rol on colaborador.idRol = rol.idRol
+        left join unidad on unidad.idUnidad = colaborador.idUnidad
+        WHERE 
+        colaborador.numeroPersonal = #{numeroPersonal};
+    </select>
+
+    <!-- Consultar colaborador por rol -->
+    <select id="buscarPorRol" parameterType="string" resultType="pojo.Colaborador">
+        select `idColaborador`,
+        colaborador.nombre,
+        `apellidoPaterno`,
+        `apellidoMaterno`,
+        `curp`,
+        `correo`,
+        `numeroPersonal`,
+        `contrasena`,
+        `numeroLicencia`,
+        rol.idRol,rol.nombre as rol,
+        unidad.idUnidad, concat(unidad.marca,' ', unidad.modelo) as unidad from colaborador 
+        inner join rol on colaborador.idRol = rol.idRol
+        left join unidad on unidad.idUnidad = colaborador.idUnidad
+        WHERE 
+        rol.nombre LIKE CONCAT('%', #{rol}, '%');
+    </select>
+    
+    <select id="conductores" resultType="pojo.Colaborador">
+   select `idColaborador`,
+        colaborador.nombre,
+        `apellidoPaterno`,
+        `apellidoMaterno`,
+        `curp`,
+        `correo`,
+        `numeroPersonal` from colaborador where idRol = 3; 
+    </select>
+    
+    <select id= "unidadesActivas" resultType="pojo.Unidad">
+        select * from unidad where activo =true;
+    </select>
+    
+    <select id="roles" resultType="pojo.Rol">
+        select* from rol
+    </select>
 </mapper>

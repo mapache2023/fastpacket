@@ -135,6 +135,21 @@ public static Mensaje eliminarPaquete(Integer idPaquete, Integer idEnvio) {
     return msj;
 }
 
+  // Método para obtener todos los clientes
+    public static List<Paquete> obtenerPaquetes() {
+        SqlSession conexionBD = MyBatisUtil.obtenerConexion();
+
+        if (conexionBD != null) {
+            try {
+                return conexionBD.selectList("paquete.obtenerPaquetes");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                conexionBD.close();
+            }
+        }
+        return null; // Devuelve null si ocurre un error
+    }
 
 
 }

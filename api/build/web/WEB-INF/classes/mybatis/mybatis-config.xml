@@ -27,7 +27,7 @@ and open the template in the editor.
         <mapper resource="mybatis/mapper/EnvioMapper.xml"/>
         <mapper resource="mybatis/mapper/PaqueteMapper.xml"/>
         <mapper resource="mybatis/mapper/UnidadMapper.xml"/>
-
+           <mapper resource="mybatis/mapper/EnviosEspecialesMapper.xml"/>
         
     </mappers>
 </configuration>

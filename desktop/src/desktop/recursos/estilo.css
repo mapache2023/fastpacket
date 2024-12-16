@@ -10,91 +10,143 @@ and open the template in the editor.
 
 
 
-/* Titulo */
-.titulo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
+.mainFxmlClass{
+   -fx-background-color: white;
+   
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI", Arial, sans-serif; /* Modern system font */
 }
 
-/* Butones */
-.boton {
-    background-color: #4CAF50; /* Green */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+.titulo-login{
+      -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C5F2D; /* Verde oscuro */
+}
+.texto-normal{
+  -fx-font-size: 16px;
+  -fx-text-fill: black;
+}
+.login-boton{
+  -fx-background-color: #2C5F2D; /* Verde oscuro */
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-padding: 10px;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-cursor: hand;
+}
+.login-boton:hover{
+  -fx-background-color: #3C8D35; /* Verde oscuro */
+}
+.boton-guardar{
+  -fx-background-color: #2C5F2D; /* Verde oscuro */
+ 
+  -fx-text-fill: #FFFFFF;
+  -fx-font-weight: bold;
+  -fx-background-radius: 5;
+  -fx-cursor: hand;
+}
+.boton-guardar:hover{
+  -fx-background-color: #3C8D35; /* Verde oscuro */
+  
+}
+.boton-editar{
+  -fx-background-color: #FFC107; /* Amarillo dorado */
+  -fx-text-fill: #FFFFFF;
+  -fx-font-weight: bold;
+  -fx-background-radius: 5;
+  -fx-cursor: hand;
+}
+.boton-editar:hover{
+  -fx-background-color: #FFD54F; /* Amarillo más claro */
+}
+.boton-elminar{
+  -fx-background-color: #D32F2F; /* Rojo */
+  -fx-text-fill: #FFFFFF;
+  -fx-font-weight: bold;
+  -fx-background-radius: 5;
+  -fx-cursor: hand;
+}
+.boton-elminar:hover{
+  -fx-background-color: #E57373; /* Rojo más claro */
+}
+.boton-especial{
+  -fx-background-color: #FFB300; /* Amarillo oscuro */
+  -fx-text-fill: #FFFFFF;
+  -fx-font-weight: bold;
+  -fx-background-radius: 5;
+  -fx-cursor: hand;
+}
+.boton-especial:hover{
+  -fx-background-color: #FFD54F; /* Amarillo más claro */
+}
+.encabezado{
+  -fx-background-color: #2e5412; /* Verde oscuro */
+  -fx-padding: 10;
+}
+.encabezado-titulo{
+  -fx-font-size: 14px;
+  -fx-text-fill: #FFFFFF;
+}
+.encabezado-texto-usuario{
+  -fx-font-size: 14px;
+  -fx-text-fill: #FFFFFF;
+}
+.titulo-secsion-formulario {
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #000000;
 }
 
-.boton:hover {
-    background-color: #45a049; /* Darker Green */
+.text-field, .combo-box {
+  -fx-border-color: #D3D3D3;
+  -fx-background-radius: 5;
+  -fx-border-radius: 5;
+  -fx-prompt-text-fill: #888888;
 }
-
-/* Text Fields */
-.text-field {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 300px;
-}
-
-/* Table Styles */
 .table-view {
-    width: 100%;
-    border-collapse: collapse;
+  -fx-border-color: #D3D3D3; /* Gris claro */
+  -fx-table-cell-border-color: transparent;
+}
+.table-view .column-header {
+  -fx-text-fill: #FFFFFF; /* Blanco */
+ 
+}
+.table-view .cell {
+  -fx-text-fill: #3f3f3f; /* Negro */
+  -fx-alignment: CENTER; /* Centrado */
+}
+.pie{
+  -fx-background-color: #2e5412; /* Verde oscuro */
+  -fx-text-fill: #FFFFFF;
+}
+.pie-texto{
+  -fx-font-size: 14px;
+  -fx-text-fill: #FFFFFF;
+}
+.botones-navegacion {
+  -fx-background-radius: 20;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: white;
+  -fx-cursor: hand;
+  -fx-background-color: #4CAF50; /* Verde para botones de navegación */
+  -fx-padding: 20;
 }
 
-.table-view th, .table-view td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+.botones-navegacion :hover {
+  -fx-background-color: #45a049; /* Efecto hover más oscuro */
 }
 
-.table-view th {
-    background-color: #f2f2f2;
-    color: #333;
+.boton-cerrar-sesion{
+  -fx-background-color: #FF5252; /* Rojo claro */
+  -fx-text-fill: #FFFFFF;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-background-radius: 5;
+  -fx-cursor: hand;
 }
-
-/* Text Area */
-.text-area {
-    padding: 10px;
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 700px;
-    height: 300px;
-    resize: none;
-}
-
-/* Background Images for Screens */
-#backgroundImage {
-    -fx-fit-width: true;
-    -fx-fit-height: true;
-}
-
-/* VBox and HBox */
-.vbox {
-    spacing: 20px;
-}
-
-.hbox {
-    spacing: 10px;
-}
-
-
-
-/* Icons */
-.icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
+.boton-cerrar-sesion:hover {
+  -fx-background-color: #FF867C; /* Rojo más claro en hover */
+} 

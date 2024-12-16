@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="enviosEspeciales">
+  
+    <!-- Consulta para obtener datos del envío con paquetes e historial -->
+    <select id="EnvioNumeroGuia" parameterType="String" resultMap="EnvioResultMap">
+        SELECT 
+        e.idEnvio,
+        e.numeroGuia,
+        CONCAT(e.calleOrigen, ' ', e.numeroOrigen, ', ', e.coloniaOrigen, ', ', e.codigoPostalOrigen, ', ', e.estadoOrigen, ', ', e.ciudadOrigen) AS origenDireccion,
+        CONCAT(e.calleDestino, ' ', e.numeroDestino, ', ', e.coloniaDestino, ', ', e.codigoPostalDestino, ', ', e.estadoDestino, ', ', e.ciudadDestino) AS destinoDireccion,
+        e.costo,
+        es.nombre AS "estadoActual",
+        e.idCliente,
+        e.idColaborador,
+        p.idPaquete,
+        p.descripcion,
+        p.peso,
+        p.alto,
+        p.ancho,
+        p.profundidad,
+        h.fechaCambio,
+        h.comentario,
+        est.nombre AS Estado,
+        CONCAT(c.nombre, ' ', c.apellidoPaterno, ' ', c.apellidoMaterno) AS colaborador,
+    
+        -- Información del conductor asignado
+        CONCAT(c1.nombre, ' ', c1.apellidoPaterno, ' ', c1.apellidoMaterno) AS conductor
+    
+        FROM 
+        envio e
+        LEFT JOIN 
+        paquete p ON e.idEnvio = p.idEnvio
+        LEFT JOIN 
+        historial h ON e.idEnvio = h.idEnvio
+        LEFT JOIN 
+        estatus es ON e.idEstatus = es.idEstatus
+        LEFT JOIN 
+        estatus est ON h.idEstatus = est.idEstatus
+        LEFT JOIN 
+        colaborador c ON h.idColaborador = c.idColaborador
+        LEFT JOIN 
+        colaborador c1 ON c1.idColaborador = e.idColaborador 
+
+        WHERE 
+        e.numeroGuia = #{numeroGuia}
+    </select>
+    <select id="EnvioColaborador" parameterType="String" resultMap="EnvioResultMap">
+        SELECT 
+        e.idEnvio,
+        e.numeroGuia,
+        CONCAT(e.calleOrigen, ' ', e.numeroOrigen, ', ', e.coloniaOrigen, ', ', e.codigoPostalOrigen, ', ', e.estadoOrigen, ', ', e.ciudadOrigen) AS origenDireccion,
+        CONCAT(e.calleDestino, ' ', e.numeroDestino, ', ', e.coloniaDestino, ', ', e.codigoPostalDestino, ', ', e.estadoDestino, ', ', e.ciudadDestino) AS destinoDireccion,
+        e.costo,
+        es.nombre AS "estadoActual",
+        e.idCliente,
+        e.idColaborador,
+        p.idPaquete,
+        p.descripcion,
+        p.peso,
+        p.alto,
+        p.ancho,
+        p.profundidad,
+        h.fechaCambio,
+        h.comentario,
+        est.nombre AS Estado,
+        CONCAT(c.nombre, ' ', c.apellidoPaterno, ' ', c.apellidoMaterno) AS colaborador,
+    
+        -- Información del conductor asignado
+        CONCAT(c1.nombre, ' ', c1.apellidoPaterno, ' ', c1.apellidoMaterno) AS conductor
+    
+        FROM 
+        envio e
+        LEFT JOIN 
+        paquete p ON e.idEnvio = p.idEnvio
+        LEFT JOIN 
+        historial h ON e.idEnvio = h.idEnvio
+        LEFT JOIN 
+        estatus es ON e.idEstatus = es.idEstatus
+        LEFT JOIN 
+        estatus est ON h.idEstatus = est.idEstatus
+        LEFT JOIN 
+        colaborador c ON h.idColaborador = c.idColaborador
+        LEFT JOIN 
+        colaborador c1 ON c1.idColaborador = e.idColaborador 
+
+        WHERE 
+        e.idColaborador = #{idColaborador}
+    </select>
+    <!-- ResultMap to map the results to Java objects -->
+    <resultMap id="EnvioResultMap" type="pojo.EnviosApp">
+        <id property="idEnvio" column="idEnvio"/>
+        <result property="origenDireccion" column="origenDireccion"/>
+        <result property="destinoDireccion" column="destinoDireccion"/>
+        <result property="numeroGuia" column="numeroGuia"/>
+        <result property="costo" column="costo"/>
+        <result property="conductor" column="conductor"/>
+        <result property="estado" column="estadoActual"/>
+        <result property="idCliente" column="idCliente"/>
+        <result property="idColaborador" column="idColaborador"/>
+
+   
+        
+        <collection property="paquetes" ofType="pojo.Paquete">
+            <id property="idPaquete" column="idPaquete"/>
+            <result property="descripcion" column="descripcion"/>
+            <result property="peso" column="peso"/>
+            <result property="alto" column="alto"/>
+            <result property="ancho" column="ancho"/>
+            <result property="profundidad" column="profundidad"/>
+        </collection>
+        
+        <collection property="cambios" ofType="pojo.Historial">
+            <result property="fechaCambio" column="fechaCambio"/>
+            <result property="comentario" column="comentario"/>
+            <result property="Estado" column="Estado"/>
+            <result property="colaborador" column="colaborador"/>
+        </collection>
+    </resultMap>
+    <select id="EnvioCliente" resultType ="pojo.Cliente" parameterType="string">
+       
+        SELECT CONCAT(cliente.nombre,' ',cliente.apellidoPaterno,' ',cliente.apellidoMaterno) as nombre, correo, telefono 
+        FROM fastpacket.cliente
+        WHERE idCliente = #{idCliente}
+    </select>
+    <update id="actualizarEstadoEnvio" parameterType="map">
+
+        UPDATE `fastpacket`.`envio`
+        SET `idEstatus` = #{idEstado} WHERE envio.idEnvio = #{idEnvio}
+    </update>
+    <insert id="agregarHistorial" parameterType="pojo.Historial">
+        INSERT INTO `fastpacket`.`historial`
+        (
+        `fechaCambio`,
+        `comentario`,
+        `idEnvio`,
+        `idColaborador`,
+        `idEstatus`
+        )
+        VALUES
+        (
+        NOW(),
+        #{comentario},
+        #{idEnvio},
+        #{idColaborador},
+        #{idEstado});
+    </insert>
+</mapper>
+

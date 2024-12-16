@@ -51,5 +51,8 @@
         WHERE idPaquete = #{idPaquete}
           AND idEnvio = #{idEnvio}
     </delete>
+    
+     <select id="obtenerPaquetes" resultType="pojo.Paquete">
+    SELECT * FROM paquete;
+</select>
 </mapper>
-
