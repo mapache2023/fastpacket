@@ -25,12 +25,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -41,7 +36,8 @@ import javafx.stage.Stage;
  * @author berna
  */
 public class FXMLAdminEnvioController implements Initializable, INotificacionCambio {
-
+    @FXML
+    public Label etiquetaColaborador;
     private ObservableList<Envio> envios;
     private Colaborador colaborador;
 
@@ -65,7 +61,7 @@ public class FXMLAdminEnvioController implements Initializable, INotificacionCam
     @FXML
     private TableColumn<Envio,String> tcDireccionOrigen;
     @FXML
-    private TableColumn<?, ?> tcDirreccionDestino;
+    private TableColumn<Envio,String> tcDirreccionDestino;
 
     /**
      * Initializes the controller class.
@@ -79,6 +75,7 @@ public class FXMLAdminEnvioController implements Initializable, INotificacionCam
         );
         cbEnvio.setItems(opcionesBusqueda);
         cbEnvio.getSelectionModel().selectFirst();
+        cbEnvio.setDisable(true);
     }
 
     private void configurarTabla() {
@@ -109,10 +106,10 @@ public class FXMLAdminEnvioController implements Initializable, INotificacionCam
             Parent vista = cargador.load();
             FXMLEnvioRegistroController controlador = cargador.getController();
             if (envio != null) {
-                controlador.inicializarValores(observador, envio);
+                controlador.inicializarValores(observador, envio,this.colaborador);
 
             } else {
-                controlador.inicializarValores(observador, null);
+                controlador.inicializarValores(observador, null,this.colaborador);
 
             }
             Scene escenarioFormualario = new Scene(vista);
@@ -192,6 +189,10 @@ public class FXMLAdminEnvioController implements Initializable, INotificacionCam
 
     void inicializarInformacion(Colaborador colaborador) {
         this.colaborador = colaborador;
+
+        String nombre = colaborador.getNombre() != null ? colaborador.getNombre() : "N/A";
+        String apellidoPaterno = colaborador.getApellidoPaterno() != null ? colaborador.getApellidoPaterno() : "";
+        etiquetaColaborador.setText( nombre + " " + apellidoPaterno);
     }
 
     @FXML
@@ -202,6 +203,32 @@ public class FXMLAdminEnvioController implements Initializable, INotificacionCam
         } else {
             Utilidades.mostrarAlertaSimple("Envio", "Por favor selecciona un envio", Alert.AlertType.WARNING);
         }
+    }
+
+    @FXML
+    private void cambiarEstatus(ActionEvent event) {
+        
+         Envio envioSeleccionado = tvEnvio.getSelectionModel().getSelectedItem();
+        if (envioSeleccionado != null) {
+             try {
+            Stage escenario = new Stage();
+            FXMLLoader cargador = new FXMLLoader(getClass().getResource("FXMLCambiarEstus.fxml"));
+            Parent vista = cargador.load();
+            FXMLCambiarEstusController controlador = cargador.getController();
+            controlador.inicializarValores(this.colaborador,this,envioSeleccionado);
+            Scene escenarioFormualario = new Scene(vista);
+            escenario.setScene(escenarioFormualario);
+            escenario.setTitle("Pantalla asignar conductor a un envio");
+            escenario.initModality(Modality.APPLICATION_MODAL);
+            escenario.showAndWait();
+        } catch (IOException ex) {
+            Utilidades.mostrarAlertaSimple("error", "error", Alert.AlertType.ERROR);
+        }
+        } else {
+            Utilidades.mostrarAlertaSimple("Envio", "Por favor selecciona un envio", Alert.AlertType.WARNING);
+        }
+          
+        
     }
 
 

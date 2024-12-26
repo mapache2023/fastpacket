@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="775.0" styleClass="mainFxmlClass" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLInicioController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="608.0" styleClass="mainFxmlClass" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLInicioController">
   <stylesheets>
         <URL value="@/desktop/recursos/estilo.css" />
     </stylesheets>
@@ -36,7 +36,7 @@
       
    </center>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="334.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
              <Button layoutX="6.0" layoutY="94.0" onAction="#irAcolab" prefHeight="18.0" prefWidth="201.0" styleClass="botones-navegacion" text="Colaboradores" />
             <ImageView fitHeight="71.0" fitWidth="92.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">

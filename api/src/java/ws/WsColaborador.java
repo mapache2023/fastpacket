@@ -160,7 +160,7 @@ public class WsColaborador {
         Colaborador request = gson.fromJson(json, Colaborador.class);
 
         // Desasignar la unidad del colaborador
-        msj = ImpColaborador.desasignarUnidad(request.getIdColaborador());
+        msj = ImpColaborador.desasignarUnidad(request.getIdUnidad());
 
         return msj;
     }

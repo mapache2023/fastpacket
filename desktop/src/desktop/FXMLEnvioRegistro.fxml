@@ -21,6 +21,16 @@
                   <Image url="@recursos/logo_horizontal.PNG" />
                </image>
             </ImageView>
+            <Label fx:id="etiquetaColaborador" layoutX="513.0" layoutY="26.0" text="ALVARO YAIR GARCIA MURRIETA" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="199.0" layoutY="26.0" text="-Envio" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane layoutY="697.0" prefHeight="33.0" prefWidth="735.0" styleClass="pie">
@@ -32,7 +42,7 @@
       <Label layoutX="199.0" layoutY="249.0" styleClass="texto-normal" text="Estado" />
       <Label layoutX="57.0" layoutY="249.0" styleClass="texto-normal" text="Ciudad" />
       <Label layoutX="218.0" layoutY="146.0" styleClass="texto-normal" text="Numero" />
-      <Label layoutX="56.0" layoutY="109.0" styleClass="texto-normal" text="Direccion de Origen">
+      <Label layoutX="56.0" layoutY="109.0" styleClass="titulo-secsion-formulario" text="Direccion de Origen">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -45,7 +55,7 @@
       <TextField fx:id="tfCodigoPOrigen" layoutX="523.0" layoutY="180.0" prefHeight="31.0" prefWidth="154.0" />
       <TextField fx:id="tfCiudadOrigen" layoutX="57.0" layoutY="275.0" prefHeight="31.0" prefWidth="122.0" />
       <TextField fx:id="tfEstadoOrigen" layoutX="199.0" layoutY="275.0" prefHeight="31.0" prefWidth="122.0" />
-      <Label layoutX="56.0" layoutY="340.0" styleClass="texto-normal" text="Direccion de Destino">
+      <Label layoutX="56.0" layoutY="340.0" styleClass="titulo-secsion-formulario" text="Direccion de Destino">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -68,7 +78,7 @@
       <TextField fx:id="tfCosto" layoutX="223.0" layoutY="569.0" prefHeight="31.0" prefWidth="122.0" />
       <Button fx:id="btnGuardar" layoutX="278.0" layoutY="642.0" mnemonicParsing="false" onAction="#guardar" prefHeight="29.0" prefWidth="83.0" styleClass="boton-guardar" text="Guadar" />
       <Button fx:id="btnEditar" layoutX="406.0" layoutY="642.0" mnemonicParsing="false" onAction="#editar" prefHeight="29.0" prefWidth="83.0" styleClass="boton-editar" text="Editar" />
-      <ComboBox fx:id="cbCliente" layoutX="385.0" layoutY="572.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbCliente" layoutX="385.0" layoutY="572.0" prefHeight="35.0" prefWidth="193.0" />
       <Label layoutX="388.0" layoutY="540.0" styleClass="texto-normal" text="Cliente" />
    </children>
 </AnchorPane>

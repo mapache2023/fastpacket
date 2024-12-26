@@ -30,7 +30,6 @@
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:visibility="gone"
                 android:indeterminate="true"/>
 
@@ -58,6 +57,16 @@
             android:textColor="@color/black"
             android:padding="8dp"
             android:layout_marginTop="16dp"/>
+    <Button
+        android:id="@+id/btn_envio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ir envios"
+        android:layout_gravity="center"
+        android:backgroundTint="#f0effa"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:layout_marginTop="16dp"/>
 
 
         <LinearLayout
@@ -134,7 +143,7 @@
         </LinearLayout>
     <View
         android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_height="0dp"
         android:layout_weight="1"/>
         <!-- Footer Section -->
         <TextView

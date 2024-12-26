@@ -17,6 +17,7 @@ import com.koushikdutta.ion.Ion
 import com.uv.myapplication.poko.Paquete
 import com.uv.myapplication.utilidades.Constante
 import android.content.Intent
+import com.uv.myapplication.poko.NombreConductor
 
 class MainActivity : AppCompatActivity(), NotificarClic {
 
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity(), NotificarClic {
         if (::colaborador.isInitialized) {
             consultarInformacionEnvio(colaborador.idColaborador)
             nombreCompleto = "${colaborador.nombre} ${colaborador.apellidoPaterno} ${colaborador.apellidoMaterno}"
-            binding.tvConductor.text = nombreCompleto.uppercase()
+            binding.tvConductor.text = nombreCompleto
         }
 
         // Acción del botón para editar el colaborador.
@@ -104,6 +105,7 @@ class MainActivity : AppCompatActivity(), NotificarClic {
             binding.recyclerEnvios.adapter = EnviosAdapter(listaEnvio, this,this,nombreCompleto)
         } else {
             binding.tvSinEnvios.visibility = View.VISIBLE
+            binding.recyclerEnvios.visibility = View.GONE
         }
     }
 

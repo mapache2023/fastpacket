@@ -44,12 +44,20 @@ class DetalleColaboradorActivity : AppCompatActivity() {
                 val intent = Intent(this@DetalleColaboradorActivity, EditarActiviy::class.java)
                 intent.putExtra("Colaborador", stringColaborador)
                 startActivity(intent)
-            }else{
+            } else {
                 Toast.makeText(this, "No hay colaborador", Toast.LENGTH_SHORT).show()
             }
         }
+        binding.btnEnvio.setOnClickListener {
+            if (colaborador != null) {
+                val gson = Gson()
+                val stringColaborador = gson.toJson(colaborador)
+                val intent = Intent(this@DetalleColaboradorActivity, MainActivity::class.java)
+                intent.putExtra("Colaborador", stringColaborador)
+                startActivity(intent)
+            }
         }
-
+    }
     private fun llenarDetalles(it: Colaborador) {
         binding.etNombreCompleto.text = "${it.nombre} ${it.apellidoPaterno} ${it.apellidoMaterno}".uppercase()
         binding.etNombre.text = "Nombre : ${it.nombre}"

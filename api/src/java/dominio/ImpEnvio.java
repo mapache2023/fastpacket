@@ -10,6 +10,7 @@ import java.util.List;
 import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import pojo.Envio;
+import pojo.Estatus;
 import pojo.Historial;
 import pojo.Mensaje;
 
@@ -20,10 +21,10 @@ public class ImpEnvio {
         SqlSession conexion = MyBatisUtil.obtenerConexion();
         if(conexion != null){
             try {
-                Integer envioExistente = conexion.selectOne("envio.consultar",envio.getNumeroGuia());
+                Envio envioExistente = conexion.selectOne("envio.consultar",envio.getNumeroGuia());
                  if (envioExistente != null) {
                     msj.setMensaje("Error: El Numero de guia ingresado ya se encuentra registrado.");
-                    
+                   msj.setError(Boolean.TRUE);
                     return msj;
                 }
                 int filasRegistro = conexion.insert("envio.registrar", envio);
@@ -151,5 +152,21 @@ public class ImpEnvio {
         }
         return msj;
     } 
+
+    public static List<Estatus> obtenerEstados() {
+        List<Estatus> estatuses = null;
+        
+        SqlSession conexion = MyBatisUtil.obtenerConexion();
+        
+        if(conexion != null){
+            try{
+                estatuses = conexion.selectList("envio.obtenerEstatus");
+            }catch(Exception e){
+                e.getMessage();
+            }
+        }
+        
+        return estatuses;
+    }
 
 }

@@ -3,7 +3,7 @@ const tablaPaquetes =document.getElementById("infoPaquete")
 const tablaCambios =document.getElementById("historialCambios")
 
 async function obtenerEnvios(numeroGuia) {
-    const infoEnvio = document.getElementById("infoEnvio");
+    const infoEnvio = document.getElementById("informacion-personal");
 	
 	
     const infoPaquete = document.getElementById("tbodyPaquetes");
@@ -20,11 +20,15 @@ async function obtenerEnvios(numeroGuia) {
         });
 
         if (respuesta.ok) {
-            const envio = await respuesta.json();
+            if(respuesta.status === 204){
+		alert("No se encontro el envio")
+		}else{
+		const envio = await respuesta.json();
             mostrarInfoEnvio(envio, infoEnvio);
             mostrarPaquete(envio, tbodyPaquetes);
             mostrarCambios(envio, tbodyCambios);
-        } else {
+		}			
+        }else {
             throw new Error(`Error al obtener los envíos: ${respuesta.status}`);
         }
     } catch (error) {
@@ -38,17 +42,18 @@ async function obtenerEnvios(numeroGuia) {
 function mostrarInfoEnvio(datosEnvio, infoEnvio) {
     infoEnvio.innerHTML = ''; // Limpiar la lista actual
     
-    if (!datosEnvio) {
+   if (!datosEnvio) {
         infoEnvio.innerHTML = '<p>No se encontró el envío.</p>';
     } else {
+        const estadoEnvio = datosEnvio.estado ? datosEnvio.estado : 'Estado no Disponible'; // Verifica si 'estado' está definido
+        
         const datos = `
             <tr><th>Conductor</th><td>${datosEnvio.conductor}</td></tr>
             <tr><th>Costo</th><td>${datosEnvio.costo}</td></tr>
             <tr><th>Origen</th><td>${datosEnvio.origenDireccion}</td></tr>
             <tr><th>Destino</th><td>${datosEnvio.destinoDireccion}</td></tr>
-            <tr><th>Estado del Envío</th><td>${datosEnvio.estado}</td></tr>
+            <tr><th>Estado del Envío</th><td>${estadoEnvio}</td></tr>
             <tr><th>Número de Guía</th><td>${datosEnvio.numeroGuia}</td></tr>
-            
         `;
         infoEnvio.innerHTML = datos;
     }

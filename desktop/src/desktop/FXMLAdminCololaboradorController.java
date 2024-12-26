@@ -1,6 +1,8 @@
 package desktop;
 
 import desktop.interfaz.INotificacionCambio;
+import desktop.modelo.pojo.Rol;
+import desktop.modelo.pojo.Unidad;
 import desktop.utilidades.Utilidades;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,18 +35,18 @@ public class FXMLAdminCololaboradorController implements Initializable, INotific
     private Colaborador colaborador;
 
     // Componentes de la interfaz
-    @FXML private TableColumn<?, ?> tcNumeroPersonal;
-    @FXML private TableColumn<?, ?> tcRol;
-    @FXML private TableColumn<?, ?> tcCorreo;
+    @FXML private TableColumn<Colaborador,String> tcNumeroPersonal;
+    @FXML private TableColumn<Colaborador, Rol> tcRol;
+    @FXML private TableColumn<Colaborador,String> tcCorreo;
     @FXML private ComboBox<String> cbBusqueda;
-    @FXML private TableColumn<?, ?> tcNombre;
-    @FXML private TableColumn<?, ?> tcNulic;
+    @FXML private TableColumn<Colaborador, String> tcNombre;
+    @FXML private TableColumn<Colaborador, String> tcNulic;
     @FXML private TextField tfBusquda;
-    @FXML private TableColumn<?, ?> tcCurp;
-    @FXML private TableColumn<?, ?> tcUnidad;
-    @FXML private TableColumn<?, ?> tcApellidoP;
+    @FXML private TableColumn<Colaborador,String> tcCurp;
+    @FXML private TableColumn<Colaborador, Unidad> tcUnidad;
+    @FXML private TableColumn<Colaborador,String > tcApellidoP;
     @FXML private Label lColaborador;
-    @FXML private TableColumn<?, ?> tcApellidoM;
+    @FXML private TableColumn<Colaborador, String> tcApellidoM;
     @FXML private TableView<Colaborador> tvColaborador;
 
     private ObservableList<Colaborador> listaColaboradores;
@@ -233,12 +235,13 @@ public class FXMLAdminCololaboradorController implements Initializable, INotific
 
             // Obtener el controlador del formulario
             FXMLFormularioColaboradorController controladorFormulario = loader.getController();
+            controladorFormulario.lColaborador.setText(this.colaborador.getNombre()+" "+ this.colaborador.getApellidoPaterno());
             if (colaborador != null) {
-                controladorFormulario.lColaborador.setText("Editar Colaborador");
+
                 controladorFormulario.btnAccion.setText("Editar");
                 controladorFormulario.inicializaInformacion(colaborador, this);
             } else {
-                controladorFormulario.lColaborador.setText("Agregar Colaborador");
+
                 controladorFormulario.btnAccion.setText("Agregar");
                 controladorFormulario.inicializaInformacion(null, this);
             }

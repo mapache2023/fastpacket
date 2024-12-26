@@ -12,6 +12,7 @@ import com.koushikdutta.ion.Ion
 import com.uv.myapplication.databinding.ActivityDetalleEnvioBinding
 import com.uv.myapplication.poko.Cliente
 import com.uv.myapplication.poko.Envio
+import com.uv.myapplication.poko.NombreConductor
 import com.uv.myapplication.utilidades.Constante
 
 class DetalleEnvioActivity : AppCompatActivity() {
@@ -39,7 +40,7 @@ class DetalleEnvioActivity : AppCompatActivity() {
 
         val nombreColaborador = intent.getStringExtra("nombreColaborador")
         if (!nombreColaborador.isNullOrEmpty()) {
-            binding.tvConductor.text = nombreColaborador.uppercase()
+
         }
 
         // Obtener el JSON del envío desde el Intent

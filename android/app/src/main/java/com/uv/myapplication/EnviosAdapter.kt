@@ -51,14 +51,18 @@ class EnviosAdapter(
         // Asignar los valores a los TextViews
         holder.tvGuia.text = "Numero de Guia: ${envio.numeroGuia}"
         holder.tvDireccion.text = "Direccion de destino: ${envio.destinoDireccion}"
-        holder.tvEstatus.text = "Estado: ${envio.estado}"
+
 
         // Cambiar el color del estado según el valor de 'estado'
-        when (envio.estado) {
-            "Cancelado", "Detenido" -> holder.tvEstatus.setTextColor(Color.RED) // Si está cancelado o detenido, mostrar en rojo
-            "Entregado" -> holder.tvEstatus.setTextColor(Color.GREEN) // Si está entregado, mostrar en verde
-            else -> holder.tvEstatus.setTextColor(Color.YELLOW) // Para otros estados, mostrar en amarillo
-        }
+       if(!envio.estado.isNullOrEmpty()){
+           holder.tvEstatus.text = "Estado: ${envio.estado}"
+           when (envio.estado) {
+               "Cancelado", "Detenido" -> holder.tvEstatus.setTextColor(Color.RED) // Si está cancelado o detenido, mostrar en rojo
+               "Entregado" -> holder.tvEstatus.setTextColor(Color.GREEN) // Si está entregado, mostrar en verde
+               else -> holder.tvEstatus.setTextColor(Color.YELLOW) // Para otros estados, mostrar en amarillo
+           }
+       }
+
 
         // Configurar el clic sobre el CardView para notificar la selección del ítem
         holder.cardItem.setOnClickListener {

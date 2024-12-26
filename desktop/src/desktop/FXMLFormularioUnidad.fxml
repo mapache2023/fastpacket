@@ -21,6 +21,16 @@
                   <Image url="@recursos/logo_horizontal.PNG" />
                </image>
             </ImageView>
+            <Label fx:id="etiquetaColaborador" layoutX="555.0" layoutY="23.0" text="Alvaro Yair garcua murrieta" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="186.0" layoutY="23.0" text="-Unidad" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane layoutY="426.0" prefHeight="31.0" prefWidth="737.0" styleClass="pie">
@@ -45,7 +55,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="318.0" layoutY="378.0" mnemonicParsing="false" onAction="#irEditar" prefHeight="29.0" prefWidth="80.0" styleClass="boton-editar" text="Editar" />
-      <Button layoutX="224.0" layoutY="377.0" mnemonicParsing="false" onAction="#btnGuardar" styleClass="boton-guardar" text="Guardar" />
+      <Button fx:id="btnEditar" layoutX="318.0" layoutY="378.0" mnemonicParsing="false" onAction="#irEditar" prefHeight="29.0" prefWidth="80.0" styleClass="boton-editar" text="Editar" />
+      <Button fx:id="btnGuardar" layoutX="224.0" layoutY="377.0" mnemonicParsing="false" onAction="#irGuardar" styleClass="boton-guardar" text="Guardar" />
    </children>
 </AnchorPane>

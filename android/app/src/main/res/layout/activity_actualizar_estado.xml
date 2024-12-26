@@ -31,16 +31,6 @@
             android:layout_height="1dp"
             android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/tv_conductor"
-            android:layout_width="100dp"
-            android:layout_height="48dp"
-            android:text="GARCIA LOPEZ PEDRO"
-            android:layout_gravity="center_vertical"
-            android:clickable="true"
-            android:focusable="true"
-            android:textColor="#000000"
-            />
     </LinearLayout>
 
     <!-- Título -->
@@ -60,7 +50,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="25dp"
-        android:layout_marginLeft="5dp">
+        android:layout_marginStart="5dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,7 +59,8 @@
             android:text="Estado actual:"
             android:textColor="#333333"
             android:layout_gravity="center_vertical"
-            android:paddingEnd="8dp" />
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"/>
 
         <Spinner
             android:layout_width="wrap_content"
@@ -113,6 +104,14 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
       />
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 
     <!-- Barra de separación al final -->
     <View

@@ -117,7 +117,7 @@ private boolean activo;
 
     @Override
     public String toString() {
-        return marca + modelo;
+        return  marca + modelo;
     }
 
 }

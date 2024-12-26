@@ -176,6 +176,8 @@ void irAPaquete(ActionEvent evento) {
             //     FXMLAdminUnidadController controladorVista = cargadorVista.getController();
             //     controladorVista.inicializarInformacion(this.unidad);
             // Crear la escena y la ventana para la administración de colaboradores
+            FXMLAdminUnidadController controller = cargadorVista.getController();
+            controller.inicializarInformacion(this.colaborador);
             Scene escenaAdmin = new Scene(vista);
             Stage ventanaAdmin = new Stage();
             ventanaAdmin.setScene(escenaAdmin);

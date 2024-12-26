@@ -11,6 +11,7 @@ import desktop.modelo.dao.EnviosDAO;
 import desktop.modelo.dao.UnidadDAO;
 import desktop.modelo.pojo.Colaborador;
 import desktop.modelo.pojo.Envio;
+import desktop.modelo.pojo.Estatus;
 import desktop.modelo.pojo.Mensaje;
 import desktop.utilidades.Utilidades;
 import java.net.URL;
@@ -92,11 +93,25 @@ public class FXMLAsignarCoductorEnvioController implements Initializable {
 
     void inicializarValores(INotificacionCambio observador, Envio envio) {
         this.envio = envio;
+        this.observador= observador;
+          // Mostrar el rol del colaborador si está asignado
+        if (envio.getIdColaborador() !=null) {
+            for (Colaborador colaborador : cbConductores.getItems()) {
+                if (colaborador.getIdColaborador() == envio.getIdColaborador()) {
+                    cbConductores.setValue(colaborador);
+                    break;
+                }
+            }
+        }
         
     }
  private void cerrarVentana() {
        Stage stage = (Stage) cbConductores.getScene().getWindow();
         stage.close(); // Cerrar la ventana
+    }
+
+    void inicializarValores(Colaborador colaborador, FXMLAdminEnvioController aThis, Integer idEnvio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

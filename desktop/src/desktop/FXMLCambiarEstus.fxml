@@ -1,25 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import java.net.*?>
-<?import java.util.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="235.0" prefWidth="244.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="desktop.FXMLCambiarEstusController">
+<AnchorPane id="AnchorPane" prefHeight="322.0" prefWidth="224.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLCambiarEstusController">
+    
+    <!-- Reference to external stylesheet -->
     <stylesheets>
         <URL value="@/desktop/recursos/estilo.css" />
     </stylesheets>
-   <children>
-      <ComboBox layoutX="50.0" layoutY="103.0" prefWidth="150.0" />
-      <Label layoutX="50.0" layoutY="81.0" text="Estatus" />
-      <Label layoutX="64.0" layoutY="33.0" styleClass="titulo-secsion-formulario" text="Cambiar estatus">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Button layoutX="83.0" layoutY="173.0" mnemonicParsing="false" styleClass="boton-especial" text="Button" />
-   </children>
+    
+    <children>
+        <!-- Title label styled with title class -->
+        <Label layoutX="64.0" layoutY="33.0" styleClass="titulo-secsion-formulario" text="Cambiar estatus">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        
+        <!-- Status label with normal text style -->
+        <Label layoutX="29.0" layoutY="88.0" styleClass="texto-normal" text="Estatus" />
+        
+        <!-- ComboBox with added style class for better appearance -->
+        <ComboBox fx:id="cbEstatus" layoutX="29.0" layoutY="126.0" prefWidth="150.0" styleClass="combo-box" />
+        
+        <!-- Button styled with the 'boton-especial' class from CSS -->
+        <Button layoutX="86.0" layoutY="249.0" mnemonicParsing="false" onAction="#btncambiar" styleClass="boton-especial" text="Cambiar" />
+      <Pane layoutY="-2.0" prefHeight="67.0" prefWidth="239.0" styleClass="encabezado">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="173.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@recursos/logo_horizontal.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="293.0" prefHeight="29.0" prefWidth="239.0" styleClass="pie">
+         <children>
+            <Label layoutX="90.0" layoutY="5.0" styleClass="pie-texto" text="Fast-Packet" />
+         </children>
+      </Pane>
+      <Label fx:id="lcolaborador" layoutX="9.0" layoutY="192.0" text="EtiquetaColaborador" />
+      <Label fx:id="lTiempo" layoutX="9.0" layoutY="217.0" text="lTempo" />
+    </children>
 </AnchorPane>

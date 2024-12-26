@@ -11,11 +11,6 @@ package desktop.modelo.pojo;
  */
 public class Tipo {
 
-    @Override
-    public String toString() {
-        return nombre;
-    }
-    
     Integer idTipo;
     String nombre;
     public Tipo(){}
@@ -40,5 +35,9 @@ public class Tipo {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    @Override
+    public String toString() {
+        return  nombre ;
+    }
 }

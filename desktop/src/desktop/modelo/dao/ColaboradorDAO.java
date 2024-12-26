@@ -111,7 +111,7 @@ public class ColaboradorDAO {
         String parametros = String.format("idColaborador=%s", idColaborador);
 
         // Enviar solicitud para eliminar al colaborador
-        RespuestaHTTP respuesta = ConexionWs.peticionDELETE(url, parametros);
+        RespuestaHTTP respuesta = ConexionWs.peticionDELETEPForm(url, parametros);
 
         if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
             Gson gson = new Gson();

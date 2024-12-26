@@ -9,10 +9,7 @@ import desktop.interfaz.INotificacionCambio;
 import desktop.modelo.dao.ClienteDAO;
 import desktop.modelo.dao.ColaboradorDAO;
 import desktop.modelo.dao.EnviosDAO;
-import desktop.modelo.pojo.Cliente;
-import desktop.modelo.pojo.Envio;
-import desktop.modelo.pojo.Mensaje;
-import desktop.modelo.pojo.Rol;
+import desktop.modelo.pojo.*;
 import desktop.utilidades.Utilidades;
 import java.net.URL;
 import java.util.List;
@@ -23,10 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
@@ -36,7 +30,9 @@ import javafx.stage.Stage;
  * @author berna
  */
 public class FXMLEnvioRegistroController implements Initializable {
-
+    private Colaborador colaborador;
+    @FXML
+    public Label etiquetaColaborador;
     @FXML
     private TextField tfCalleOrigen;
     @FXML
@@ -174,18 +170,21 @@ guardarEnvio(envio);
             tfciudadDestino.getText().isEmpty() ||
             tfCosto.getText().isEmpty() ||
             cbCliente.getValue() == null) {
-            Utilidades.mostrarAlertaSimple("Error", "Por favor, completa todos los campos obligatorios.", AlertType.ERROR);
+            Utilidades.mostrarAlertaSimple("Error", "Por favor, completa todos los camposs.", AlertType.ERROR);
             return false;
         }
-
+        if(!esNumero(tfNumeroOrigen.getText()) || !esNumero(tfnumeroDestino.getText())){
+            Utilidades.mostrarAlertaSimple("Error", "El Numero de direccion  debe ser un número válido.", AlertType.ERROR);
+            return false;
+        }
      
-        if (!esNumeroEntero(tfCosto.getText())) {
+        if (!esNumero(tfCosto.getText())) {
             Utilidades.mostrarAlertaSimple("Error", "El costo debe ser un número válido.", AlertType.ERROR);
             return false;
         }
 
         
-        if (!esNumeroEntero(tfCodigoPOrigen.getText()) || !esNumeroEntero(tfCodigoPDestino.getText())) {
+        if (!esNumero(tfCodigoPOrigen.getText()) || !esNumero(tfCodigoPDestino.getText())) {
             Utilidades.mostrarAlertaSimple("Error", "Los códigos postales deben ser números enteros.", AlertType.ERROR);
             return false;
         }
@@ -193,7 +192,7 @@ guardarEnvio(envio);
         return true;
     }
 
-    void inicializarValores(INotificacionCambio observador, Envio envio) {
+    void inicializarValores(INotificacionCambio observador, Envio envio, Colaborador colaborador) {
         this.observador = observador;
 cargarCliente();
         if (envio != null) {
@@ -226,7 +225,11 @@ cargarCliente();
         else {
             btnEditar.setVisible(false);
         }
-        
+        this.colaborador = colaborador;
+
+        String nombre = colaborador.getNombre() != null ? colaborador.getNombre() : "N/A";
+        String apellidoPaterno = colaborador.getApellidoPaterno() != null ? colaborador.getApellidoPaterno() : "";
+        etiquetaColaborador.setText( nombre + " " + apellidoPaterno);
     }
 
     private void cargarCliente() {
@@ -235,9 +238,9 @@ cargarCliente();
         clientes.addAll(info);
         cbCliente.setItems(clientes);
     }
- private boolean esNumeroEntero(String texto) {
+ private boolean esNumero(String texto) {
         try {
-            Integer.parseInt(texto);
+            Double.parseDouble(texto);
             return true;
         } catch (NumberFormatException e) {
             return false;

@@ -2,6 +2,7 @@ package com.uv.myapplication
 
 import android.R
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -19,8 +20,10 @@ import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import com.uv.myapplication.poko.NombreConductor
 import java.io.ByteArrayOutputStream
 
 class EditarActiviy : AppCompatActivity() {
@@ -48,6 +51,7 @@ class EditarActiviy : AppCompatActivity() {
 
         // Desactivar la edición de los campos de "Número Personal" y "Rol"
         binding.etNumeroPersonal.isEnabled = false
+        binding.layoutNumeroPersonal.isEnabled = false
         binding.spRol.isEnabled = false
 
         // Configurar el Spinner con los roles disponibles
@@ -70,6 +74,7 @@ class EditarActiviy : AppCompatActivity() {
                 colaborador!!.curp = binding.etCurp.text.toString()
                 colaborador!!.correo = binding.etEmail.text.toString()
                 colaborador!!.contrasena = binding.etContrasena.text.toString()
+                colaborador!!.numeroLicencia = binding.etNumeroLicencia.text.toString()
                 actualizarInformacion(colaborador!!)
             }
 
@@ -104,6 +109,11 @@ class EditarActiviy : AppCompatActivity() {
             binding.etContrasena.error = "Campo requerido"
             camposValidos = false
         }
+
+        if(binding.etNumeroLicencia.text.toString().isEmpty()){
+            binding.etNumeroLicencia.error = "Campo requerido"
+            camposValidos = false
+        }
         return camposValidos
     }
 
@@ -116,6 +126,7 @@ class EditarActiviy : AppCompatActivity() {
         binding.etEmail.setText(colaborador.correo)
         binding.etContrasena.setText(colaborador.contrasena)
         binding.etNumeroPersonal.setText(colaborador.numeroPersonal)
+        binding.etNumeroLicencia.setText(colaborador.numeroLicencia)
 
         // Establecer el rol en el Spinner
         roles.indexOf(colaborador.rol).takeIf { it >= 0 }?.let {
@@ -149,6 +160,7 @@ class EditarActiviy : AppCompatActivity() {
         val msj: Mensaje = gson.fromJson(result, Mensaje::class.java)
         Toast.makeText(this@EditarActiviy, msj.mensaje, Toast.LENGTH_LONG).show()
         if (!msj.error) {
+            NombreConductor.usuario = {"${colaborador!!.nombre} ${colaborador!!.apellidoPaterno} ${colaborador!!.apellidoMaterno}"}.toString()
             val gson = Gson()
             val stringColaborador = gson.toJson(colaborador)
             val intent = Intent(this@EditarActiviy, DetalleColaboradorActivity::class.java)

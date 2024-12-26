@@ -226,7 +226,7 @@ public class FXMLFormularioColaboradorController implements Initializable {
         this.colaborador = colaborador;
         this.observador = observador;
         cargarRoles();
-
+        tfNulic.setDisable(true);
         if (colaborador != null) {
             cargarDatos();
             cbRol.setDisable(true);
@@ -329,6 +329,14 @@ public class FXMLFormularioColaboradorController implements Initializable {
         }
     }
 
+    if(tfAm.getText().isEmpty()){
+        Utilidades.mostrarAlertaSimple("Error","El Apellido es obligatorio", Alert.AlertType.ERROR);
+        return false;
+    }
+    if(tfCurp.getText().isEmpty()){
+        Utilidades.mostrarAlertaSimple("Error","El curp es obligatorio", Alert.AlertType.ERROR);
+        return false;
+    }
     return true;
 }
 
@@ -348,6 +356,8 @@ private boolean validarCorreo(String correo) {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        tfNulic.setDisable(false);
+                    lNuLic.setDisable(false); // Mostrar el campo "Número de Licencia"
         // Listener para mostrar u ocultar el campo de "Número de Licencia" dependiendo del rol seleccionado
         cbRol.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
             if (newValue != null) {

@@ -101,15 +101,15 @@ public class ImpUnidad {
         return respuesta;
     }
      
-      public static Unidad buscarUnidadMarca(String marca){
-        Unidad respuesta = null;
+      public static List<Unidad> buscarUnidadMarca(String marca){
+        List<Unidad> respuesta = null;
         SqlSession conexion = MyBatisUtil.obtenerConexion();
 
         if(conexion != null){
             try {
                 HashMap<String, String> parametros = new HashMap<>();
                 parametros.put("marca", marca);
-                respuesta = conexion.selectOne("unidad.buscarUnidadMarca", parametros);
+                respuesta = conexion.selectList("unidad.buscarUnidadMarca", parametros);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -134,17 +134,24 @@ public class ImpUnidad {
     }
     
     
-      public static Unidad darDeBaja(String idUnidad, String motivo){
-        Unidad mensaje = null;
+      public static Mensaje darDeBaja(Integer idUnidad, String motivo){
+        Mensaje mensaje = new Mensaje();
         SqlSession conexion = MyBatisUtil.obtenerConexion();
-        
+        mensaje.setError(false);
         if(conexion != null){
             try {
                 HashMap<String, Object> parametros = new HashMap<>();
                 parametros.put("idUnidad", idUnidad);
                 parametros.put("motivo", motivo);
                
-                mensaje = conexion.selectOne("unidad.bajaUnidad",parametros);
+                Integer filas = conexion.update("unidad.bajaUnidad",parametros);
+                 conexion.commit();
+                if (filas>0) {
+                    mensaje.setContenido("se dio de baja con exito");
+                }else{
+                    mensaje.setContenido("eror no se dio de baja");
+                    mensaje.setError(Boolean.TRUE);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

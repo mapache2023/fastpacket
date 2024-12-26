@@ -112,18 +112,19 @@ public class UnidadDAO {
         return unidad;
     }
      
-    public static Unidad buscarPorMarca(String marca) {
-        Unidad unidad = null;
+    public static List<Unidad> buscarPorMarca(String marca) {
+        List<Unidad> unidades = null;
         String url = Constantes.URI_WS + "unidad/buscar-marca/" + marca;
 
         RespuestaHTTP respuesta = ConexionWs.peticionGET(url);
 
         if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
             Gson gson = new Gson();
-            unidad = gson.fromJson(respuesta.getContenido(), Unidad.class);
+            Type tipoLista = new TypeToken<List<Unidad>>(){}.getType();
+            unidades = gson.fromJson(respuesta.getContenido(),tipoLista);
         }
 
-        return unidad;
+        return unidades;
     }
      
     public static Unidad buscarPorNumero(String numero) {
@@ -156,6 +157,44 @@ public class UnidadDAO {
         }
     return conductores;
     }
-    
+
+    public static Mensaje editarUnidad(Unidad unidad) {
+         Mensaje msj = new Mensaje();
+        String url = Constantes.URI_WS+"unidad/editar";
+        Gson gson = new Gson();
+        try{
+            String paramentros = gson.toJson(unidad); 
+            RespuestaHTTP respuesta = ConexionWs.peticionPUTjson(url, paramentros);
+            if(respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK){
+                msj = gson.fromJson(respuesta.getContenido(), Mensaje.class);
+            }else{
+                msj.setError(true);
+                msj.setMensaje(respuesta.getContenido());
+            }
+        }catch(Exception e){
+            msj.setError(true);
+            msj.setMensaje(e.getMessage());
+        }
+        return msj;
+    }
+     public static Mensaje darBaja(Unidad unidad) {
+         Mensaje msj = new Mensaje();
+        String url = Constantes.URI_WS+"unidad/baja";
+        Gson gson = new Gson();
+        try{
+           String parametros = String.format("idUnidad=%s&motivo=%s", unidad.getIdUnidad(), unidad.getMotivo());
+            RespuestaHTTP respuesta = ConexionWs.peticionPUT(url, parametros);
+            if(respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK){
+                msj = gson.fromJson(respuesta.getContenido(), Mensaje.class);
+            }else{
+                msj.setError(true);
+                msj.setMensaje(respuesta.getContenido());
+            }
+        }catch(Exception e){
+            msj.setError(true);
+            msj.setMensaje(e.getMessage());
+        }
+        return msj;
+    }
 
 }

@@ -20,9 +20,9 @@
             <Text fill="#2c5f2d" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo-login" text="Fast-Packet" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="texto-normal" text="inicio de sesion" />
             <TextField fx:id="tfNumeroPersonal" prefHeight="55.0" prefWidth="351.0" promptText="Numero de personal" />
-               <Label fx:id="lbErrorPersonal" />
+               <Label fx:id="lbErrorPersonal" textFill="RED" />
             <PasswordField fx:id="tfContrasena" prefHeight="51.0" prefWidth="373.0" promptText="Contraseña" />
-                 <Label fx:id="lbErrorPassword" />
+                 <Label fx:id="lbErrorPassword" textFill="RED" />
               <Button onAction="#btnLogin" prefHeight="50.0" prefWidth="117.0" styleClass="login-boton" text="Iniciar sesion" />
           </children>
        </VBox>

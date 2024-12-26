@@ -4,31 +4,37 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
 
-<AnchorPane prefHeight="217.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.AsignarUnidad">
+<AnchorPane prefHeight="311.0" prefWidth="369.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.AsignarUnidad">
+   
+    
+    <stylesheets>
+        <URL value="@/desktop/recursos/estilo.css" />
+    </stylesheets>
    <children>
-       <!-- Título -->
-       <Label layoutX="50" layoutY="20" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Asignar o Cambiar Unidad" />
-   
-       <!-- Campo para mostrar nombre del colaborador -->
-       <Label layoutX="50" layoutY="60" text="Colaborador:" />
-       <Label fx:id="lColaborador" layoutX="150" layoutY="60" style="-fx-font-weight: bold;" />
-   
-       <!-- ComboBox para seleccionar la unidad -->
-       <Label layoutX="33.0" layoutY="104.0" text="Seleccionar Unidad:" />
-       <ComboBox fx:id="cbUnidad" layoutX="150" layoutY="100" prefHeight="25.0" prefWidth="142.0" />
-   
-       <!-- Botones -->
-       <Button fx:id="btnAsignar" layoutX="50" layoutY="150" onAction="#asignarUnidad" text="Asignar Unidad" />
-       <Button fx:id="btnCancelar" layoutX="200" layoutY="150" onAction="#cancelar" text="Cancelar" />
-   
-       <!-- Mensajes de error -->
-       <Label fx:id="lMensajeError" layoutX="50" layoutY="200" style="-fx-text-fill: red;" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+      <Pane prefHeight="64.0" prefWidth="380.0" styleClass="encabezado">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="173.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@recursos/logo_horizontal.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="-5.0" layoutY="282.0" prefHeight="29.0" prefWidth="385.0" styleClass="pie">
+         <children>
+            <Label layoutX="159.0" layoutY="7.0" styleClass="pie-texto" text="Fast-Packet" />
+         </children>
+      </Pane>
+      <Label layoutX="64.0" layoutY="105.0" text="Seleccionar Unidad:" />
+       <ComboBox fx:id="cbUnidad" layoutX="64.0" layoutY="122.0" prefHeight="25.0" prefWidth="142.0" />
+          <Button fx:id="btnAsignar" layoutX="147.0" layoutY="229.0" onAction="#asignarUnidad" text="Asignar Unidad" />
+
+       <ImageView fitHeight="93.0" fitWidth="135.0" layoutX="233.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@recursos/imagen_perfil.jpg" />
+            <Image url="@recursos/reparacion-de-automoviles.png" />
          </image>
       </ImageView>
    </children>
-
 </AnchorPane>

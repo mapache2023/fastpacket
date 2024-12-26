@@ -14,6 +14,7 @@ import com.uv.myapplication.databinding.ActivityActualizarEstadoBinding
 import com.uv.myapplication.poko.Envio
 import com.uv.myapplication.poko.Historial
 import com.uv.myapplication.poko.Mensaje
+import com.uv.myapplication.poko.NombreConductor
 import com.uv.myapplication.utilidades.Constante
 
 class ActualizarEstado : AppCompatActivity() {
@@ -37,7 +38,7 @@ class ActualizarEstado : AppCompatActivity() {
         setContentView(binding.root) // Establecer la vista de la actividad
         val nombreColaborador = intent.getStringExtra("nombreColaborador")
         if (!nombreColaborador.isNullOrEmpty()) {
-            binding.tvConductor.text = nombreColaborador.uppercase()
+
         }
         // Mostrar el estado actual del envío en la interfaz
         binding.tvEstado.text = "Estado actual: "
@@ -106,6 +107,7 @@ class ActualizarEstado : AppCompatActivity() {
     }
 
     private fun enviarHistorial(jsonHistorial: String) {
+        binding.progressBar.visibility = View.VISIBLE // Mostrar la barra de progreso
         // Enviar la solicitud para actualizar el estado del envío
         Ion.with(this@ActualizarEstado)
             .load("POST", "${Constante().URL_WS}enviosEspeciales/app/cambios") // URL del servicio
@@ -116,6 +118,7 @@ class ActualizarEstado : AppCompatActivity() {
                 if (e == null && result != null) {
                 Log.d("Respuesta", result)
                 verificarResultadoEdicion(result) // Si la respuesta es exitosa, verificar el resultado
+                    binding.progressBar.visibility = View.GONE // Ocultar la barra de progreso
                 } else {
                     // Si ocurre un error en la solicitud, mostrar un mensaje
                     Toast.makeText(this@ActualizarEstado, "Error al actualizar la información.", Toast.LENGTH_LONG).show()

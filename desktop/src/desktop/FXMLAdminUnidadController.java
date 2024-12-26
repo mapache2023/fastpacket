@@ -6,12 +6,17 @@
 package desktop;
 
 import desktop.interfaz.INotificacionCambio;
+import desktop.modelo.dao.ColaboradorDAO;
 import desktop.modelo.dao.UnidadDAO;
+import desktop.modelo.pojo.Colaborador;
+import desktop.modelo.pojo.Mensaje;
+import desktop.modelo.pojo.Tipo;
 import desktop.modelo.pojo.Unidad;
 import desktop.utilidades.Utilidades;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,14 +26,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import static desktop.utilidades.Utilidades.mostrarAlertaConfirmacion;
 
 /**
  * FXML Controller class
@@ -40,25 +43,37 @@ public class FXMLAdminUnidadController implements Initializable, INotificacionCa
     private ObservableList<Unidad> unidades;
     
  //   private Unidad unidadess;
+    @FXML
+    private Label etiquetaColaborador;
+ 
+    private Colaborador colaborador;
+    @FXML
+    private TableColumn<Unidad, String> tcIdentificacion;
 
     @FXML
-    private TableColumn<?, ?> tcMarca;
+    private TableColumn<Unidad,String> tcMarca;
+
     @FXML
-    private TableColumn<?, ?> tcModelo;
+    private TableColumn<Unidad, String> tcModelo;
+
     @FXML
-    private TableColumn<?, ?> tcAño;
+    private TableColumn<Unidad, Tipo> tcTipo;
+
     @FXML
-    private TableColumn<?, ?> tcTipo;
+    private TableColumn<Unidad,String> tcVin;
+
     @FXML
-    private TableColumn<?, ?> tcIdentificacion;
+    private TableColumn<Unidad, Boolean> tfActivo;
+
+    @FXML TableColumn <Unidad,Integer> tcAño;
     @FXML
     private TableView<Unidad> tvUnidad;
     @FXML
     private TextField tfBuscar;
     @FXML
-    private ComboBox<String> cbUnidad;
+    private TableColumn<Unidad,String> tcMotivo;
     @FXML
-    private TableColumn<?, ?> tcVin;
+    private ComboBox<String> cbUnidad;
 
     /**
      * Initializes the controller class.
@@ -77,12 +92,14 @@ public class FXMLAdminUnidadController implements Initializable, INotificacionCa
     }    
     
      private void configurarTabla() {
-       tcMarca.setCellValueFactory(new PropertyValueFactory("Marca"));
-       tcModelo.setCellValueFactory(new PropertyValueFactory("Modelo"));
-       tcAño.setCellValueFactory(new PropertyValueFactory("Ano"));
-       tcTipo.setCellValueFactory(new PropertyValueFactory("Tipo"));
-       tcIdentificacion.setCellValueFactory(new PropertyValueFactory("numeroIdentificacion"));
-       tcVin.setCellValueFactory(new PropertyValueFactory("vin"));
+       tcMarca.setCellValueFactory(new PropertyValueFactory<>("Marca"));
+       tcModelo.setCellValueFactory(new PropertyValueFactory<>("Modelo"));
+       tcAño.setCellValueFactory(new PropertyValueFactory<>("Ano"));
+       tcTipo.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
+       tcIdentificacion.setCellValueFactory(new PropertyValueFactory<>("numeroIdentificacion"));
+       tcVin.setCellValueFactory(new PropertyValueFactory<>("vin"));
+       tfActivo.setCellValueFactory(new PropertyValueFactory<>("activo"));
+         tcMotivo.setCellValueFactory(new PropertyValueFactory<>("motivo"));
     }    
      
       private void cargarInformacionTabla(){
@@ -103,7 +120,12 @@ public class FXMLAdminUnidadController implements Initializable, INotificacionCa
         FXMLLoader cargador = new FXMLLoader(getClass().getResource("FXMLFormularioUnidad.fxml"));
         Parent vista = cargador.load();
         FXMLFormularioUnidadController controlador = cargador.getController();   
-       // controlador.inicializarValores(observador, unidad);
+             if (unidad!=null) {
+                controlador.inicializarValores(observador, unidad,this.colaborador);
+             }
+             else{
+                 controlador.inicializarValores(observador, null,this.colaborador);
+             }
         Scene escenarioFormualario = new Scene(vista);
         escenario.setScene(escenarioFormualario);
         escenario.setTitle("Pantalla unidad");
@@ -119,8 +141,8 @@ public class FXMLAdminUnidadController implements Initializable, INotificacionCa
         Stage escenario = new Stage();
         FXMLLoader cargador = new FXMLLoader(getClass().getResource("FXMLDarBajaUnidad.fxml"));
         Parent vista = cargador.load();
-             FXMLDarBajaUnidadController controlador = cargador.getController();
-      //  controlador.inicializarValores(observador, unidad);
+       FXMLDarBajaUnidadController controlador = cargador.getController();
+      controlador.inicializarValores(observador, unidad);
         Scene escenarioFormualario = new Scene(vista);
         escenario.setScene(escenarioFormualario);
         escenario.setTitle("Pantalla dar de baja unidad");
@@ -139,10 +161,36 @@ public class FXMLAdminUnidadController implements Initializable, INotificacionCa
     
     @FXML
     private void btnIrBaja(ActionEvent event) throws IOException{
-        irPantallaDarBaja(this, null);
+        Unidad unidadSeleccionado = tvUnidad.getSelectionModel().getSelectedItem();
+        if (unidadSeleccionado != null) {
+            Optional<ButtonType> resultado = mostrarAlertaConfirmacion(
+                    "Confirmar Accion",
+                    "¿Estás seguro de que deseas dar de baja a esta unidad? la accion sera irreversiblle"
+            );
+
+            // Si el usuario confirma, proceder con la eliminación
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                if(unidadSeleccionado.isActivo()){
+                    irPantallaDarBaja(this, unidadSeleccionado);
+                }else  {
+                    Utilidades.mostrarAlertaSimple("Informacion", "La unidad ya esta de baja", Alert.AlertType.INFORMATION);
+
+                }
+
+
+            } else {
+                Utilidades.mostrarAlertaSimple("Cancelación", "La accion ha sido cancelada", Alert.AlertType.INFORMATION);
+            }
+
+        }
+        else {
+            Utilidades.mostrarAlertaSimple("Unidades", "Por favor selecciona una unidad primero", Alert.AlertType.INFORMATION);
+        }
     }
+
     
     public void notificar(){
+        unidades.clear();
         cargarInformacionTabla();
     } 
 
@@ -159,12 +207,11 @@ public class FXMLAdminUnidadController implements Initializable, INotificacionCa
             if (criterioBusqueda != null) {
                 switch (criterioBusqueda) {
                     case "Vin":
-                        Unidad unidadPorVin = UnidadDAO.buscarPorVin(textoBusqueda);
-                        if (unidadPorVin != null) {
+
                             unidades.clear();
-                            unidades.add(unidadPorVin);
+                            unidades.addAll(UnidadDAO.buscarPorVin(textoBusqueda));
                             tvUnidad.setItems(unidades);
-                        }
+
                         break;
                     case "Marca":
                         unidades.clear();
@@ -181,5 +228,30 @@ public class FXMLAdminUnidadController implements Initializable, INotificacionCa
         }
         tvUnidad.setItems(unidades);
     } 
+    
+       public void inicializarInformacion(Colaborador colaborador) {
+        if (colaborador == null) {
+            System.err.println("Error: El colaborador es null.");
+            etiquetaColaborador.setText("Bienvenido, Usuario");
+            return;
+        }
+
+        this.colaborador = colaborador;
+
+        String nombre = colaborador.getNombre() != null ? colaborador.getNombre() : "N/A";
+        String apellidoPaterno = colaborador.getApellidoPaterno() != null ? colaborador.getApellidoPaterno() : "";
+        etiquetaColaborador.setText(nombre + " " + apellidoPaterno);
+    }
+
+    @FXML
+    private void btnEditar(ActionEvent event) {
+         Unidad unidadSeleccionado = tvUnidad.getSelectionModel().getSelectedItem();
+        if (unidadSeleccionado != null) {
+            irPantallaUnidad(this, unidadSeleccionado);
+             }
+         else {
+            Utilidades.mostrarAlertaSimple("Unidades", "Por favor selecciona una unidad primero", Alert.AlertType.INFORMATION);
+        }
+    }
     
 }

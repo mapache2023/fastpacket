@@ -26,16 +26,13 @@ public class AsignarUnidad {
     @FXML
     private ComboBox<Unidad> cbUnidad;
 
-    // Etiqueta para mostrar mensajes de error
-    @FXML
-    private Label lMensajeError;
+
 
     // Botones para asignar o cancelar
     @FXML
     private Button btnAsignar;
 
-    @FXML
-    private Button btnCancelar;
+
 
     // Variables para almacenar el colaborador y el observador
     private Colaborador colaborador;
@@ -51,7 +48,7 @@ public class AsignarUnidad {
         this.observador = observador;
 
         // Mostrar el nombre completo del colaborador
-        lColaborador.setText(colaborador.getNombre() + " " + colaborador.getApellidoPaterno());
+
 
         // Cargar las unidades activas disponibles
         ObservableList<Unidad> unidadesDisponibles = FXCollections.observableArrayList(ColaboradorDAO.obtenerUnidadesActivas());
@@ -94,7 +91,7 @@ public class AsignarUnidad {
         // Verificar si se seleccionó una unidad
         if (unidadSeleccionada == null) {
             // Si no se seleccionó ninguna unidad, mostrar mensaje de error
-            lMensajeError.setText("Por favor, selecciona una unidad.");
+      Utilidades.mostrarAlertaSimple("por fava","por favor selecione unidad", Alert.AlertType.WARNING);
             return;
         }
 
@@ -131,7 +128,7 @@ public class AsignarUnidad {
      * Funcion que cierra la ventana actual.
      */
     private void cerrarVentana() {
-        Stage stage = (Stage) btnCancelar.getScene().getWindow();
+        Stage stage = (Stage) btnAsignar.getScene().getWindow();
         stage.close(); // Cerrar la ventana
     }
 }

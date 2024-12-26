@@ -22,6 +22,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import pojo.Envio;
+import pojo.Estatus;
 import pojo.Historial;
 import pojo.Mensaje;
 
@@ -131,6 +132,11 @@ public Mensaje cambios(String json){
             msj = ImpEnviosEspeciales.registrarCambio(historia);
     return msj;
 }
-
+ @Path("obtener-estados")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Estatus> obtenerEstados(){
+        return ImpEnvio.obtenerEstados();
+    } 
 
 }

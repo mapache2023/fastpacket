@@ -84,7 +84,7 @@ public class WSUnidad {
     @Path("buscar-marca/{marca}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Unidad buscarUnidadMarca(@PathParam("marca") String marca){
+    public List<Unidad> buscarUnidadMarca(@PathParam("marca") String marca){
         if(marca != null){
             return ImpUnidad.buscarUnidadMarca(marca);
         }
@@ -104,9 +104,9 @@ public class WSUnidad {
     @Path("baja")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public Unidad bajaUnidad(@FormParam("idUnidad") String idUnidad, @FormParam("motivo") String motivo){
-        if(idUnidad != null && !idUnidad.isEmpty()){
-            ImpColaborador.desasignarUnidad(Integer.parseInt(idUnidad));
+    public Mensaje bajaUnidad(@FormParam("idUnidad") Integer idUnidad, @FormParam("motivo") String motivo){
+        if(idUnidad != null && idUnidad>0){
+            ImpColaborador.desasignarUnidad(idUnidad);
             return ImpUnidad.darDeBaja(idUnidad, motivo);
         }
         throw new BadRequestException();

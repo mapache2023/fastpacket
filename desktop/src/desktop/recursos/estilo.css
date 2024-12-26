@@ -1,152 +1,205 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+    Project: [Project Name]
+    File: [File Name]
+    Created on: 30/10/2024, 05:09:39 PM
+    Author: mapache
+
+    License Information: (Update with appropriate license information if needed)
 */
-/* 
-    Created on : 30/10/2024, 05:09:39 PM
-    Author     : mapache
-*/
 
-
-
-.mainFxmlClass{
-   -fx-background-color: white;
-   
+/* Main container styling */
+.mainFxmlClass {
+    -fx-background-color: white;
     -fx-alignment: center;
     -fx-font-family: "Segoe UI", Arial, sans-serif; /* Modern system font */
 }
 
-.titulo-login{
-      -fx-font-size: 24px;
+/* Title and header text styling */
+.titulo-login {
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2C5F2D; /* Verde oscuro */
+    -fx-text-fill: #2C5F2D; /* Dark Green */
 }
-.texto-normal{
-  -fx-font-size: 16px;
-  -fx-text-fill: black;
-}
-.login-boton{
-  -fx-background-color: #2C5F2D; /* Verde oscuro */
-  -fx-text-fill: white;
-  -fx-font-size: 14px;
-  -fx-font-weight: bold;
-  -fx-padding: 10px;
-  -fx-border-radius: 5px;
-  -fx-background-radius: 5px;
-  -fx-cursor: hand;
-}
-.login-boton:hover{
-  -fx-background-color: #3C8D35; /* Verde oscuro */
-}
-.boton-guardar{
-  -fx-background-color: #2C5F2D; /* Verde oscuro */
- 
-  -fx-text-fill: #FFFFFF;
-  -fx-font-weight: bold;
-  -fx-background-radius: 5;
-  -fx-cursor: hand;
-}
-.boton-guardar:hover{
-  -fx-background-color: #3C8D35; /* Verde oscuro */
-  
-}
-.boton-editar{
-  -fx-background-color: #FFC107; /* Amarillo dorado */
-  -fx-text-fill: #FFFFFF;
-  -fx-font-weight: bold;
-  -fx-background-radius: 5;
-  -fx-cursor: hand;
-}
-.boton-editar:hover{
-  -fx-background-color: #FFD54F; /* Amarillo más claro */
-}
-.boton-elminar{
-  -fx-background-color: #D32F2F; /* Rojo */
-  -fx-text-fill: #FFFFFF;
-  -fx-font-weight: bold;
-  -fx-background-radius: 5;
-  -fx-cursor: hand;
-}
-.boton-elminar:hover{
-  -fx-background-color: #E57373; /* Rojo más claro */
-}
-.boton-especial{
-  -fx-background-color: #FFB300; /* Amarillo oscuro */
-  -fx-text-fill: #FFFFFF;
-  -fx-font-weight: bold;
-  -fx-background-radius: 5;
-  -fx-cursor: hand;
-}
-.boton-especial:hover{
-  -fx-background-color: #FFD54F; /* Amarillo más claro */
-}
-.encabezado{
-  -fx-background-color: #2e5412; /* Verde oscuro */
-  -fx-padding: 10;
-}
-.encabezado-titulo{
-  -fx-font-size: 14px;
-  -fx-text-fill: #FFFFFF;
-}
-.encabezado-texto-usuario{
-  -fx-font-size: 14px;
-  -fx-text-fill: #FFFFFF;
-}
+
 .titulo-secsion-formulario {
-  -fx-font-size: 16px;
-  -fx-font-weight: bold;
-  -fx-text-fill: #000000;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000; /* Black */
 }
 
-.text-field, .combo-box {
-  -fx-border-color: #D3D3D3;
-  -fx-background-radius: 5;
-  -fx-border-radius: 5;
-  -fx-prompt-text-fill: #888888;
+/* Regular text styling */
+.texto-normal {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
 }
-.table-view {
-  -fx-border-color: #D3D3D3; /* Gris claro */
-  -fx-table-cell-border-color: transparent;
+
+/* Button styling */
+.login-boton, .boton-guardar, .boton-especial, .boton-editar, .boton-elminar, .botones-navegacion, .boton-cerrar-sesion {
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+    -fx-padding: 10px;
 }
-.table-view .column-header {
-  -fx-text-fill: #FFFFFF; /* Blanco */
- 
+
+/* Login Button */
+.login-boton {
+    -fx-background-color: #2C5F2D; /* Dark Green */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
 }
-.table-view .cell {
-  -fx-text-fill: #3f3f3f; /* Negro */
-  -fx-alignment: CENTER; /* Centrado */
+
+.login-boton:hover {
+    -fx-background-color: #3C8D35; /* Lighter Dark Green */
 }
-.pie{
-  -fx-background-color: #2e5412; /* Verde oscuro */
-  -fx-text-fill: #FFFFFF;
+
+/* Save Button */
+.boton-guardar {
+    -fx-background-color: #2C5F2D; /* Dark Green */
+    -fx-text-fill: #FFFFFF;
 }
-.pie-texto{
-  -fx-font-size: 14px;
-  -fx-text-fill: #FFFFFF;
+
+.boton-guardar:hover {
+    -fx-background-color: #3C8D35; /* Lighter Dark Green */
 }
+
+/* Edit Button */
+.boton-editar {
+    -fx-background-color: #FFC107; /* Golden Yellow */
+    -fx-text-fill: #FFFFFF;
+}
+
+.boton-editar:hover {
+    -fx-background-color: #FFD54F; /* Lighter Yellow */
+}
+
+/* Delete Button */
+.boton-elminar {
+    -fx-background-color: #D32F2F; /* Red */
+    -fx-text-fill: #FFFFFF;
+}
+
+.boton-elminar:hover {
+    -fx-background-color: #E57373; /* Lighter Red */
+}
+
+/* Special Button */
+.boton-especial {
+    -fx-background-color: #FFB300; /* Dark Yellow */
+    -fx-text-fill: #FFFFFF;
+}
+
+.boton-especial:hover {
+    -fx-background-color: #FFD54F; /* Lighter Yellow */
+}
+
+/* Navigation Buttons */
 .botones-navegacion {
-  -fx-background-radius: 20;
-  -fx-font-size: 16px;
-  -fx-font-weight: bold;
-  -fx-text-fill: white;
-  -fx-cursor: hand;
-  -fx-background-color: #4CAF50; /* Verde para botones de navegación */
-  -fx-padding: 20;
+    -fx-background-color: #4CAF50; /* Green for navigation buttons */
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-padding: 20px;
 }
 
-.botones-navegacion :hover {
-  -fx-background-color: #45a049; /* Efecto hover más oscuro */
+.botones-navegacion:hover {
+    -fx-background-color: #45a049; /* Darker hover effect */
 }
 
-.boton-cerrar-sesion{
-  -fx-background-color: #FF5252; /* Rojo claro */
-  -fx-text-fill: #FFFFFF;
-  -fx-font-size: 14px;
-  -fx-font-weight: bold;
-  -fx-background-radius: 5;
-  -fx-cursor: hand;
+/* Logout Button */
+.boton-cerrar-sesion {
+    -fx-background-color: #FF5252; /* Light Red */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
 }
+
 .boton-cerrar-sesion:hover {
-  -fx-background-color: #FF867C; /* Rojo más claro en hover */
-} 
+    -fx-background-color: #FF867C; /* Lighter Red on hover */
+}
+
+/* Header and Footer styling */
+.encabezado {
+    -fx-background-color: #2e5412; /* Dark Green */
+    -fx-padding: 10px;
+}
+
+.encabezado-titulo, .encabezado-texto-usuario {
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF; /* White */
+}
+
+/* Footer text styling */
+.pie {
+    -fx-background-color: #2e5412; /* Dark Green */
+    -fx-text-fill: #FFFFFF;
+}
+
+.pie-texto {
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Form Input fields */
+.text-field, .combo-box {
+    -fx-border-color: #D3D3D3; /* Light Gray */
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-prompt-text-fill: #888888; /* Light Gray for placeholder text */
+}
+
+
+/* Table View styling */
+.table-view {
+    -fx-border-color: #D3D3D3; /* Light Gray */
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-text-fill: #FFFFFF; /* White */
+}
+
+.table-view .cell {
+    -fx-text-fill: #3f3f3f; /* Dark Gray */
+    -fx-alignment: CENTER; /* Centered text */
+}
+/* Main container styling */
+.mainFxmlClass {
+    -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Title label styling */
+.titulo-secsion-formulario {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C5F2D; /* Dark Green */
+}
+
+/* General label styling for status text */
+.texto-normal {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333; /* Dark Gray for normal text */
+}
+
+/* ComboBox styling */
+.combo-box {
+    -fx-background-color: #f0f0f0; /* Light gray background */
+    -fx-border-color: #D3D3D3; /* Light gray border */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-padding: 5px;
+}
+
+/* Special button styling */
+.boton-especial {
+    -fx-background-color: #FFB300; /* Dark Yellow */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+}
+
+.boton-especial:hover {
+    -fx-background-color: #FFD54F; /* Lighter Yellow on hover */
+}
+

@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import desktop.modelo.ConexionWs;
 import desktop.modelo.RespuestaHTTP;
 import desktop.modelo.pojo.Envio;
+import desktop.modelo.pojo.Estatus;
 import desktop.modelo.pojo.Historial;
 import desktop.modelo.pojo.Mensaje;
 import desktop.modelo.pojo.Unidad;
@@ -77,13 +78,13 @@ public class EnviosDAO {
         return mensaje;
     }
   
-    public static Mensaje hacerCambios(Integer idColaborador,Integer idEnvio,Integer idEstatus,String cometario){
+    public static Mensaje hacerCambios(Integer idColaborador,Integer idEnvio,Integer idEstatus){
         Mensaje msj = new Mensaje();
         Historial historial = new Historial();
         historial.setidColaborador(idColaborador);
         historial.setIdEnvio(idEnvio);
         historial.setIdEstado(idEstatus);
-        historial.setComentario(cometario);
+        historial.setComentario("");
         String url = Constantes.URI_WS + "envio/actualizar-estado";
         Gson gson = new Gson();
         String parametros = gson.toJson(historial);
@@ -149,6 +150,20 @@ public class EnviosDAO {
         }
 
         return envios;
+    }
+
+    public static List<Estatus> obtenerEstatuss() {
+    List<Estatus> estatuses = new ArrayList<>();
+        String url = Constantes.URI_WS + "envio/obtener-estados";
+        RespuestaHTTP respuesta = ConexionWs.peticionGET(url);
+
+        if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
+            Type tipoListaEstatuss = new TypeToken<List<Estatus>>(){}.getType();
+            Gson gson = new Gson();
+            estatuses = gson.fromJson(respuesta.getContenido(), tipoListaEstatuss);
+        }
+
+        return estatuses;
     }
 
 }
