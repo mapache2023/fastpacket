@@ -16,27 +16,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 
     <select id="buscarUnidad" resultType="pojo.Unidad">
-        select marca, modelo, ano, numeroIdentificacion, motivo, activo from Unidad where vin = #{vin} or marca = #{marca} or numeroIdentificacion = #{numeroIdentificacion}
+        select idUnidad,marca, modelo, ano, numeroIdentificacion, vin,activo, unidad.idTipo , motivo from Unidad where vin = #{vin} or marca = #{marca} or numeroIdentificacion = #{numeroIdentificacion}
     </select>
     
      <select id="buscarUnidadVin" resultType="pojo.Unidad">
-        select marca, modelo, ano, numeroIdentificacion, vin, tipo.nombre as tipo, unidad.idTipo from Unidad inner join tipo on unidad.idTipo = tipo.idTipo where vin = #{vin}
+        select idUnidad,marca, modelo, ano, numeroIdentificacion, vin,activo, unidad.idTipo ,tipo.nombre as tipo, motivo from Unidad inner join tipo on unidad.idTipo = tipo.idTipo where vin = #{vin}
     </select>
     
      <select id="buscarUnidadMarca" resultType="pojo.Unidad">
-        select marca, modelo, ano, numeroIdentificacion, vin, tipo.nombre as tipo, unidad.idTipo from Unidad inner join tipo on unidad.idTipo = tipo.idTipo where marca = #{marca}
+       select idUnidad,marca, modelo, ano, numeroIdentificacion, vin,activo, unidad.idTipo ,tipo.nombre as tipo, motivo from Unidad inner join tipo on unidad.idTipo = tipo.idTipo where marca = #{marca}
      </select>
      
       <select id="buscarUnidadNumero" resultType="pojo.Unidad">
-        select marca, modelo, ano, numeroIdentificacion, vin, tipo.nombre as tipo, unidad.idTipo from Unidad inner join tipo on unidad.idTipo = tipo.idTipo where numeroIdentificacion = #{numeroIdentificacion}
+        select idUnidad,marca, modelo, ano, numeroIdentificacion, vin,activo, unidad.idTipo ,tipo.nombre as tipo, motivo from Unidad inner join tipo on unidad.idTipo = tipo.idTipo where numeroIdentificacion = #{numeroIdentificacion}
     </select>
     
     <update id="bajaUnidad" parameterType="map">
-        update fastpacket.unidad SET activo = false, motivo = %(motivo) where idUnidad = #{idUnidad}
+        update fastpacket.unidad SET activo = false, motivo = #{motivo} where idUnidad = #{idUnidad};
+        
     </update>
     
     <select id="obtenerUnidad" resultType="pojo.Unidad">
-        select marca, modelo, ano, numeroIdentificacion, vin, unidad.idTipo ,tipo.nombre as tipo from unidad inner join tipo on unidad.idTipo = tipo.idTipo;
+      select idUnidad,marca, modelo, ano, numeroIdentificacion, vin,activo, unidad.idTipo ,tipo.nombre as tipo, motivo from unidad inner join tipo on unidad.idTipo = tipo.idTipo;
     </select>
     
     <select id="obtenerCoductor" resultType="pojo.Colaborador">

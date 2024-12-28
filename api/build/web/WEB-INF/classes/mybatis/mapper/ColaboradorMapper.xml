@@ -85,7 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="desasignar" parameterType="int" >
         UPDATE fastpacket.colaborador
         SET idUnidad = NULL
-        WHERE idColaborador = #{idColaborador}; 
+        WHERE idUnidad = #{idUnidad}; 
     </update>
     <select id="buscarColaboradorUnidad" resultType="int">
         SELECT idColaborador

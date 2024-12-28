@@ -48,12 +48,17 @@ function mostrarInfoEnvio(datosEnvio, infoEnvio) {
         const estadoEnvio = datosEnvio.estado ? datosEnvio.estado : 'Estado no Disponible'; // Verifica si 'estado' está definido
         
         const datos = `
-            <tr><th>Conductor</th><td>${datosEnvio.conductor}</td></tr>
-            <tr><th>Costo</th><td>${datosEnvio.costo}</td></tr>
-            <tr><th>Origen</th><td>${datosEnvio.origenDireccion}</td></tr>
-            <tr><th>Destino</th><td>${datosEnvio.destinoDireccion}</td></tr>
-            <tr><th>Estado del Envío</th><td>${estadoEnvio}</td></tr>
-            <tr><th>Número de Guía</th><td>${datosEnvio.numeroGuia}</td></tr>
+            <tr><th><b>Conductor: </b></th><td>${datosEnvio.conductor}</td></tr>
+            <br>
+            <tr><th><b>Costo: </b></th><td>${datosEnvio.costo}</td></tr>
+            <br>
+            <tr><th><b>Origen: </b></th><td>${datosEnvio.origenDireccion}</td></tr>
+            <br>
+            <tr><th><b>Destino: </b></th><td>${datosEnvio.destinoDireccion}</td></tr>
+            <br>
+            <tr><th><b>Estado del Envío: </b></th><td>${estadoEnvio}</td></tr>
+            <br>
+            <tr><th><b>Número de Guía: </b></th><td>${datosEnvio.numeroGuia}</td></tr>
         `;
         infoEnvio.innerHTML = datos;
     }

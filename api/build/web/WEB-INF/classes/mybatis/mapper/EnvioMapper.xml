@@ -36,5 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   numeroOrigen, coloniaOrigen, codigoPostalOrigen, estadoOrigen, ciudadOrigen, calleDestino, numeroDestino, coloniaDestino, codigoPostalDestino, estadoDestino, ciudadDestino from envio
         Left join estatus on estatus.idEstatus = envio.idEstatus Left join colaborador on colaborador.idColaborador = envio.idColaborador inner join cliente on cliente.idCliente = envio.idCliente  ;
     </select>
-    
+    <select id="obtenerEstatus" resultType= "pojo.Estatus">
+        select * from estatus;
+    </select>
 </mapper>
