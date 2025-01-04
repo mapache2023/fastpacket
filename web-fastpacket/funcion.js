@@ -46,9 +46,9 @@ function mostrarInfoEnvio(datosEnvio, infoEnvio) {
         infoEnvio.innerHTML = '<p>No se encontró el envío.</p>';
     } else {
         const estadoEnvio = datosEnvio.estado ? datosEnvio.estado : 'Estado no Disponible'; // Verifica si 'estado' está definido
-        
+        const conductorEnvio = datosEnvio.conductor ? datosEnvio.conductor : 'Conductor no Asignado'; 
         const datos = `
-            <tr><th><b>Conductor: </b></th><td>${datosEnvio.conductor}</td></tr>
+            <tr><th><b>Conductor: </b></th><td>${conductorEnvio}</td></tr>
             <br>
             <tr><th><b>Costo: </b></th><td>${datosEnvio.costo}</td></tr>
             <br>
