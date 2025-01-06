@@ -174,8 +174,36 @@ public Mensaje eliminarPaquete(@PathParam("idPaquete") Integer idPaquete, @PathP
         return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage(), null);
     }
 }
+@Path("consultarPaquetePorGuia/{numeroGuia}")
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public Mensaje consultarPaquetePorGuia(@PathParam("numeroGuia") String numeroGuia) {
+    try {
+        // Validación del número de guía
+        if (numeroGuia == null || numeroGuia.isEmpty()) {
+            return new Mensaje(true, "Número de guía faltante o incorrecto", null);
+        }
 
+        // Consulta los paquetes relacionados con el número de guía
+        List<Paquete> paquetes = ImpPaquete.buscarPaquetesPorGuia(numeroGuia);
 
+        if (paquetes == null || paquetes.isEmpty()) {
+            return new Mensaje(true, "No se encontraron paquetes para el número de guía especificado", null);
+        }
+
+        // Usar Gson para convertir la lista de Paquetes a JSON
+        Gson gson = new Gson();
+        String paquetesJson = gson.toJson(paquetes);
+
+        // Crear un nuevo Mensaje con los paquetes en formato JSON
+        return new Mensaje(false, "Paquetes encontrados", paquetesJson);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return new Mensaje(true, "Error al procesar la solicitud: " + e.getMessage(), null);
+    }
+}
 
     
 }

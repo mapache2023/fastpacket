@@ -72,7 +72,7 @@
       <Label layoutX="216.0" layoutY="458.0" styleClass="texto-normal" text="Estado" />
       <TextField fx:id="tfciudadDestino" layoutX="57.0" layoutY="477.0" prefHeight="31.0" prefWidth="122.0" />
       <TextField fx:id="tfEstadoDestino" layoutX="216.0" layoutY="477.0" prefHeight="31.0" prefWidth="122.0" />
-      <Label layoutX="53.0" layoutY="540.0" styleClass="texto-normal" text="Nuemro de guia" />
+      <Label layoutX="53.0" layoutY="540.0" styleClass="texto-normal" text="Numero de guia" />
       <Label layoutX="220.0" layoutY="540.0" styleClass="texto-normal" text="Costo" />
       <TextField fx:id="tfnuemroGuia" layoutX="50.0" layoutY="569.0" prefHeight="31.0" prefWidth="122.0" />
       <TextField fx:id="tfCosto" layoutX="223.0" layoutY="569.0" prefHeight="31.0" prefWidth="122.0" />

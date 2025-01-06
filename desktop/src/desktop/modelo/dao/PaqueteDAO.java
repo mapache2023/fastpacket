@@ -118,14 +118,14 @@ public static Mensaje eliminarPaquete(int idEnvio, int idPaquete) {
 }
 
 
-    // Método para buscar paquete por descripcion 
-public static List<Paquete> consultarPaquetePorDescripcion(String descripcion) {
+     
+public static List<Paquete> consultarPaquetePorGuia(String numeroGuia) {
     List<Paquete> paquetes = null;
 
-    // Convertir descripcion a String y añadir a la URL
-    String url = Constantes.URI_WS + "paquetes/consultarPaquetePorDescripcion/" + descripcion;
+    // Construir la URL con el número de guía
+    String url = Constantes.URI_WS + "paquetes/consultarPaquetePorGuia/" + numeroGuia;
 
-    // Enviar solicitud para obtener paquetes por descripcion
+    // Enviar solicitud GET al servicio REST
     RespuestaHTTP respuesta = ConexionWs.peticionGET(url);
 
     if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
@@ -136,6 +136,7 @@ public static List<Paquete> consultarPaquetePorDescripcion(String descripcion) {
 
     return paquetes;
 }
+
 
 
 }

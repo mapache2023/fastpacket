@@ -39,7 +39,7 @@
       </TableView>
       <Button layoutX="261.0" layoutY="405.0" mnemonicParsing="false" onAction="#editarCliente" styleClass="boton-editar" text="Editar" />
       <Button layoutX="376.0" layoutY="405.0" mnemonicParsing="false" onAction="#eliminarCliente" styleClass="boton-elminar" text="Eliminar" />
-      <Button layoutX="483.0" layoutY="405.0" mnemonicParsing="false" onAction="#irAClienteRegistro" styleClass="boton-especial" text="Registrar Cliente" />
+      <Button layoutX="483.0" layoutY="405.0" mnemonicParsing="false" onAction="#irAClienteRegistro" styleClass="boton-guardar" text="Registrar Cliente" />
       <Pane layoutY="445.0" prefHeight="43.0" prefWidth="840.0" styleClass="pie">
          <children>
             <Label layoutX="391.0" layoutY="13.0" styleClass="pie-texto" text="Fast-Packet" />

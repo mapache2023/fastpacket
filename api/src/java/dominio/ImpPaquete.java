@@ -99,6 +99,23 @@ public static List<Paquete> buscarPaquetesPorEnvio(Integer idEnvio) {
     }
     return paquetes;
 }
+public static List<Paquete> buscarPaquetesPorGuia(String numeroGuia) {
+    SqlSession conexionBD = MyBatisUtil.obtenerConexion();
+    List<Paquete> paquetes = null;
+
+    if (conexionBD != null) {
+        try {
+            // Consulta por número de guía en el mapeador
+            paquetes = conexionBD.selectList("paquete.buscarPaquetesPorGuia", numeroGuia);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conexionBD.close();
+        }
+    }
+    return paquetes;
+}
+
 public static Mensaje eliminarPaquete(Integer idPaquete, Integer idEnvio) {
     Mensaje msj;
     SqlSession conexionBD = MyBatisUtil.obtenerConexion();

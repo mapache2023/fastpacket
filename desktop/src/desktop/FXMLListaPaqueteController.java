@@ -61,6 +61,8 @@ public class FXMLListaPaqueteController {
     private TableColumn<Paquete, String> tcAncho;
     @FXML
     private TableColumn<Paquete, String> tcProfundidad;
+    @FXML
+    private TableColumn<Paquete, String> tcNumeroGuia;
     
   public void initialize() {
         // Configurar las columnas de la tabla con los tipos de datos correspondientes
@@ -69,7 +71,7 @@ public class FXMLListaPaqueteController {
         tcAlto.setCellValueFactory(new PropertyValueFactory<>("alto"));
         tcAncho.setCellValueFactory(new PropertyValueFactory<>("ancho"));
         tcProfundidad.setCellValueFactory(new PropertyValueFactory<>("profundidad"));
-         
+        tcNumeroGuia.setCellValueFactory(new PropertyValueFactory<>("numeroGuia"));
          // Cargar los paquetes de la base de datos (esta función debe implementarse)
         cargarPaquetes();
         inicializarBusqueda();
@@ -115,7 +117,7 @@ private void inicializarBusqueda(){
                         String lowerFilter = newValue.toLowerCase();
                         //-- Reglas de filtrado --\\
                         //Por Descripcion
-                        if(busqueda.getDescripcion().toLowerCase().contains(lowerFilter)){
+                        if(busqueda.getNumeroGuia().toLowerCase().contains(lowerFilter)){
                             return true;
                         }
                         return false;
@@ -130,7 +132,6 @@ private void inicializarBusqueda(){
     }
  
     // Método para registrar un nuevo paquete
-@FXML
 public void registrarPaquete(ActionEvent event) {
     // Cargar la nueva pantalla "PaqueteRegistro.fxml"
     try {
