@@ -149,6 +149,10 @@ public class FXMLFormularioUnidadController implements Initializable {
         }
         int idTipo = tipoSeleccionado.getIdTipo();
       
+        if (tfVin.getText().length() > 17) {
+              Utilidades.mostrarAlertaSimple("Error", "El VIN debe exede los  caracteres.", Alert.AlertType.ERROR);
+              return;
+        }
         // Crear la unidad con los datos ingresados
         Unidad unidad = new Unidad();
         unidad.setMarca(marca);
@@ -182,8 +186,8 @@ public class FXMLFormularioUnidadController implements Initializable {
                !tfAño.getText().isEmpty() &&
                !tfVin.getText().isEmpty() &&
                !tfNII.getText().isEmpty() &&
-               cbTipo.getSelectionModel().getSelectedItem() != null&&
-                tfAño.getText().length() >=4 && esNumeroEntero(tfAño.getText()) && tfAño.getText().length() >= 4;
+               cbTipo.getSelectionModel().getSelectedItem() != null &&
+                tfAño.getText().length() >4;
     }
     
     private void guardarDatosUnidad(Unidad unidad) {

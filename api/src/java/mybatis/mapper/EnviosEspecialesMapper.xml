@@ -87,7 +87,7 @@
         WHERE 
         e.idColaborador = #{idColaborador}
     </select>
-    <!-- ResultMap to map the results to Java objects -->
+
     <resultMap id="EnvioResultMap" type="pojo.EnviosApp">
         <id property="idEnvio" column="idEnvio"/>
         <result property="origenDireccion" column="origenDireccion"/>

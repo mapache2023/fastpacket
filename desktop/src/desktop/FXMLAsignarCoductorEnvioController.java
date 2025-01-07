@@ -34,9 +34,7 @@ import javafx.stage.Stage;
  */
 public class FXMLAsignarCoductorEnvioController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+   
     
     private ObservableList<Colaborador> conductores;
         private INotificacionCambio observador;
@@ -63,28 +61,27 @@ public class FXMLAsignarCoductorEnvioController implements Initializable {
           Mensaje mensaje;
         Colaborador colaboradorSeleccionada = cbConductores.getValue();
 
-        // Verificar si se seleccionó una colaborador
+   
         if (colaboradorSeleccionada == null) {
-            // Si no se seleccionó ninguna colaborador, mostrar mensaje de error
-          
+          Utilidades.mostrarAlertaSimple("error", "seleccione.", Alert.AlertType.INFORMATION);
             return;
         }
 
-        // Si el colaborador no tiene una colaborador asignada, asignar la nueva colaborador
+       
         if (envio.getIdColaborador() == null) {
             envio.setIdColaborador(colaboradorSeleccionada.getIdColaborador());
             mensaje = EnviosDAO.asignarColaborador(envio);
         } else {
-            // Si el colaborador ya tiene una colaborador, cambiarla por la nueva colaborador seleccionada
+       
             envio.setIdColaborador(colaboradorSeleccionada.getIdColaborador());
             mensaje = EnviosDAO.asignarColaborador(envio);
         }
 
-        // Mostrar el mensaje correspondiente dependiendo del resultado de la asignación
+      
         if (!mensaje.getError()) {
             Utilidades.mostrarAlertaSimple("Éxito", "Colaborador asignado correctamente.", Alert.AlertType.INFORMATION);
-            observador.notificar(); // Notificar a la vista principal de que hubo un cambio
-            cerrarVentana(); // Cerrar la ventana actual
+            observador.notificar();
+            cerrarVentana();
         } else {
             Utilidades.mostrarAlertaSimple("Error", mensaje.getMensaje(), Alert.AlertType.ERROR);
         }
@@ -110,8 +107,5 @@ public class FXMLAsignarCoductorEnvioController implements Initializable {
         stage.close(); // Cerrar la ventana
     }
 
-    void inicializarValores(Colaborador colaborador, FXMLAdminEnvioController aThis, Integer idEnvio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+
 }

@@ -12,21 +12,21 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 
 @Path("login")
-public class WsLogin {
+public class WSLogin {
     @Context
     private UriInfo context;
     
-    public WsLogin() {}
+    public WSLogin() {}
     
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public LoginColaborador loginColaborador(@FormParam("numeroPersonal") String noPersona, @FormParam("contrasena") String contrasena) {
-        // Validate inputs
+ 
         if (noPersona == null || noPersona.isEmpty() || contrasena == null || contrasena.isEmpty() || noPersona.length() > 10) {
-            throw new BadRequestException("Invalid input: ensure numeroPersonal is not empty, has a maximum length of 10, and contrasena is not empty.");
+            throw new BadRequestException();
         } 
         
-        // Attempt to login
+ 
         return ImpLogin.login(noPersona, contrasena); 
     }   
 }

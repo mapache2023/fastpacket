@@ -30,15 +30,13 @@ import pojo.Mensaje;
  * @author hp
  */
 @Path("enviosEspeciales")
-public class WsEnviosEspeciales {
+public class WSEnviosEspeciales {
 
     @Context
     private UriInfo context;
 
-    /**
-     * Creates a new instance of WsEnviosEspeciales
-     */
-    public WsEnviosEspeciales() {
+
+    public WSEnviosEspeciales() {
     }
 @GET
 @Path("web/{numeroGuia}")

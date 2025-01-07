@@ -75,9 +75,7 @@ public class FXMLAdminUnidadController implements Initializable, INotificacionCa
     @FXML
     private ComboBox<String> cbUnidad;
 
-    /**
-     * Initializes the controller class.
-     */
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarTabla();
@@ -168,7 +166,7 @@ public class FXMLAdminUnidadController implements Initializable, INotificacionCa
                     "¿Estás seguro de que deseas dar de baja a esta unidad? la accion sera irreversiblle"
             );
 
-            // Si el usuario confirma, proceder con la eliminación
+         
             if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
                 if(unidadSeleccionado.isActivo()){
                     irPantallaDarBaja(this, unidadSeleccionado);

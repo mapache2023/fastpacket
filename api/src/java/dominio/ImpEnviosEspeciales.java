@@ -84,8 +84,7 @@ public class ImpEnviosEspeciales {
                     msj.setError(false);
                     msj.setMensaje("Cambio del colaborador guardado correctamente.");
                 }else{
-                    msj.setMensaje("Lo sentimos hubo un error al intentar guardar la "
-                            + "fotografía, por favor inténtelo más tarde.");
+                    msj.setMensaje("Lo sentimos hubo un error al intentar guardar");
                 }
             } catch (Exception e) {
                 msj.setMensaje("Error: "+e.getMessage());
@@ -93,8 +92,7 @@ public class ImpEnviosEspeciales {
                 conexionBD.close();
             }
         }else{
-            msj.setMensaje("Error de conexión, por el momento no se puede registrar la "
-                    + "fotografía del colaborador.");
+            msj.setMensaje("Error de conexión, por el momento no se puede registrar cambio");
         }
         return msj;
     }

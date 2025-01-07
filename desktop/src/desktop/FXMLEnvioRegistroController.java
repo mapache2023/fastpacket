@@ -70,12 +70,11 @@ public class FXMLEnvioRegistroController implements Initializable {
     @FXML
     private Button btnEditar;
 
-    /**
-     * Initializes the controller class.
-     */
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Aquí puedes inicializar datos, como llenar el ComboBox de clientes
+  
+        
     }
 
     @FXML
@@ -97,12 +96,10 @@ public class FXMLEnvioRegistroController implements Initializable {
             envio.setEstadoDestino(tfEstadoDestino.getText());
             envio.setCosto(tfCosto.getText());
             if (cbCliente.getValue() != null) {
-                envio.setIdCliente(cbCliente.getValue().getIdCliente()); // Solo se guarda el ID del rol
+                envio.setIdCliente(cbCliente.getValue().getIdCliente()); 
             }
 guardarEnvio(envio);
-        } else {
-           Utilidades.mostrarAlertaSimple("Error", "Por favor, completa todos los campos obligatorios.", AlertType.ERROR);
-        }
+        } 
     }
 
     private void guardarEnvio(Envio envio) {
@@ -119,6 +116,8 @@ guardarEnvio(envio);
     @FXML
     private void editar(ActionEvent event) {
         if (envio != null) {
+            if(Validador()){
+             
             envio.setCalleOrigen(tfCalleOrigen.getText());
             envio.setNumeroOrigen(tfNumeroOrigen.getText());
             envio.setColoniaOrigen(tfcoloniaOrigen.getText());
@@ -135,7 +134,8 @@ guardarEnvio(envio);
             if (cbCliente.getValue() != null) {
                 envio.setIdCliente(cbCliente.getValue().getIdCliente());
             }
-            editarEnvio(envio);
+            editarEnvio(envio);   
+            }
         } else {
             Utilidades.mostrarAlertaSimple("Error", "No hay un envío cargado para editar.", AlertType.ERROR);
         }
@@ -152,9 +152,7 @@ guardarEnvio(envio);
         }
     }
 
-    /**
-     * Funcion para cerrar la ventana actual.
-     */
+   
     private void cerrarVentana() {
         Stage escenario = (Stage) tfNumeroOrigen.getScene().getWindow();
         escenario.close();
@@ -162,7 +160,7 @@ guardarEnvio(envio);
 
 
     private boolean Validador() {
-        // Validar campos no vacíos
+ 
         if (tfnuemroGuia.getText().isEmpty() ||
             tfCalleOrigen.getText().isEmpty() ||
             tfNumeroOrigen.getText().isEmpty() ||
@@ -170,7 +168,7 @@ guardarEnvio(envio);
             tfciudadDestino.getText().isEmpty() ||
             tfCosto.getText().isEmpty() ||
             cbCliente.getValue() == null) {
-            Utilidades.mostrarAlertaSimple("Error", "Por favor, completa todos los camposs.", AlertType.ERROR);
+            Utilidades.mostrarAlertaSimple("Error", "Por favor, completa todos los campos.", AlertType.ERROR);
             return false;
         }
         if(!esNumero(tfNumeroOrigen.getText()) || !esNumero(tfnumeroDestino.getText())){

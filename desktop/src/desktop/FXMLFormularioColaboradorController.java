@@ -31,45 +31,43 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class FXMLFormularioColaboradorController implements Initializable {
-    private File imagenSeleccionada; // Variable para la imagen seleccionada
-    private Colaborador colaborador; // El colaborador que estamos editando o registrando
-    private INotificacionCambio observador; // Notificador para actualizar la vista principal
+    private File imagenSeleccionada; 
+    private Colaborador colaborador;
+    private INotificacionCambio observador; 
 
-    // Definición de campos de entrada en la interfaz gráfica
+   
     @FXML
-    private TextField tfNp; // Número personal
+    private TextField tfNp;
     @FXML
-    private TextField tfCorreo; // Correo electrónico
+    private TextField tfCorreo; 
     @FXML
-    private TextField tfAm; // Apellido Materno
+    private TextField tfAm;
     @FXML
-    public Label lColaborador; // Etiqueta para mostrar el nombre del colaborador
+    public Label lColaborador; 
     @FXML
-    private TextField tfCurp; // CURP
+    private TextField tfCurp;
     @FXML
-    private ComboBox<Rol> cbRol; // ComboBox para seleccionar el rol del colaborador
+    private ComboBox<Rol> cbRol;
+    
     @FXML
-    private TextField tfContrasena; // Contraseña
+    private TextField tfContrasena; 
+  
     @FXML
-    private TextField tfNombre; // Nombre del colaborador
+    private TextField tfNombre; 
     @FXML
-    private TextField tfAp; // Apellido Paterno
+    private TextField tfAp; 
     @FXML
-    public Button btnAccion; // Botón de acción para guardar o editar
+    public Button btnAccion; 
     @FXML
-    private Pane pane; // Panel que contiene los campos de información del colaborador
+    private Pane pane; 
     @FXML
-    private ImageView imagenperfil; // Imagen de perfil del colaborador
+    private ImageView imagenperfil;
     @FXML
-    private TextField tfNulic; // Número de licencia
+    private TextField tfNulic; 
     @FXML
-    private Label lNuLic; // Etiqueta de "Número de licencia"
+    private Label lNuLic;
 
-    /**
-     * Funcion que guarda o edita la información del colaborador.
-     * Se ejecuta cuando el usuario hace clic en el botón "Guardar".
-     * @param event El evento de clic en el botón
-     */
+
     @FXML
     void guardar(ActionEvent event) {
         if(validador()){  // Verificamos si los campos son válidos
@@ -83,14 +81,14 @@ public class FXMLFormularioColaboradorController implements Initializable {
             c.setNumeroPersonal(tfNp.getText());
 
             if(!tfNulic.getText().isEmpty()){
-                c.setNumeroLicencia(tfNulic.getText());  // Asignar número de licencia si existe
+                c.setNumeroLicencia(tfNulic.getText()); 
             }
 
             if (cbRol.getValue() != null) {
-                c.setIdRol(cbRol.getValue().getIdRol()); // Solo se guarda el ID del rol
+                c.setIdRol(cbRol.getValue().getIdRol()); 
             }
 
-            // Si colaborador es null, estamos registrando uno nuevo, de lo contrario, estamos editando
+          
             if(colaborador == null){
                 guardarColaborador(c);
             }else{
@@ -100,10 +98,7 @@ public class FXMLFormularioColaboradorController implements Initializable {
         }
     }
 
-    /**
-     * Funcion que permite seleccionar una imagen de perfil.
-     * @param event El evento de clic en el botón de "Seleccionar Foto"
-     */
+  
     @FXML
     private void btnSeleccionarFoto(ActionEvent event) {
         FileChooser dialogoSeleccionImg = new FileChooser();
@@ -117,14 +112,11 @@ public class FXMLFormularioColaboradorController implements Initializable {
         imagenSeleccionada = dialogoSeleccionImg.showOpenDialog(stageActual);
 
         if (imagenSeleccionada != null) {
-            mostrarFotografiaSeleccionada(imagenSeleccionada); // Mostrar la imagen seleccionada
+            mostrarFotografiaSeleccionada(imagenSeleccionada);
         }
     }
 
-    /**
-     * Funcion que sube la imagen de perfil al servidor.
-     * @param event El evento de clic en el botón de "Subir Foto"
-     */
+   
     @FXML
     private void btnSubirFotografia(ActionEvent event) {
         if (imagenSeleccionada != null) {
@@ -134,10 +126,7 @@ public class FXMLFormularioColaboradorController implements Initializable {
         }
     }
 
-    /**
-     * Funcion para cargar la fotografía del colaborador al servidor.
-     * @param imagen La imagen seleccionada
-     */
+    
     private void cargarFotografiaServidor(File imagen) {
         try {
             byte[] imgBytes = Files.readAllBytes(imagen.toPath()); // Leer los bytes de la imagen
@@ -153,10 +142,7 @@ public class FXMLFormularioColaboradorController implements Initializable {
         }
     }
 
-    /**
-     * Funcion que muestra la imagen seleccionada en el ImageView.
-     * @param img La imagen seleccionada
-     */
+  
     private void mostrarFotografiaSeleccionada(File img) {
         try {
             BufferedImage buffer = ImageIO.read(img);
@@ -167,9 +153,7 @@ public class FXMLFormularioColaboradorController implements Initializable {
         }
     }
 
-    /**
-     * Funcion para obtener la fotografía desde el servidor y mostrarla.
-     */
+ 
     private void obtenerImagenServicio() {
         Colaborador ColaboradorFoto = ColaboradorDAO.obtenerFotografiaColaborador(colaborador.getIdColaborador());
 
@@ -178,19 +162,13 @@ public class FXMLFormularioColaboradorController implements Initializable {
         }
     }
 
-    /**
-     * Funcion para mostrar la fotografía del servidor (en formato Base64).
-     * @param imgBase64 La imagen en formato Base64
-     */
     private void mostrarFotografiaServidor(String imgBase64) {
         byte[] foto = Base64.getDecoder().decode(imgBase64.replaceAll("\\n", ""));
         Image image = new Image(new ByteArrayInputStream(foto));
         imagenperfil.setImage(image);
     }
 
-    /**
-     * Funcion para cargar los datos del colaborador en la interfaz gráfica.
-     */
+    
     private void cargarDatos() {
         tfNombre.setText(colaborador.getNombre());
         tfAp.setText(colaborador.getApellidoPaterno());
@@ -217,11 +195,7 @@ public class FXMLFormularioColaboradorController implements Initializable {
         obtenerImagenServicio();
     }
 
-    /**
-     * Funcion que inicializa la información del colaborador (para editar) o configura la vista para registrar uno nuevo.
-     * @param colaborador El colaborador que se va a editar o registrar
-     * @param observador El objeto que notificará a la vista principal
-     */
+   
     public void inicializaInformacion(Colaborador colaborador, INotificacionCambio observador) {
         this.colaborador = colaborador;
         this.observador = observador;
@@ -236,10 +210,7 @@ public class FXMLFormularioColaboradorController implements Initializable {
         }
     }
 
-    /**
-     * Funcion que guarda un nuevo colaborador en la base de datos.
-     * @param colaborador El colaborador a registrar
-     */
+   
     private void guardarColaborador(Colaborador colaborador) {
         Mensaje msj = ColaboradorDAO.registrarColaborador(colaborador);
         if (!msj.getError()) {
@@ -251,12 +222,10 @@ public class FXMLFormularioColaboradorController implements Initializable {
         }
     }
 
-    /**
-     * Funcion que edita la información de un colaborador existente.
-     * @param colaborador El colaborador a editar
-     */
+  
     private void editarColaborador(Colaborador colaborador) {
-        Mensaje msj = ColaboradorDAO.editarColaborador(colaborador);
+        if(validador()){
+            Mensaje msj = ColaboradorDAO.editarColaborador(colaborador);
         if (!msj.getError()) {
             Utilidades.mostrarAlertaSimple("Colaborador editado", msj.getMensaje(), Alert.AlertType.INFORMATION);
             observador.notificar();
@@ -264,19 +233,17 @@ public class FXMLFormularioColaboradorController implements Initializable {
         } else {
             Utilidades.mostrarAlertaSimple("Error al editar", msj.getMensaje(), Alert.AlertType.ERROR);
         }
+        }
+        
     }
 
-    /**
-     * Funcion para cerrar la ventana actual.
-     */
+    
     private void cerrarVentana() {
         Stage escenario = (Stage) tfNombre.getScene().getWindow();
         escenario.close();
     }
 
-    /**
-     * Funcion que carga los roles desde la base de datos y los muestra en el ComboBox.
-     */
+    
     private void cargarRoles() {
         ObservableList<Rol> roles = FXCollections.observableArrayList();
         List<Rol> info = ColaboradorDAO.roles();
@@ -284,13 +251,19 @@ public class FXMLFormularioColaboradorController implements Initializable {
         cbRol.setItems(roles);
     }
 
-    /**
-     * Funcion que valida los campos antes de guardar.
-     * Verifica si el número de licencia es obligatorio para los conductores.
-     * @return true si la validación pasa, false en caso contrario
-     */
-  private Boolean validador() {
-    // Verificar que todos los campos obligatorios estén llenos
+   
+private Boolean validador() {
+  
+    if (tfCurp.getText().length() > 18) {
+        Utilidades.mostrarAlertaSimple("Error", "El CURP excede el número de caracteres.", Alert.AlertType.ERROR);
+        return false;
+    }
+    if (tfCurp.getText().isEmpty()) {
+        Utilidades.mostrarAlertaSimple("Error", "El CURP es obligatorio.", Alert.AlertType.ERROR);
+        return false;
+    }
+    
+
     if (tfNombre.getText().isEmpty()) {
         Utilidades.mostrarAlertaSimple("Error", "El nombre es obligatorio.", Alert.AlertType.ERROR);
         return false;
@@ -298,6 +271,11 @@ public class FXMLFormularioColaboradorController implements Initializable {
     
     if (tfAp.getText().isEmpty()) {
         Utilidades.mostrarAlertaSimple("Error", "El apellido paterno es obligatorio.", Alert.AlertType.ERROR);
+        return false;
+    }
+    
+    if (tfAm.getText().isEmpty()) {
+        Utilidades.mostrarAlertaSimple("Error", "El apellido materno es obligatorio.", Alert.AlertType.ERROR);
         return false;
     }
     
@@ -321,7 +299,13 @@ public class FXMLFormularioColaboradorController implements Initializable {
         return false;
     }
 
-    // Si el rol es "Conductor", verificar que el número de licencia esté presente
+
+    if (cbRol.getValue() == null) {
+        Utilidades.mostrarAlertaSimple("Error", "Debe seleccionar un rol.", Alert.AlertType.ERROR);
+        return false;
+    }
+
+
     if (cbRol.getValue() != null && cbRol.getValue().getNombre().equals("Conductor")) {
         if (tfNulic.getText().isEmpty()) {
             Utilidades.mostrarAlertaSimple("Error", "El número de licencia es obligatorio para los conductores.", Alert.AlertType.ERROR);
@@ -329,31 +313,18 @@ public class FXMLFormularioColaboradorController implements Initializable {
         }
     }
 
-    if(tfAm.getText().isEmpty()){
-        Utilidades.mostrarAlertaSimple("Error","El Apellido es obligatorio", Alert.AlertType.ERROR);
-        return false;
-    }
-    if(tfCurp.getText().isEmpty()){
-        Utilidades.mostrarAlertaSimple("Error","El curp es obligatorio", Alert.AlertType.ERROR);
-        return false;
-    }
     return true;
 }
 
-/**
- * Método auxiliar para validar el formato del correo electrónico.
- * @param correo El correo a validar
- * @return true si el correo tiene un formato válido, false en caso contrario
- */
+
+
 private boolean validarCorreo(String correo) {
     String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
     return correo.matches(regex);
 }
 
 
-    /**
-     * Funcion de inicialización para configurar el ComboBox de roles.
-     */
+ 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tfNulic.setDisable(false);

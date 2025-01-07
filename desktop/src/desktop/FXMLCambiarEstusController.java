@@ -43,9 +43,7 @@ public class FXMLCambiarEstusController implements Initializable {
 private INotificacionCambio observador;
 private Colaborador colaborador;
   private Envio envio;   
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -99,9 +97,7 @@ private Colaborador colaborador;
         }
    
     }
-        /**
-     * Funcion para cerrar la ventana actual.
-     */
+        
     private void cerrarVentana() {
         Stage escenario = (Stage) lcolaborador.getScene().getWindow();
         escenario.close();

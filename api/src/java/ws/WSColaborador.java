@@ -34,7 +34,7 @@ import pojo.Unidad;
  * @author hp
  */
 @Path("colaborador")
-public class WsColaborador {
+public class WSColaborador {
 
     @Context
     private UriInfo context;
@@ -178,7 +178,7 @@ public class WsColaborador {
         return msj;
     }
 
-    // Nueva ruta: Buscar colaboradores por nombre
+  
     @GET
     @Path("buscarPorNombre/{nombre}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -189,7 +189,7 @@ public class WsColaborador {
         return ImpColaborador.buscarPorNombre(nombre);
     }
 
-    // Nueva ruta: Buscar colaborador por número de personal
+
     @GET
     @Path("buscarPorNumeroPersonal/{numeroPersonal}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -200,7 +200,7 @@ public class WsColaborador {
         return ImpColaborador.buscarPorNumeroPersonal(numeroPersonal);
     }
 
-    // Nueva ruta: Buscar colaboradores por rol
+
     @GET
     @Path("buscarPorRol/{rol}")
     @Produces(MediaType.APPLICATION_JSON)
