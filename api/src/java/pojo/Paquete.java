@@ -31,9 +31,6 @@ private String numeroGuia;
         this.numeroGuia = numeroGuia;
     }
 
-    public Paquete(Integer idPaquete, Object object, Object object0, Object object1, Object object2, Object object3, Integer idEnvio, Object object4, Object object5) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public Integer getIdPaquete() {
         return idPaquete;

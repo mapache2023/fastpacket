@@ -122,8 +122,8 @@ public static Mensaje eliminarPaquete(Integer idPaquete, Integer idEnvio) {
 
     if (conexionBD != null) {
         try {
-            // Crear un objeto Paquete con el idPaquete y idEnvio
-            Paquete paqueteAEliminar = new Paquete(idPaquete, null, null, null, null, null, idEnvio, null, null);
+            // Crear un objeto Paquete con el idPaquete e idEnvio, dejando los demás campos como null
+            Paquete paqueteAEliminar = new Paquete(idPaquete, null, null, null, null, null, idEnvio, null);
 
             // Elimina el paquete utilizando el mapper correspondiente
             int filasAfectadas = conexionBD.delete("paquete.eliminar", paqueteAEliminar);
@@ -151,6 +151,7 @@ public static Mensaje eliminarPaquete(Integer idPaquete, Integer idEnvio) {
 
     return msj;
 }
+
 
   // Método para obtener todos los clientes
     public static List<Paquete> obtenerPaquetes() {
