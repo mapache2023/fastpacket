@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="1133.0" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLAdminCololaboradorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1133.0" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLAdminCololaboradorController">
  <top>
       <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="738.0" spacing="10.0" styleClass="encabezado" BorderPane.alignment="CENTER">
          <children>
@@ -43,9 +43,7 @@
    <center>
       <AnchorPane prefHeight="528.0" prefWidth="850.0" BorderPane.alignment="CENTER">
          <children>
-            <ComboBox fx:id="cbBusqueda" layoutX="205.0" layoutY="46.0" prefWidth="150.0" />
-            <TextField fx:id="tfBusquda" layoutX="27.0" layoutY="51.0" prefHeight="27.0" prefWidth="171.0" promptText="Busqueda" />
-            <Button layoutX="366.0" layoutY="52.0" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
+            <TextField fx:id="tfBusquda" layoutX="255.0" layoutY="51.0" prefHeight="27.0" prefWidth="171.0" />
             <TableView fx:id="tvColaborador" layoutX="24.0" layoutY="86.0" prefHeight="343.0" prefWidth="1100.0">
               <columns>
                 <TableColumn fx:id="tcNombre" prefWidth="75.0" text="Nombre" />
@@ -61,12 +59,17 @@
 
               </columns>
             </TableView>
-            <Label layoutX="492.0" layoutY="14.0" styleClass="titulo-login" text="Colaboradores" />
-            <Button layoutX="444.0" layoutY="433.0" mnemonicParsing="false" onAction="#agregar" prefHeight="27.0" prefWidth="76.0" styleClass="boton-guardar" text="agregar" />
-            <Button layoutX="549.0" layoutY="434.0" mnemonicParsing="false" onAction="#editar" styleClass="boton-editar" text="editar" />
-            <Button layoutX="620.0" layoutY="435.0" mnemonicParsing="false" onAction="#eliminar" styleClass="boton-elminar" text="eliminar" />
-            <Button layoutX="880.0" layoutY="46.0" mnemonicParsing="false" onAction="#cambiarUnidad" styleClass="boton-especial" text="asignar unidad" />
-            <Button layoutX="994.0" layoutY="46.0" mnemonicParsing="false" onAction="#desasignarUnidad" styleClass="boton-especial" text="desaisgnar unidada" />
+            <Label layoutX="484.0" layoutY="14.0" styleClass="titulo-login" text="Colaboradores" />
+            <Button layoutX="858.0" layoutY="38.0" mnemonicParsing="false" onAction="#cambiarUnidad" styleClass="boton-especial" text="asignar unidad" />
+            <Button layoutX="976.0" layoutY="38.0" mnemonicParsing="false" onAction="#desasignarUnidad" styleClass="boton-especial" text="desaisgnar unidada" />
+            <Label layoutX="24.0" layoutY="56.0" text="busquedad(nombre,numero personal,rol)" />
+            <HBox layoutX="456.0" layoutY="459.0" prefHeight="37.0" prefWidth="222.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#agregar" prefHeight="27.0" prefWidth="76.0" styleClass="boton-guardar" text="agregar" />
+                  <Button mnemonicParsing="false" onAction="#editar" styleClass="boton-editar" text="editar" />
+                  <Button mnemonicParsing="false" onAction="#eliminar" styleClass="boton-elminar" text="eliminar" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </center>

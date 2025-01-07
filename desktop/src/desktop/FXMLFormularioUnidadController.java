@@ -115,7 +115,7 @@ public class FXMLFormularioUnidadController implements Initializable {
         unidad.setNumeroIdentificacion(numeroIdentificion);        
         unidad.setIdTipo(idTipo);
         unidad.setIdUnidad(this.unidad.getIdUnidad());
-        // Verificar que los campos son válidos antes de guardar
+        // Verificar que los campos son válidos antes
         if (sonCamposValidos()) {
             EditarDatosUnidad(unidad);
         } else {
@@ -186,8 +186,7 @@ public class FXMLFormularioUnidadController implements Initializable {
                !tfAño.getText().isEmpty() &&
                !tfVin.getText().isEmpty() &&
                !tfNII.getText().isEmpty() &&
-               cbTipo.getSelectionModel().getSelectedItem() != null &&
-                tfAño.getText().length() >4;
+               cbTipo.getSelectionModel().getSelectedItem() != null ;
     }
     
     private void guardarDatosUnidad(Unidad unidad) {

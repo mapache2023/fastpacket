@@ -63,7 +63,7 @@ public class FXMLAsignarCoductorEnvioController implements Initializable {
 
    
         if (colaboradorSeleccionada == null) {
-          Utilidades.mostrarAlertaSimple("error", "seleccione.", Alert.AlertType.INFORMATION);
+          Utilidades.mostrarAlertaSimple("error", "seleccione conductor.", Alert.AlertType.INFORMATION);
             return;
         }
 

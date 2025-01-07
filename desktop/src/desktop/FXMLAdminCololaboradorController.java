@@ -29,6 +29,10 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static desktop.utilidades.Utilidades.mostrarAlertaConfirmacion;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 
 public class FXMLAdminCololaboradorController implements Initializable, INotificacionCambio {
 
@@ -38,7 +42,7 @@ public class FXMLAdminCololaboradorController implements Initializable, INotific
     @FXML private TableColumn<Colaborador,String> tcNumeroPersonal;
     @FXML private TableColumn<Colaborador, Rol> tcRol;
     @FXML private TableColumn<Colaborador,String> tcCorreo;
-    @FXML private ComboBox<String> cbBusqueda;
+    private ComboBox<String> cbBusqueda;
     @FXML private TableColumn<Colaborador, String> tcNombre;
     @FXML private TableColumn<Colaborador, String> tcNulic;
     @FXML private TextField tfBusquda;
@@ -65,7 +69,6 @@ public class FXMLAdminCololaboradorController implements Initializable, INotific
     }
 
     // Funcion para buscar colaboradores
-    @FXML
     void buscar(ActionEvent evento) {
         String textoBusqueda = tfBusquda.getText();
         String criterioBusqueda = cbBusqueda.getValue();
@@ -105,7 +108,39 @@ public class FXMLAdminCololaboradorController implements Initializable, INotific
         // Actualizar la TableView con los resultados de la búsqueda
         tvColaborador.setItems(listaColaboradores);
     }
-
+ private void inicializarBusqueda(){
+     ObservableList<Colaborador> lista = listaColaboradores;
+        if(lista != null){
+            FilteredList<Colaborador> filtro = new FilteredList<>(lista, p -> true); 
+            tfBusquda.textProperty().addListener(new ChangeListener<String>(){
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    filtro.setPredicate(busqueda ->{
+                    
+                        if(newValue == null || newValue.isEmpty()){
+                            return true;                        
+                        } 
+                        String lowerFilter = newValue.toLowerCase();
+                  
+                        if(busqueda.getNombre().toLowerCase().contains(lowerFilter)){
+                            return true;
+                        }
+                        if(busqueda.getRol().toLowerCase().contains(lowerFilter)){
+                            return true;
+                        }
+                        if(busqueda.getNumeroPersonal().toLowerCase().contains(lowerFilter)){
+                            return true;
+                        }
+                        return false;
+                    
+                    });
+                }
+            });
+            SortedList<Colaborador> listaOrdenados = new SortedList(filtro);
+            listaOrdenados.comparatorProperty().bind(tvColaborador.comparatorProperty());
+            tvColaborador.setItems(listaOrdenados);
+        }
+    }
     // Funcion para agregar un nuevo colaborador
     @FXML
     void agregar(ActionEvent evento) {
@@ -141,6 +176,7 @@ public class FXMLAdminCololaboradorController implements Initializable, INotific
                 if (!mensaje.getError()) {
                     listaColaboradores.clear();
                     llenarTabla();
+                 
                     Utilidades.mostrarAlertaSimple("Éxito", mensaje.getMensaje(), Alert.AlertType.CONFIRMATION);
                 } else {
                     Utilidades.mostrarAlertaSimple("Error", mensaje.getMensaje(), Alert.AlertType.ERROR);
@@ -222,6 +258,7 @@ public class FXMLAdminCololaboradorController implements Initializable, INotific
             listaColaboradores = FXCollections.observableArrayList();
             listaColaboradores.addAll(lista);
             tvColaborador.setItems(listaColaboradores);
+            inicializarBusqueda();
         } else {
             Utilidades.mostrarAlertaSimple("Error", (String) respuesta.get("mensaje"), Alert.AlertType.ERROR);
         }
@@ -274,7 +311,7 @@ public class FXMLAdminCololaboradorController implements Initializable, INotific
                 "Rol",
                 "Número Personal"
         );
-        cbBusqueda.setItems(opcionesBusqueda);
-        cbBusqueda.getSelectionModel().selectFirst();
+       // cbBusqueda.setItems(opcionesBusqueda);
+       // cbBusqueda.getSelectionModel().selectFirst();
     }
 }

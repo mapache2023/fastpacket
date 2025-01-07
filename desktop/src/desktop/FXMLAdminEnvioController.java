@@ -17,8 +17,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,7 +56,6 @@ public class FXMLAdminEnvioController implements Initializable, INotificacionCam
     private TableColumn<Envio,String> tcCosto;
     @FXML
     private TableView<Envio> tvEnvio;
-    @FXML
     private ComboBox<String> cbEnvio;
     @FXML
     private TableColumn<Envio,String> tcColaborador;
@@ -70,11 +73,37 @@ public class FXMLAdminEnvioController implements Initializable, INotificacionCam
         ObservableList<String> opcionesBusqueda = FXCollections.observableArrayList(
                 "Numero Guia"
         );
-        cbEnvio.setItems(opcionesBusqueda);
-        cbEnvio.getSelectionModel().selectFirst();
-        cbEnvio.setDisable(true);
+       // cbEnvio.setItems(opcionesBusqueda);
+        //cbEnvio.getSelectionModel().selectFirst();
+        //cbEnvio.setDisable(true);
     }
-
+private void inicializarBusqueda(){
+     ObservableList<Envio> lista = envios;
+        if(lista != null){
+            FilteredList<Envio> filtro = new FilteredList<>(lista, p -> true); 
+            tfBuscar.textProperty().addListener(new ChangeListener<String>(){
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    filtro.setPredicate(busqueda ->{
+                    
+                        if(newValue == null || newValue.isEmpty()){
+                            return true;                        
+                        } 
+                        String lowerFilter = newValue.toLowerCase();
+                  
+                        if(busqueda.getNumeroGuia().toLowerCase().contains(lowerFilter)){
+                            return true;
+                        }
+                        return false;
+                    
+                    });
+                }
+            });
+            SortedList<Envio> listaOrdenados = new SortedList(filtro);
+            listaOrdenados.comparatorProperty().bind(tvEnvio.comparatorProperty());
+            tvEnvio.setItems(listaOrdenados);
+        }
+    }
     private void configurarTabla() {
         tcColaborador.setCellValueFactory(new PropertyValueFactory<>("colaborador"));
         tcEstatus.setCellValueFactory(new PropertyValueFactory<>("estadoActual"));
@@ -91,6 +120,7 @@ public class FXMLAdminEnvioController implements Initializable, INotificacionCam
         if (listaWS != null) {
             envios.addAll(listaWS);
             tvEnvio.setItems(envios);
+            inicializarBusqueda();
         } else {
             Utilidades.mostrarAlertaSimple("", "Datos no disponibles ", Alert.AlertType.ERROR);
         }
@@ -158,7 +188,6 @@ public class FXMLAdminEnvioController implements Initializable, INotificacionCam
 
     }
 
-    @FXML
     private void btnBuscar(ActionEvent event) {
         String textoBusqueda = tfBuscar.getText();
         String criterioBusqueda = cbEnvio.getValue();
