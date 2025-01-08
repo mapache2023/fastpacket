@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1133.0" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLAdminCololaboradorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1133.0" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLAdminCololaboradorController">
  <top>
       <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="738.0" spacing="10.0" styleClass="encabezado" BorderPane.alignment="CENTER">
          <children>
@@ -43,7 +43,7 @@
    <center>
       <AnchorPane prefHeight="528.0" prefWidth="850.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="tfBusquda" layoutX="255.0" layoutY="51.0" prefHeight="27.0" prefWidth="171.0" />
+            <TextField fx:id="tfBusquda" layoutX="198.0" layoutY="42.0" prefHeight="33.0" prefWidth="219.0" text="nombre, numero persoal, rol" />
             <TableView fx:id="tvColaborador" layoutX="24.0" layoutY="86.0" prefHeight="343.0" prefWidth="1100.0">
               <columns>
                 <TableColumn fx:id="tcNombre" prefWidth="75.0" text="Nombre" />
@@ -60,10 +60,10 @@
               </columns>
             </TableView>
             <Label layoutX="484.0" layoutY="14.0" styleClass="titulo-login" text="Colaboradores" />
-            <Button layoutX="858.0" layoutY="38.0" mnemonicParsing="false" onAction="#cambiarUnidad" styleClass="boton-especial" text="asignar unidad" />
-            <Button layoutX="976.0" layoutY="38.0" mnemonicParsing="false" onAction="#desasignarUnidad" styleClass="boton-especial" text="desaisgnar unidada" />
-            <Label layoutX="24.0" layoutY="56.0" text="busquedad(nombre,numero personal,rol)" />
-            <HBox layoutX="456.0" layoutY="459.0" prefHeight="37.0" prefWidth="222.0" spacing="10.0">
+            <Button layoutX="789.0" layoutY="38.0" mnemonicParsing="false" onAction="#cambiarUnidad" styleClass="boton-especial" text="asignar unidad" />
+            <Button layoutX="939.0" layoutY="38.0" mnemonicParsing="false" onAction="#desasignarUnidad" styleClass="boton-especial" text="desaisgnar unidada" />
+            <Label layoutX="123.0" layoutY="48.0" text="busqueda" />
+            <HBox layoutX="434.0" layoutY="464.0" prefHeight="41.0" prefWidth="262.0" spacing="10.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#agregar" prefHeight="27.0" prefWidth="76.0" styleClass="boton-guardar" text="agregar" />
                   <Button mnemonicParsing="false" onAction="#editar" styleClass="boton-editar" text="editar" />

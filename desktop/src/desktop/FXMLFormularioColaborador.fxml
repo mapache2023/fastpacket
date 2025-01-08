@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="734.0" styleClass="mainFxmlClass" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLFormularioColaboradorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="800.0" styleClass="mainFxmlClass" stylesheets="@recursos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.FXMLFormularioColaboradorController">
     <stylesheets>
         <URL value="@/desktop/recursos/estilo.css" />
     </stylesheets>
@@ -45,34 +45,34 @@
          </HBox>
    </bottom>
    <center>
-      <AnchorPane prefHeight="437.0" prefWidth="753.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="800.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="tfNombre" layoutX="27.0" layoutY="64.0" />
-            <TextField fx:id="tfNp" layoutX="385.0" layoutY="156.0" />
-            <TextField fx:id="tfCorreo" layoutX="32.0" layoutY="156.0" />
-            <TextField fx:id="tfContrasena" layoutX="199.0" layoutY="156.0" />
-            <TextField fx:id="tfAp" layoutX="199.0" layoutY="64.0" />
-            <TextField fx:id="tfAm" layoutX="385.0" layoutY="64.0" />
-            <TextField fx:id="tfCurp" layoutX="574.0" layoutY="64.0" />
-            <Label layoutX="27.0" layoutY="49.0" text="Nombre" />
+            <TextField fx:id="tfNombre" layoutX="27.0" layoutY="64.0" prefHeight="31.0" prefWidth="173.0" />
+            <TextField fx:id="tfNp" layoutX="400.0" layoutY="156.0" />
+            <TextField fx:id="tfCorreo" layoutX="32.0" layoutY="156.0" prefHeight="31.0" prefWidth="182.0" />
+            <TextField fx:id="tfContrasena" layoutX="218.0" layoutY="156.0" prefHeight="31.0" prefWidth="170.0" />
+            <TextField fx:id="tfAp" layoutX="209.0" layoutY="64.0" prefHeight="31.0" prefWidth="184.0" />
+            <TextField fx:id="tfAm" layoutX="400.0" layoutY="64.0" />
+            <TextField fx:id="tfCurp" layoutX="599.0" layoutY="64.0" />
+            <Label layoutX="27.0" layoutY="40.0" text="Nombre" />
             <Label layoutX="31.0" layoutY="14.0" styleClass="titulo-secsion-formulario" text="Datos Personales" />
-            <Label layoutX="199.0" layoutY="49.0" text="Apellido Paterno" />
-            <Label layoutX="392.0" layoutY="49.0" text="Apellido Materno" />
-            <Label layoutX="573.0" layoutY="49.0" text="Curp" />
-            <ComboBox fx:id="cbRol" layoutX="575.0" layoutY="156.0" prefWidth="150.0" />
-            <Button fx:id="btnAccion" layoutX="315.0" layoutY="390.0" mnemonicParsing="false" onAction="#guardar" prefHeight="25.0" prefWidth="77.0" styleClass="boton-guardar" text="Guardar" />
+            <Label layoutX="215.0" layoutY="40.0" text="Apellido Paterno" />
+            <Label layoutX="403.0" layoutY="40.0" text="Apellido Materno" />
+            <Label layoutX="601.0" layoutY="40.0" text="Curp" />
+            <ComboBox fx:id="cbRol" layoutX="599.0" layoutY="151.0" prefWidth="150.0" />
+            <Button fx:id="btnAccion" layoutX="315.0" layoutY="390.0" mnemonicParsing="false" onAction="#guardar" prefHeight="39.0" prefWidth="97.0" styleClass="boton-guardar" text="Guardar" />
             <Label layoutX="32.0" layoutY="111.0" styleClass="titulo-secsion-formulario" text="Datos Colaborador" />
             <Label layoutX="35.0" layoutY="141.0" text="Correo electronico" />
             <Pane fx:id="pane" layoutX="239.0" layoutY="206.0" prefHeight="184.0" prefWidth="444.0" style="-fx-background-color: bone;">
                <children>
                   <ImageView fx:id="imagenperfil" fitHeight="152.0" fitWidth="156.0" layoutX="72.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button layoutX="303.0" layoutY="41.0" mnemonicParsing="false" onAction="#btnSeleccionarFoto" prefHeight="30.0" prefWidth="127.0" styleClass="boton-especial" text="seleccionar foto" />
-                  <Button layoutX="303.0" layoutY="93.0" mnemonicParsing="false" onAction="#btnSubirFotografia" prefHeight="30.0" prefWidth="127.0" styleClass="boton-especial" text="subir foto" />
+                  <Button layoutX="284.0" layoutY="41.0" mnemonicParsing="false" onAction="#btnSeleccionarFoto" prefHeight="39.0" prefWidth="146.0" styleClass="boton-especial" text="seleccionar foto" />
+                  <Button layoutX="291.0" layoutY="93.0" mnemonicParsing="false" onAction="#btnSubirFotografia" prefHeight="39.0" prefWidth="139.0" styleClass="boton-especial" text="subir foto" />
                </children>
             </Pane>
-            <Label layoutX="195.0" layoutY="141.0" text="Contraseña" />
-            <Label layoutX="390.0" layoutY="141.0" text="Numero Personal" />
-            <Label layoutX="573.0" layoutY="141.0" text="rol" />
+            <Label layoutX="221.0" layoutY="136.0" text="Contraseña" />
+            <Label layoutX="404.0" layoutY="136.0" text="Numero Personal" />
+            <Label layoutX="599.0" layoutY="126.0" text="rol" />
             <TextField fx:id="tfNulic" layoutX="32.0" layoutY="223.0" />
             <Label fx:id="lNuLic" layoutX="32.0" layoutY="198.0" text="Numero de licencia" />
          </children>

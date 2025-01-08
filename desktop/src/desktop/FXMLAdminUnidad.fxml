@@ -63,6 +63,6 @@
       </TableView>
       <Button layoutX="441.0" layoutY="403.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="29.0" prefWidth="73.0" styleClass="boton-editar" text="Editar" />
       <Button layoutX="753.0" layoutY="118.0" mnemonicParsing="false" onAction="#btnIrBaja" styleClass="boton-especial" text="Dar de baja" />
-      <Button layoutX="344.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnIrFormulario" prefHeight="29.0" prefWidth="73.0" styleClass="boton-guardar" text="Registrar" />
+      <Button layoutX="330.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnIrFormulario" prefHeight="31.0" prefWidth="87.0" styleClass="boton-guardar" text="Registrar" />
    </children>
 </AnchorPane>
