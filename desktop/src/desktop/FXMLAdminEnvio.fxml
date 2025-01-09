@@ -22,7 +22,7 @@
                </image>
             </ImageView>
             <Label layoutX="169.0" layoutY="26.0" styleClass="encabezado-titulo" text="-Envio" />
-            <Label fx:id="etiquetaColaborador" layoutX="855.0" layoutY="25.0" styleClass="encabezado-titulo" text="ALVARO YAIR GARCIA MURRIETA" />
+            <Label fx:id="etiquetaColaborador" layoutX="1026.0" layoutY="23.0" styleClass="encabezado-titulo" text="Usuario" />
          </children>
       </Pane>
       <Pane layoutY="471.0" prefHeight="31.0" prefWidth="1100.0" styleClass="pie">

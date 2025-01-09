@@ -23,12 +23,12 @@
          <children>
             <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/desktop/recursos/logo_horizontal.PNG" />
+                  <Image url="@recursos/logo_horizontal.PNG" />
                </image>
             </ImageView>
                <Label prefHeight="24.0" prefWidth="124.0" styleClass="encabezado-titulo" text="-Colaboradores" />
                <Region HBox.hgrow="ALWAYS" />
-               <Label fx:id="lColaborador" styleClass="encabezado-texto-usuario" text="JUAN GUTIERREZ SANCHEZ" />
+               <Label fx:id="lColaborador" styleClass="encabezado-texto-usuario" text="Usuario" />
          </children>
       </HBox>
    </top>
