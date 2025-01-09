@@ -52,9 +52,9 @@ public class ImpColaborador {
                 conexionBD.commit();
                 if (filasAfectadas > 0) {
                     msj.setError(false);
-                    msj.setMensaje("Información del colaborador registrada con éxito.");
+                    msj.setMensaje("Informacion del colaborador registrada con exito.");
                 } else {
-                    msj.setMensaje("Lo sentimos, por el momento no se puede registrar la información del colaborador");
+                    msj.setMensaje("Lo sentimos, por el momento no se puede registrar la informacion del colaborador");
                 }
             } catch (Exception e) {
                 msj.setMensaje("Error: " + e.getMessage());
@@ -62,7 +62,7 @@ public class ImpColaborador {
                 conexionBD.close();
             }
         } else {
-            msj.setMensaje("Error al registrar la información, por el momento no hay conexión con la base de datos.");
+            msj.setMensaje("Error al registrar la informacion, por el momento no hay conexion con la base de datos.");
         }
         return msj;
     }
@@ -79,7 +79,7 @@ public class ImpColaborador {
                     msj.setError(false);
                     msj.setMensaje("Informacion del colaborador editada con exito.");
                 } else {
-                    msj.setMensaje("Lo sentimos, por el momento no se puede editar la información del colaborador");
+                    msj.setMensaje("Lo sentimos, por el momento no se puede editar la informacion del colaborador");
                 }
             } catch (Exception e) {
                 msj.setMensaje("Error: " + e.getMessage());
@@ -87,7 +87,7 @@ public class ImpColaborador {
                 conexionBD.close();
             }
         } else {
-            msj.setMensaje("Error al registrar la información, por el momento no hay conexión con la base de datos.");
+            msj.setMensaje("Error al registrar la informacion, por el momento no hay conexión con la base de datos.");
         }
         return msj;
     }
@@ -105,10 +105,10 @@ public class ImpColaborador {
                 conexionBD.commit();
                 if (filasAfectadas > 0) {
                     msj.setError(false);
-                    msj.setMensaje("Fotografía del colaborador guardada correctamente.");
+                    msj.setMensaje("Fotografia del colaborador guardada correctamente.");
                 } else {
                     msj.setMensaje("Lo sentimos hubo un error al intentar guardar la "
-                            + "fotografía, por favor inténtelo más tarde.");
+                            + "fotografia, por favor inténtelo mas tarde.");
                 }
             } catch (Exception e) {
                 msj.setMensaje("Error: " + e.getMessage());
@@ -116,8 +116,8 @@ public class ImpColaborador {
                 conexionBD.close();
             }
         } else {
-            msj.setMensaje("Error de conexión, por el momento no se puede registrar la "
-                    + "fotografía del colaborador.");
+            msj.setMensaje("Error de conexion, por el momento no se puede registrar la "
+                    + "fotografia del colaborador.");
         }
         return msj;
     }
@@ -162,7 +162,7 @@ public class ImpColaborador {
 
                 if (filasAfectadas > 0) {
                     msj.setError(false);
-                    msj.setMensaje("La unidad se cambió correctamente.");
+                    msj.setMensaje("La unidad se cambio correctamente.");
                 } else {
                     msj.setMensaje("Lo sentimos, hubo un error inesperado.");
                 }
@@ -172,7 +172,7 @@ public class ImpColaborador {
                 conexionBD.close();
             }
         } else {
-            msj.setMensaje("Error de conexión, por el momento no se puede realizar la operación.");
+            msj.setMensaje("Error de conexión, por el momento no se puede realizar la operacion.");
         }
         return msj;
     }
@@ -192,7 +192,7 @@ public class ImpColaborador {
 
                 // Si ya existe un colaborador asignado a esta unidad
                 if (idColaboradorExistente != null && !idColaboradorExistente.equals(idColaborador)) {
-                    msj.setMensaje("Error: La unidad ya está asignada a otro colaborador.");
+                    msj.setMensaje("Error: La unidad ya esta asignada a otro colaborador.");
                     return msj;
                 }
 
@@ -202,7 +202,7 @@ public class ImpColaborador {
 
                 if (filasAfectadas > 0) {
                     msj.setError(false);
-                    msj.setMensaje("La unidad se cambió correctamente.");
+                    msj.setMensaje("La unidad se cambio correctamente.");
                 } else {
                     msj.setMensaje("Lo sentimos, hubo un error inesperado.");
                 }
@@ -212,7 +212,7 @@ public class ImpColaborador {
                 conexionBD.close();
             }
         } else {
-            msj.setMensaje("Error de conexión, por el momento no se puede realizar la operación.");
+            msj.setMensaje("Error de conexion, por el momento no se puede realizar la operación.");
         }
         return msj;
     }

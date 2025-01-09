@@ -47,6 +47,6 @@
       </Pane>
       <Label layoutX="340.0" layoutY="70.0" prefHeight="29.0" prefWidth="160.0" styleClass="titulo-secsion-formulario" text="Clientes " />
       <Label layoutX="24.0" layoutY="99.0" prefHeight="19.0" prefWidth="78.0" text="Buscar" />
-      <TextField fx:id="tfBusqueda" layoutX="81.0" layoutY="93.0" prefHeight="31.0" prefWidth="222.0" promptText="Buscar Cliente" text="Nombre, Telefono o Correo" />
+      <TextField fx:id="tfBusqueda" layoutX="81.0" layoutY="93.0" prefHeight="31.0" prefWidth="222.0" promptText="Nombre, Telefono o Correo" />
    </children>
 </AnchorPane>
