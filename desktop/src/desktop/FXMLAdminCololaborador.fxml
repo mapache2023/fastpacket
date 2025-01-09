@@ -43,7 +43,7 @@
    <center>
       <AnchorPane prefHeight="528.0" prefWidth="850.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="tfBusquda" layoutX="198.0" layoutY="42.0" prefHeight="33.0" prefWidth="219.0" text="nombre, numero persoal, rol" />
+            <TextField fx:id="tfBusquda" layoutX="198.0" layoutY="42.0" prefHeight="33.0" prefWidth="219.0" promptText="nombre, numero personal, rol" />
             <TableView fx:id="tvColaborador" layoutX="24.0" layoutY="86.0" prefHeight="343.0" prefWidth="1100.0">
               <columns>
                 <TableColumn fx:id="tcNombre" prefWidth="75.0" text="Nombre" />
@@ -62,7 +62,7 @@
             <Label layoutX="484.0" layoutY="14.0" styleClass="titulo-login" text="Colaboradores" />
             <Button layoutX="789.0" layoutY="38.0" mnemonicParsing="false" onAction="#cambiarUnidad" styleClass="boton-especial" text="asignar unidad" />
             <Button layoutX="939.0" layoutY="38.0" mnemonicParsing="false" onAction="#desasignarUnidad" styleClass="boton-especial" text="desaisgnar unidada" />
-            <Label layoutX="123.0" layoutY="48.0" text="busqueda" />
+            <Label layoutX="123.0" layoutY="48.0" text="Busqueda" />
             <HBox layoutX="434.0" layoutY="464.0" prefHeight="41.0" prefWidth="262.0" spacing="10.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#agregar" prefHeight="27.0" prefWidth="76.0" styleClass="boton-guardar" text="agregar" />

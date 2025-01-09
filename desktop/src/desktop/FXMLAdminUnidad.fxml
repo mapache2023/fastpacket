@@ -30,7 +30,7 @@
                   <Image url="@recursos/logo_horizontal.PNG" />
                </image>
             </ImageView>
-            <Label fx:id="etiquetaColaborador" layoutX="788.0" layoutY="22.0" text="Usuario" textFill="WHITE">
+            <Label fx:id="etiquetaColaborador" layoutX="657.0" layoutY="24.0" text="ALVARO YAIR GARCIA MURRIETA" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font></Label>
@@ -47,8 +47,8 @@
          </children>
       </Pane>
       <Label layoutX="408.0" layoutY="72.0" styleClass="texto-normal" text="Unidades" />
-      <Label layoutX="14.0" layoutY="120.0" styleClass="texto-normal" text="Buscar" />
-      <TextField fx:id="tfBuscar" layoutX="72.0" layoutY="114.0" text="Marca, Vin o NII" />
+      <Label layoutX="108.0" layoutY="122.0" styleClass="texto-normal" text="Buscar" />
+      <TextField fx:id="tfBuscar" layoutX="171.0" layoutY="117.0" promptText="Marca, VIN, NII" />
       <TableView fx:id="tvUnidad" layoutX="9.0" layoutY="174.0" prefHeight="216.0" prefWidth="854.0">
         <columns>
           <TableColumn fx:id="tcMarca" prefWidth="75.0" text="Marca" />
