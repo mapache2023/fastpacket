@@ -51,6 +51,6 @@
       <Button layoutX="534.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnIrFormularioEditar" prefHeight="29.0" prefWidth="106.0" styleClass="boton-editar" text="Actualizar" />
       <Button layoutX="393.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnIrFormulario" prefHeight="29.0" prefWidth="85.0" styleClass="boton-guardar" text="Registrar" />
       <Button layoutX="811.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnIrAsignarConductor" styleClass="boton-editar" text="Asignar conductor a envio" />
-      <Button layoutX="679.0" layoutY="123.0" mnemonicParsing="false" onAction="#cambiarEstatus" prefHeight="23.0" prefWidth="117.0" styleClass="boton-especial" text="cambiar Estatus" />
+      <Button layoutX="659.0" layoutY="123.0" mnemonicParsing="false" onAction="#cambiarEstatus" prefHeight="31.0" prefWidth="137.0" styleClass="boton-especial" text="cambiar Estatus" />
    </children>
 </AnchorPane>
