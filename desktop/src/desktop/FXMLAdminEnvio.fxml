@@ -35,8 +35,8 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="133.0" styleClass="texto-normal" text="Buscar por numero de guia" />
-      <TextField fx:id="tfBuscar" layoutX="223.0" layoutY="127.0" prefHeight="31.0" prefWidth="255.0" />
+      <Label layoutX="132.0" layoutY="132.0" styleClass="texto-normal" text="Buscar" />
+      <TextField fx:id="tfBuscar" layoutX="181.0" layoutY="127.0" prefHeight="31.0" prefWidth="255.0" promptText="Numeor de guia" />
       <TableView fx:id="tvEnvio" layoutX="4.0" layoutY="178.0" prefHeight="234.0" prefWidth="1089.0">
          <columns>
             <TableColumn fx:id="tcNombre" prefWidth="154.0" text="Nombre cliente" />
