@@ -1,4 +1,4 @@
-const URL_WS = 'http://localhost:8084/api/servicio/enviosEspeciales/web/';
+const URL_WS = 'http://192.168.100.211:8084/api/servicio/enviosEspeciales/web/';
 const tablaPaquetes =document.getElementById("infoPaquete")
 const tablaCambios =document.getElementById("historialCambios")
 

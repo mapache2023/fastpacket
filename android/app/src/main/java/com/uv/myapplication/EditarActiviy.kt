@@ -225,7 +225,7 @@ class EditarActiviy : AppCompatActivity() {
                 result.data?.data?.let { uri ->
                     fotoPerfilByte = uriToByteArray(uri)
                     fotoPerfilByte?.let { byteArray ->
-                        subirfotodeperfil(colaborador!!.idColaborador, byteArray)
+                        subirFotoDePerfil(colaborador!!.idColaborador, byteArray)
                     }
                 }
             }
@@ -247,7 +247,7 @@ class EditarActiviy : AppCompatActivity() {
     }
 
     // Subir la nueva foto de perfil del colaborador
-    private fun subirfotodeperfil(idColaborador: Int?, fotoPerfil: ByteArray) {
+    private fun subirFotoDePerfil(idColaborador: Int?, fotoPerfil: ByteArray) {
         Ion.with(this).load("PUT", "${Constante().URL_WS}colaborador/subirFoto/$idColaborador")
             .setByteArrayBody(fotoPerfil).asString()
             .setCallback { e, result ->

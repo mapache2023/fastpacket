@@ -46,6 +46,12 @@
     WHERE idEnvio = #{idEnvio}
 </select>
 
+<select id="buscarPaquetesPorGuia" parameterType="String" resultType="pojo.Paquete">
+  SELECT paquete.*,envio.numeroGuia FROM fastpacket.paquete inner join envio on paquete.idEnvio = envio.idEnvio
+    WHERE envio.numeroGuia = #{numeorGuia}
+</select>
+
+
     <delete id="eliminar">
         DELETE FROM paquete
         WHERE idPaquete = #{idPaquete}
@@ -53,6 +59,6 @@
     </delete>
     
      <select id="obtenerPaquetes" resultType="pojo.Paquete">
-    SELECT * FROM paquete;
+  SELECT paquete.*,envio.numeroGuia FROM fastpacket.paquete inner join envio on paquete.idEnvio = envio.idEnvio;
 </select>
 </mapper>

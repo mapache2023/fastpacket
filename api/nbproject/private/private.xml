@@ -3,7 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Carla/Documents/Proyecto/fastpacket/fastpacket/api/src/java/ws/WSEnvio.java</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/ws/WSLogin.java</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/ws/WSPaquete.java</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/dominio/ImpColaborador.java</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/ws/WSCliente.java</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/dominio/ImpLogin.java</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/mybatis/mapper/ClienteMapper.xml</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/mybatis/mapper/ColaboradorMapper.xml</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/ws/WSEnviosEspeciales.java</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/mybatis/mapper/UnidadMapper.xml</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/ws/WSEnvio.java</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/mybatis/mybatis-config.xml</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/mybatis/mapper/PaqueteMapper.xml</file>
+            <file>file:/C:/Users/berna/OneDrive/Documentos/proyecto_integracion/fastpacket/api/src/java/ws/WSUnidad.java</file>
         </group>
     </open-files>
 </project-private>

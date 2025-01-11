@@ -98,7 +98,8 @@ public static List<Paquete> obtenerPaquetes() {
      */
 public static Mensaje eliminarPaquete(int idEnvio, int idPaquete) {
     Mensaje mensaje = new Mensaje();
-    String url = Constantes.URI_WS + "paquetes/eliminarPaquete/" + idPaquete + "/" + idEnvio;
+    String url = Constantes.URI_WS
+            + "paquetes/eliminarPaquete/" + idPaquete + "/" + idEnvio;
 
     // Construcción de los parámetros en caso de que sean necesarios para la solicitud DELETE
     String parametros = ""; // En este caso, no se requieren parámetros adicionales para la URL
